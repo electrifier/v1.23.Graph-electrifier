@@ -127,10 +127,10 @@
     <value>Workbench</value>
   </data>
   <data name="WebView_Loading.Text" xml:space="preserve">
-    <value>Loading...</value>
+    <value>Datenempfang...</value>
   </data>
   <data name="WebView_FailedMessage.Text" xml:space="preserve">
-    <value>Page failed to load. Check connection and reload.</value>
+    <value>Seite konnte nicht geladen werden. Bitte überprüfe die Verbindung und versuche es erneut.</value>
   </data>
   <data name="BrowserBackButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Browser back</value>
@@ -145,7 +145,7 @@
     <value>Browser forward</value>
   </data>
   <data name="WebView_Reload.Content" xml:space="preserve">
-    <value>Reload</value>
+    <value>Neu laden</value>
   </data>
   <data name="ReloadButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Reload</value>
@@ -169,28 +169,28 @@
     <value>ListDetails</value>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
-    <value>Personalization</value>
+    <value>Personalisierung</value>
   </data>
   <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Theme</value>
+    <value>Design</value>
   </data>
   <data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>Hell</value>
   </data>
   <data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Dunkel</value>
   </data>
   <data name="Settings_Theme_Default.Content" xml:space="preserve">
-    <value>Default</value>
+    <value>Standard</value>
   </data>
   <data name="Settings_About.Text" xml:space="preserve">
-    <value>About this application</value>
+    <value>über electrifier:</value>
   </data>
   <data name="Settings_AboutDescription.Text" xml:space="preserve">
     <value>integrated desktop electrifier</value>
   </data>
   <data name="SettingsPage_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Privacy Statement</value>
+    <value>Datenschutzerklärung</value>
   </data>
   <data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://github.com/electrifier/electrifier/blob/main/PRIVACY.md</value>
