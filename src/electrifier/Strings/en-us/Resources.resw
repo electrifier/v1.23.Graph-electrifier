@@ -183,6 +183,20 @@
   <data name="Settings_Theme_Default.Content" xml:space="preserve">
     <value>Default</value>
   </data>
+  <data name="Settings_Language.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Settings_Language_Default.Content" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Settings_Language_English.Content" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Settings_Language_German.Content" xml:space="preserve">
+    <value>German</value>
+  </data>
+  <data name="Settings_About.Text" xml:space="preserve">
+    <value>About this application</value>
   <data name="SettingsPage_About.Text" xml:space="preserve">
     <value>about electrifier:</value>
   </data>
@@ -194,18 +208,6 @@
   </data>
   <data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://github.com/electrifier/electrifier/blob/main/PRIVACY.md</value>
-  </data>
-  <data name="Settings_Language.Text" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="Settings_Language_Default.Content" xml:space="preserve">
-    <value>Default</value>
-  </data>
-  <data name="Settings_Language_English.Content" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="Settings_Language_German.Content" xml:space="preserve">
-    <value>Deutsch</value>
   </data>
   <data name="AppNotificationSamplePayload" xml:space="preserve">
     <value>&lt;toast launch="action=ToastClick"&gt;
