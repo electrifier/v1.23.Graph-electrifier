@@ -120,17 +120,17 @@
 	<data name="AppDisplayName" xml:space="preserve">
     <value>electrifier</value>
   </data>
-  <data name="AppDescription" xml:space="preserve">
+	<data name="AppDescription" xml:space="preserve">
     <value>ein integrierendes desktop environment</value>
   </data>
 	<data name="Shell_Workbench.Content" xml:space="preserve">
     <value>Workbench</value>
   </data>
-  <data name="WebView_Loading.Text" xml:space="preserve">
-    <value>Saugen...</value>
+  <data name="WebView_FailedMessage.Text" xml:space="preserve">
+    <value>Die Seite %s konnte nicht geladen werden. Bitte überprüfe die Verbindung</value>
   </data>
-	<data name="WebView_FailedMessage.Text" xml:space="preserve">
-    <value>Seite konnte nicht geladen werden. Bitte überprüfe die Verbindung und versuche es erneut.</value>
+  <data name="WebView_Failed_TryReloadMessage.Content" xml:space="preserve">
+    <value>und versuche es erneut...</value>
   </data>
 	<data name="BrowserBackButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Browser back</value>
@@ -144,9 +144,6 @@
 	<data name="BrowserForwardButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Browser forward</value>
   </data>
-	<data name="WebView_Reload.Content" xml:space="preserve">
-    <value>Neu laden</value>
-  </data>
 	<data name="ReloadButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Reload</value>
   </data>
@@ -159,7 +156,7 @@
 	<data name="OpenInBrowserButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Open in browser</value>
   </data>
-  <data name="Shell_WebView.Content" xml:space="preserve">
+	<data name="Shell_WebView.Content" xml:space="preserve">
     <value>Websites</value>
   </data>
 	<data name="ListDetails_NoSelection.Text" xml:space="preserve">
@@ -183,10 +180,10 @@
 	<data name="Settings_Theme_Default.Content" xml:space="preserve">
     <value>Standard</value>
   </data>
-  <data name="SettingsPage_About.Text" xml:space="preserve">
+	<data name="SettingsPage_About.Text" xml:space="preserve">
     <value>über electrifier:</value>
   </data>
-  <data name="SettingsPage_AboutDescription.Text" xml:space="preserve">
+	<data name="SettingsPage_AboutDescription.Text" xml:space="preserve">
     <value>ein integrierendes desktop environment</value>
   </data>
 	<data name="SettingsPage_PrivacyTermsLink.Content" xml:space="preserve">
@@ -195,19 +192,19 @@
 	<data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://github.com/electrifier/electrifier/blob/main/PRIVACY.md</value>
   </data>
-  <data name="Settings_Language.Text" xml:space="preserve">
+	<data name="Settings_Language.Text" xml:space="preserve">
     <value>Sprache</value>
   </data>
-  <data name="Settings_Language_Default.Content" xml:space="preserve">
+	<data name="Settings_Language_Default.Content" xml:space="preserve">
     <value>Default</value>
   </data>
-  <data name="Settings_Language_English.Content" xml:space="preserve">
+	<data name="Settings_Language_English.Content" xml:space="preserve">
     <value>Englisch</value>
   </data>
-  <data name="Settings_Language_German.Content" xml:space="preserve">
+	<data name="Settings_Language_German.Content" xml:space="preserve">
     <value>Deutsch</value>
   </data>
-  <data name="AppNotificationSamplePayload" xml:space="preserve">
+	<data name="AppNotificationSamplePayload" xml:space="preserve">
     <value>&lt;toast launch="action=ToastClick"&gt;
   &lt;visual&gt;
     &lt;binding template="ToastGeneric"&gt;
@@ -221,16 +218,16 @@
   &lt;/actions&gt;
 &lt;/toast&gt;</value>
   </data>
-  <data name="SettingsPage_Credits.Text" xml:space="preserve">
+	<data name="SettingsPage_Credits.Text" xml:space="preserve">
     <value>tajbender grüßt:</value>
   </data>
-  <data name="SettingsPage_CreditsDescription.Text" xml:space="preserve">
+	<data name="SettingsPage_CreditsDescription.Text" xml:space="preserve">
     <value>SettingsPage_Credits Description Text (de-DE)</value>
   </data>
-  <data name="SettingsPage_License.Text" xml:space="preserve">
+	<data name="SettingsPage_License.Text" xml:space="preserve">
     <value>electrifier ist freie software.</value>
   </data>
-  <data name="SettingsPage_LicenseDescription.Text" xml:space="preserve">
+	<data name="SettingsPage_LicenseDescription.Text" xml:space="preserve">
     <value>Copyright 2022 tajbender, Thorsten Jung.
 
 Licensed under the Apache License,
@@ -240,10 +237,10 @@ compliance with the License.
 
 You may obtain a copy of the License at</value>
   </data>
-  <data name="SettingsPage_LicenseTermsLink.Content" xml:space="preserve">
+	<data name="SettingsPage_LicenseTermsLink.Content" xml:space="preserve">
     <value>Apache License, version 2.0 </value>
   </data>
-  <data name="SettingsPage_LicenseDescriptionContinued.Text" xml:space="preserve">
+	<data name="SettingsPage_LicenseDescriptionContinued.Text" xml:space="preserve">
     <value>Unless required by applicable law or agreed
 to in writing, software distributed
 under the License is distributed on an
@@ -254,13 +251,13 @@ or implied.
 See the License for the specific language governing
 permissions and limitations under the License.</value>
   </data>
-  <data name="SettingsPage_LicenseTermsLink.NavigateUri" xml:space="preserve">
+	<data name="SettingsPage_LicenseTermsLink.NavigateUri" xml:space="preserve">
     <value>https://github.com/electrifier/electrifier/blob/main/LICENSE</value>
   </data>
-  <data name="SettingsPage_LicenseCopyright.Content" xml:space="preserve">
+	<data name="SettingsPage_LicenseCopyright.Content" xml:space="preserve">
     <value>eine Scheunenproduktion.</value>
   </data>
-  <data name="SettingsPage_LicenseCopyright.NavigateUri" xml:space="preserve">
+	<data name="SettingsPage_LicenseCopyright.NavigateUri" xml:space="preserve">
     <value>https://www.scheunenproduktion.de</value>
   </data>
 </root>
