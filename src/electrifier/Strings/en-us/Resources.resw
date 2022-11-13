@@ -261,4 +261,10 @@ permissions and limitations under the License.</value>
 	<data name="Settings_About.Text" xml:space="preserve">
     <value>About this application</value>
   </data>
+  <data name="LocalFiles_NoSelection.Text" xml:space="preserve">
+    <value>Select an item from the list.</value>
+  </data>
+  <data name="Shell_LocalFiles.Content" xml:space="preserve">
+    <value>LocalFiles</value>
+  </data>
 </root>

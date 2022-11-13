@@ -18,6 +18,7 @@ public class PageService : IPageService
         Configure<WebViewViewModel, WebViewPage>();
         Configure<ListDetailsViewModel, ListDetailsPage>();
         Configure<SettingsViewModel, SettingsPage>();
+        Configure<LocalFilesViewModel, LocalFilesPage>();
     }
 
     public Type GetPageType(string key)
