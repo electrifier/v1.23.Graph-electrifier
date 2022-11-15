@@ -16,7 +16,6 @@ public class PageService : IPageService
     {
         Configure<WorkbenchViewModel, WorkbenchPage>();
         Configure<WebViewViewModel, WebViewPage>();
-        Configure<ListDetailsViewModel, ListDetailsPage>();
         Configure<SettingsViewModel, SettingsPage>();
         Configure<LocalFilesViewModel, LocalFilesPage>();
     }
