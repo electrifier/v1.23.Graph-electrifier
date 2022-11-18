@@ -261,4 +261,7 @@ permissions and limitations under the License.</value>
   <data name="Shell_LocalFiles.Content" xml:space="preserve">
     <value>LocalFiles</value>
   </data>
+  <data name="Shell_FileManager.Content" xml:space="preserve">
+    <value>FileManager</value>
+  </data>
 </root>
