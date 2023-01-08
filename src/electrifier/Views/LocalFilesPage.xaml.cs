@@ -6,16 +6,16 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace electrifier.Views;
 
-public sealed partial class ListDetailsPage : Page
+public sealed partial class LocalFilesPage : Page
 {
-    public ListDetailsViewModel ViewModel
+    public LocalFilesViewModel ViewModel
     {
         get;
     }
 
-    public ListDetailsPage()
+    public LocalFilesPage()
     {
-        ViewModel = App.GetService<ListDetailsViewModel>();
+        ViewModel = App.GetService<LocalFilesViewModel>();
         InitializeComponent();
     }
 

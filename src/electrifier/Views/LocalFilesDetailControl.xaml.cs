@@ -5,7 +5,7 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace electrifier.Views;
 
-public sealed partial class ListDetailsDetailControl : UserControl
+public sealed partial class LocalFilesDetailControl : UserControl
 {
     public SampleOrder? ListDetailsMenuItem
     {
@@ -13,16 +13,16 @@ public sealed partial class ListDetailsDetailControl : UserControl
         set => SetValue(ListDetailsMenuItemProperty, value);
     }
 
-    public static readonly DependencyProperty ListDetailsMenuItemProperty = DependencyProperty.Register("ListDetailsMenuItem", typeof(SampleOrder), typeof(ListDetailsDetailControl), new PropertyMetadata(null, OnListDetailsMenuItemPropertyChanged));
+    public static readonly DependencyProperty ListDetailsMenuItemProperty = DependencyProperty.Register("ListDetailsMenuItem", typeof(SampleOrder), typeof(LocalFilesDetailControl), new PropertyMetadata(null, OnListDetailsMenuItemPropertyChanged));
 
-    public ListDetailsDetailControl()
+    public LocalFilesDetailControl()
     {
         InitializeComponent();
     }
 
     private static void OnListDetailsMenuItemPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        if (d is ListDetailsDetailControl control)
+        if (d is LocalFilesDetailControl control)
         {
             control.ForegroundElement.ChangeView(0, 0, 1);
         }

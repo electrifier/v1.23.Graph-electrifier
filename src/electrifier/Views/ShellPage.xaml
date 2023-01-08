@@ -45,17 +45,22 @@
                 -->
                 <NavigationViewItem x:Uid="Shell_Workbench" helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WorkbenchViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE80F;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_WebView" helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebViewViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe774;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEB41;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="Shell_ListDetails" helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.ListDetailsViewModel">
+                <NavigationViewItem x:Uid="Shell_LocalFiles" helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.LocalFilesViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xea37;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEC50;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="Shell_FileManager" helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEC50;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>

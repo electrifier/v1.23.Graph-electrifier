@@ -10,6 +10,7 @@ using electrifier.Helpers;
 using Microsoft.UI.Xaml;
 
 using Windows.ApplicationModel;
+using Windows.Foundation.Metadata;
 
 namespace electrifier.ViewModels;
 
@@ -17,12 +18,19 @@ public class SettingsViewModel : ObservableRecipient
 {
     private readonly IThemeSelectorService _themeSelectorService;
     private ElementTheme _elementTheme;
+    private ElementLanguage _languageId;
     private string _versionDescription;
 
     public ElementTheme ElementTheme
     {
         get => _elementTheme;
         set => SetProperty(ref _elementTheme, value);
+    }
+
+    public ElementLanguage LanguageId
+    {
+        get => _languageId; // _languageId ?? "Default"; // TODO: i18n (String "Default")
+        set => SetProperty(ref _languageId, value);
     }
 
     public string VersionDescription
@@ -36,11 +44,19 @@ public class SettingsViewModel : ObservableRecipient
         get;
     }
 
+    public ICommand SwitchLanguageCommand
+    {
+        get;
+    }
+
     public SettingsViewModel(IThemeSelectorService themeSelectorService)
     {
         _themeSelectorService = themeSelectorService;
         _elementTheme = _themeSelectorService.Theme;
+        // TODO: languageSelectorService
+        _languageId = ElementLanguage.English;
         _versionDescription = GetVersionDescription();
+
 
         SwitchThemeCommand = new RelayCommand<ElementTheme>(
             async (param) =>
@@ -50,6 +66,12 @@ public class SettingsViewModel : ObservableRecipient
                     ElementTheme = param;
                     await _themeSelectorService.SetThemeAsync(param);
                 }
+            });
+
+        SwitchLanguageCommand = new RelayCommand<ElementLanguage>(
+            async (param) =>
+            {
+                await _themeSelectorService.SetThemeAsync(ElementTheme.Dark);
             });
     }
 
@@ -70,4 +92,15 @@ public class SettingsViewModel : ObservableRecipient
 
         return $"{"AppDisplayName".GetLocalized()} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
     }
+}
+
+
+//[WindowsRuntimeType("Microsoft.UI.Xaml")]
+[ContractVersion(typeof(WinUIContract), 65536u)]
+
+public enum ElementLanguage
+{
+    Default,
+    English,
+    German,
 }

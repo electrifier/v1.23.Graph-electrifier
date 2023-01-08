@@ -8,7 +8,7 @@ using electrifier.Core.Models;
 
 namespace electrifier.ViewModels;
 
-public class ListDetailsViewModel : ObservableRecipient, INavigationAware
+public class LocalFilesViewModel : ObservableRecipient, INavigationAware
 {
     private readonly ISampleDataService _sampleDataService;
     private SampleOrder? _selected;
@@ -21,7 +21,7 @@ public class ListDetailsViewModel : ObservableRecipient, INavigationAware
 
     public ObservableCollection<SampleOrder> SampleItems { get; private set; } = new ObservableCollection<SampleOrder>();
 
-    public ListDetailsViewModel(ISampleDataService sampleDataService)
+    public LocalFilesViewModel(ISampleDataService sampleDataService)
     {
         _sampleDataService = sampleDataService;
     }

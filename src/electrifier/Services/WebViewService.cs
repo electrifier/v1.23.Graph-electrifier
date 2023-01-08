@@ -19,7 +19,12 @@ public class WebViewService : IWebViewService
     [MemberNotNullWhen(true, nameof(_webView))]
     public bool CanGoForward => _webView != null && _webView.CanGoForward;
 
-    public event EventHandler<CoreWebView2WebErrorStatus>? NavigationCompleted;
+    [MemberNotNullWhen(true, nameof(_webView))]
+    public string? StatusBarText => _webView?.CoreWebView2.StatusBarText;
+
+    public event EventHandler<CoreWebView2NavigationStartingEventArgs>? NavigationStarting;
+
+    public event EventHandler<CoreWebView2NavigationCompletedEventArgs>? NavigationCompleted;
 
     public WebViewService()
     {
@@ -29,7 +34,13 @@ public class WebViewService : IWebViewService
     public void Initialize(WebView2 webView)
     {
         _webView = webView;
+        _webView.NavigationStarting += OnWebViewNavigationStarting;
         _webView.NavigationCompleted += OnWebViewNavigationCompleted;
+
+        //_webView.CoreWebView2?.Navigate(@"www.google.de");
+
+        //webView.CoreWebView2.Navigate(String)
+        //webView.CoreWebView2.NavigateToString(String);
     }
 
     public void GoBack() => _webView?.GoBack();
@@ -38,13 +49,21 @@ public class WebViewService : IWebViewService
 
     public void Reload() => _webView?.Reload();
 
+//    public void Navigate(string uri) => _webView?.Navigate(uri); ?!?
+
+    public void NavigateToString(string htmlContent) => _webView?.NavigateToString(htmlContent);
+
     public void UnregisterEvents()
     {
         if (_webView != null)
         {
+            _webView.NavigationStarting -= OnWebViewNavigationStarting;
             _webView.NavigationCompleted -= OnWebViewNavigationCompleted;
         }
     }
 
-    private void OnWebViewNavigationCompleted(WebView2 sender, CoreWebView2NavigationCompletedEventArgs args) => NavigationCompleted?.Invoke(this, args.WebErrorStatus);
+    private void OnWebViewNavigationStarting(WebView2 sender, CoreWebView2NavigationStartingEventArgs args) => NavigationStarting?.Invoke(this, args);
+    private void OnWebViewNavigationCompleted(WebView2 sender, CoreWebView2NavigationCompletedEventArgs args) => NavigationCompleted?.Invoke(this, args);
+
+
 }

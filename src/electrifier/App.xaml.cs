@@ -72,10 +72,12 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
+            services.AddTransient<FileManagerViewModel>();
+            services.AddTransient<FileManagerPage>();
+            services.AddTransient<LocalFilesViewModel>();
+            services.AddTransient<LocalFilesPage>();
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<SettingsPage>();
-            services.AddTransient<ListDetailsViewModel>();
-            services.AddTransient<ListDetailsPage>();
             services.AddTransient<WebViewViewModel>();
             services.AddTransient<WebViewPage>();
             services.AddTransient<WorkbenchViewModel>();
@@ -103,7 +105,7 @@ public partial class App : Application
     {
         base.OnLaunched(args);
 
-        App.GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
+//        App.GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
 
         await App.GetService<IActivationService>().ActivateAsync(args);
     }

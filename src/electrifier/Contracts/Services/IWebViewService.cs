@@ -3,6 +3,10 @@ using Microsoft.Web.WebView2.Core;
 
 namespace electrifier.Contracts.Services;
 
+
+/// <summary>
+/// See: <see href="https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/navigation-events">Navigation events for WebView2 apps</see>
+/// </summary>
 public interface IWebViewService
 {
     Uri? Source
@@ -20,7 +24,9 @@ public interface IWebViewService
         get;
     }
 
-    event EventHandler<CoreWebView2WebErrorStatus>? NavigationCompleted;
+    event EventHandler<CoreWebView2NavigationStartingEventArgs>? NavigationStarting;
+
+    event EventHandler<CoreWebView2NavigationCompletedEventArgs>? NavigationCompleted;
 
     void Initialize(WebView2 webView);
 
@@ -29,6 +35,8 @@ public interface IWebViewService
     void GoForward();
 
     void Reload();
+
+    void NavigateToString(string htmlContent);
 
     void UnregisterEvents();
 }
