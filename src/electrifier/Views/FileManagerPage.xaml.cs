@@ -45,7 +45,11 @@ public sealed partial class FileManagerPage : Page
         {
             var templateRoot = args.ItemContainer.ContentTemplateRoot as Grid;
             var image = templateRoot?.FindName("ItemImage") as Image;
-            image.Source = null;
+
+            if (image != null)
+            {
+                image.Source = null;
+            }
         }
 
         if (args.Phase == 0)
@@ -63,9 +67,22 @@ public sealed partial class FileManagerPage : Page
         {
             // It's phase 1, so show this item's image.
             var templateRoot = args.ItemContainer.ContentTemplateRoot as Grid;
-            var image = templateRoot.FindName("ItemImage") as Image;
-            var item = args.Item as ImageFileInfo;
-            image.Source = await item.GetImageThumbnailAsync();
+
+            if (templateRoot != null)
+            {
+                var imageElement = templateRoot.FindName("ItemImage") as Image;
+
+                if (imageElement != null)
+                {
+                    var item = args.Item as ImageFileInfo;
+                    var task = item?.GetImageThumbnailAsync();
+
+                    if(task != null)
+                    {
+                        imageElement.Source = await task;
+                    }
+                }
+            }
         }
     }
 
@@ -85,10 +102,11 @@ public sealed partial class FileManagerPage : Page
 
         var result = picturesFolder.CreateFileQueryWithOptions(new QueryOptions());
 
-        IReadOnlyList<StorageFile> imageFiles = await result.GetFilesAsync();
-        foreach (StorageFile file in imageFiles)
+        var storageFiles = await result.GetFilesAsync();
+
+        foreach (var storageFile in storageFiles)
         {
-            Images.Add(await LoadImageInfo(file));
+            Images.Add(await LoadImageInfo(storageFile));
         }
 
         ImageGridView.ItemsSource = Images;

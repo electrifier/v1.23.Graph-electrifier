@@ -157,7 +157,7 @@
     <value>Open in browser</value>
   </data>
   <data name="Shell_WebView.Content" xml:space="preserve">
-    <value>Websites</value>
+    <value>Sites</value>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
@@ -175,10 +175,10 @@
     <value>Default</value>
   </data>
   <data name="SettingsPage_About.Text" xml:space="preserve">
-    <value>about electrifier:</value>
+    <value>about electrifier</value>
   </data>
   <data name="SettingsPage_AboutDescription.Text" xml:space="preserve">
-    <value>an integrated desktop environment</value>
+    <value>integrated desktop environment</value>
   </data>
   <data name="SettingsPage_PrivacyTermsLink.Content" xml:space="preserve">
     <value>Privacy Statement</value>
@@ -190,13 +190,13 @@
     <value>Language</value>
   </data>
   <data name="Settings_Language_Default.Content" xml:space="preserve">
-    <value>Default</value>
+    <value>Default: (en-US) (use system setting)</value>
   </data>
   <data name="Settings_Language_English.Content" xml:space="preserve">
-    <value>English</value>
+    <value>English (en-US)</value>
   </data>
   <data name="Settings_Language_German.Content" xml:space="preserve">
-    <value>German</value>
+    <value>German (de-DE)</value>
   </data>
   <data name="AppNotificationSamplePayload" xml:space="preserve">
     <value>&lt;toast launch="action=ToastClick"&gt;
@@ -222,7 +222,7 @@
     <value>electrifier is free software.</value>
   </data>
   <data name="SettingsPage_LicenseDescription.Text" xml:space="preserve">
-    <value>Copyright 2022 tajbender, Thorsten Jung
+    <value>Copyright 2023 tajbender, Thorsten Jung
 
 Licensed under the Apache License,
 Version 2.0 (the "License"); you may
@@ -250,7 +250,7 @@ permissions and limitations under the License.</value>
     <value>eine Scheunenproduktion.</value>
   </data>
   <data name="SettingsPage_LicenseCopyright.NavigateUri" xml:space="preserve">
-    <value />
+    <value>https://www.scheunenproduktion.de/</value>
   </data>
   <data name="Settings_About.Text" xml:space="preserve">
     <value>About this application</value>
@@ -258,10 +258,7 @@ permissions and limitations under the License.</value>
   <data name="LocalFiles_NoSelection.Text" xml:space="preserve">
     <value>Select an item from the list.</value>
   </data>
-  <data name="Shell_LocalFiles.Content" xml:space="preserve">
-    <value>LocalFiles</value>
-  </data>
   <data name="Shell_FileManager.Content" xml:space="preserve">
-    <value>FileManager</value>
+    <value>Files</value>
   </data>
 </root>

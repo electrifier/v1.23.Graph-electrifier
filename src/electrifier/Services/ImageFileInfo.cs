@@ -31,9 +31,15 @@ public class ImageFileInfo : INotifyPropertyChanged
         ImageFile = imageFile;
     }
 
-    public StorageFile ImageFile { get; }
+    public StorageFile ImageFile
+    {
+        get;
+    }
 
-    public ImageProperties ImageProperties { get; }
+    public ImageProperties ImageProperties
+    {
+        get;
+    }
 
     public async Task<BitmapImage> GetImageSourceAsync()
     {
@@ -51,16 +57,29 @@ public class ImageFileInfo : INotifyPropertyChanged
         var thumbnail = await ImageFile.GetThumbnailAsync(ThumbnailMode.PicturesView);
 
         // Create a bitmap to be the image source.
-        var bitmapImage = new BitmapImage();
-        bitmapImage.SetSource(thumbnail);
-        thumbnail.Dispose();
+        if (thumbnail != null)
+        {
+            var bitmapImage = new BitmapImage();
+            bitmapImage.SetSource(thumbnail);
+            thumbnail.Dispose();
 
-        return bitmapImage;
+            return bitmapImage;
+
+        }
+
+        // TODO: Return default picture of file / folder
+        return null;
     }
 
-    public string ImageName { get; }
+    public string ImageName
+    {
+        get;
+    }
 
-    public string ImageFileType { get; }
+    public string ImageFileType
+    {
+        get;
+    }
 
     public string ImageDimensions => $"{ImageProperties.Width} x {ImageProperties.Height}";
 
@@ -80,6 +99,6 @@ public class ImageFileInfo : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    protected void OnPropertyChanged([CallerMemberName] string propertyName = null) =>
+    protected void OnPropertyChanged([CallerMemberName] string? propertyName = null) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

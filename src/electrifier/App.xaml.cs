@@ -1,8 +1,5 @@
 ﻿using electrifier.Activation;
 using electrifier.Contracts.Services;
-using electrifier.Core.Contracts.Services;
-using electrifier.Core.Services;
-using electrifier.Helpers;
 using electrifier.Models;
 using electrifier.Notifications;
 using electrifier.Services;
@@ -67,23 +64,33 @@ public partial class App : Application
             services.AddSingleton<IPageService, PageService>();
             services.AddSingleton<INavigationService, NavigationService>();
 
-            // Core Services
-            services.AddSingleton<ISampleDataService, SampleDataService>();
+            //// Core Services
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
-            services.AddTransient<FileManagerViewModel>();
-            services.AddTransient<FileManagerPage>();
-            services.AddTransient<LocalFilesViewModel>();
-            services.AddTransient<LocalFilesPage>();
-            services.AddTransient<SettingsViewModel>();
-            services.AddTransient<SettingsPage>();
-            services.AddTransient<WebViewViewModel>();
-            services.AddTransient<WebViewPage>();
-            services.AddTransient<WorkbenchViewModel>();
-            services.AddTransient<WorkbenchPage>();
             services.AddTransient<ShellPage>();
             services.AddTransient<ShellViewModel>();
+
+            services.AddTransient<WorkbenchPage>();
+            services.AddTransient<WorkbenchViewModel>();
+
+            services.AddTransient<FileManagerPage>();
+            services.AddTransient<FileManagerViewModel>();
+
+            services.AddTransient<ClipboardPage>();
+            services.AddTransient<ClipboardViewModel>();
+
+
+            services.AddTransient<DevicesPage>();
+            services.AddTransient<DevicesViewModel>();
+
+            services.AddTransient<WebViewPage>();
+            services.AddTransient<WebViewViewModel>();
+
+
+            services.AddTransient<SettingsPage>();
+            services.AddTransient<SettingsViewModel>();
+
 
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));

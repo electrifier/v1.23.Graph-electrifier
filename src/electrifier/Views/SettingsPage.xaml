@@ -65,9 +65,11 @@
                 </StackPanel>
 
                 <TextBlock x:Uid="Settings_Language" Margin="{StaticResource LargeTopMargin}" />
-                <!-- Settings_Theme.Text -->
+                <!-- TODO: Settings_Theme.Text -->
                 <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                    <RadioButtons IsEnabled="False">    <!-- TODO: Implement language switch -->
+                    <!-- TODO: Implement language switch -->
+                    <RadioButtons IsEnabled="True">
+                        <RadioButton x:Uid="Settings_Language_Default" />
                         <RadioButton x:Uid="Settings_Language_English" />
                         <RadioButton x:Uid="Settings_Language_German" />
                     </RadioButtons>
@@ -78,7 +80,7 @@
         <!-- #region Right Block: About -->
 
         <StackPanel Grid.Column="1">
-            <!-- Right Block: About -->
+            <!-- About -->
             <TextBlock x:Uid="SettingsPage_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
             <StackPanel Margin="{StaticResource XSmallTopMargin}">
                 <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />
@@ -86,7 +88,7 @@
                 <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink" Margin="{StaticResource SmallTopBottomMargin}" />
             </StackPanel>
 
-            <!-- Right Block: License -->
+            <!-- License -->
             <TextBlock x:Uid="SettingsPage_License" Style="{ThemeResource SubtitleTextBlockStyle}" />
             <StackPanel Margin="{StaticResource XSmallTopMargin}">
                 <HyperlinkButton x:Uid="SettingsPage_LicenseCopyright" Margin="{StaticResource SmallTopBottomMargin}" />
@@ -95,7 +97,7 @@
                 <TextBlock x:Uid="SettingsPage_LicenseDescriptionContinued" Margin="{StaticResource XSmallTopMargin}" Style="{ThemeResource BodyTextBlockStyle}" />
             </StackPanel>
 
-            <!--  Right Block: Credits -->
+            <!-- Credits -->
             <TextBlock x:Uid="SettingsPage_Credits" Style="{ThemeResource SubtitleTextBlockStyle}" />
             <TextBlock x:Uid="SettingsPage_CreditsDescription" Margin="{StaticResource XSmallTopMargin}" Style="{ThemeResource BodyTextBlockStyle}" />
 
