@@ -12,26 +12,29 @@
     <!-- x:Class="electrifier.Views.SettingsPage"-->
 
     <Page.Resources>
-        <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+        <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
     </Page.Resources>
 
     <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition MaxWidth="300"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
 
+        <!-- #region Left Block: Personalization -->
         <StackPanel Grid.Column="0">
-            <!-- Personalization -->
-            <TextBlock x:Uid="Settings_Personalization" Style="{ThemeResource SubtitleTextBlockStyle}" />
-            <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
+            <TextBlock
+                x:Uid="Settings_Personalization"
+                Style="{ThemeResource SubtitleTextBlockStyle}"/>
+            <StackPanel
+                Margin="{StaticResource SmallTopBottomMargin}">
+
                 <!-- Left Column: Settings -> Theme -->
-                <TextBlock x:Uid="Settings_Theme" />
-                <StackPanel Margin="{StaticResource XSmallTopMargin}">
+
+                <TextBlock
+                    x:Uid="Settings_Theme"/>
+                <StackPanel
+                    Margin="{StaticResource XSmallTopMargin}">
                     <RadioButton
                         x:Uid="Settings_Theme_Light"
                         Command="{x:Bind ViewModel.SwitchThemeCommand}"
@@ -64,46 +67,94 @@
                     </RadioButton>
                 </StackPanel>
 
-                <TextBlock x:Uid="Settings_Language" Margin="{StaticResource LargeTopMargin}" />
+                <TextBlock
+                    x:Uid="Settings_Language"
+                    Margin="{StaticResource LargeTopMargin}"/>
+
                 <!-- TODO: Settings_Theme.Text -->
-                <StackPanel Margin="{StaticResource XSmallTopMargin}">
+
+                <StackPanel
+                    Margin="{StaticResource XSmallTopMargin}">
+                
                     <!-- TODO: Implement language switch -->
-                    <RadioButtons IsEnabled="True">
-                        <RadioButton x:Uid="Settings_Language_Default" />
-                        <RadioButton x:Uid="Settings_Language_English" />
-                        <RadioButton x:Uid="Settings_Language_German" />
+
+                    <RadioButtons
+                        IsEnabled="False">
+                        <RadioButton
+                            x:Uid="Settings_Language_Default"
+                            IsEnabled="False" IsChecked="True"/>
+                        <RadioButton
+                            x:Uid="Settings_Language_English"
+                            IsEnabled="False"/>
+                        <RadioButton
+                            x:Uid="Settings_Language_Deutsch"
+                            IsEnabled="False"/>
                     </RadioButtons>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-
-        <!-- #region Right Block: About -->
-
-        <StackPanel Grid.Column="1">
-            <!-- About -->
-            <TextBlock x:Uid="SettingsPage_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
-            <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />
-                <TextBlock x:Uid="SettingsPage_AboutDescription" Margin="{StaticResource XSmallTopMargin}" Style="{ThemeResource BodyTextBlockStyle}" />
-                <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink" Margin="{StaticResource SmallTopBottomMargin}" />
-            </StackPanel>
-
-            <!-- License -->
-            <TextBlock x:Uid="SettingsPage_License" Style="{ThemeResource SubtitleTextBlockStyle}" />
-            <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                <HyperlinkButton x:Uid="SettingsPage_LicenseCopyright" Margin="{StaticResource SmallTopBottomMargin}" />
-                <TextBlock x:Uid="SettingsPage_LicenseDescription" Margin="{StaticResource XSmallTopMargin}" Style="{ThemeResource BodyTextBlockStyle}" />
-                <HyperlinkButton x:Uid="SettingsPage_LicenseTermsLink" Margin="{StaticResource SmallTopBottomMargin}" />
-                <TextBlock x:Uid="SettingsPage_LicenseDescriptionContinued" Margin="{StaticResource XSmallTopMargin}" Style="{ThemeResource BodyTextBlockStyle}" />
-            </StackPanel>
-
-            <!-- Credits -->
-            <TextBlock x:Uid="SettingsPage_Credits" Style="{ThemeResource SubtitleTextBlockStyle}" />
-            <TextBlock x:Uid="SettingsPage_CreditsDescription" Margin="{StaticResource XSmallTopMargin}" Style="{ThemeResource BodyTextBlockStyle}" />
-
-        </StackPanel>
-
         <!-- #endregion -->
 
+        <!-- #region Right Block: About -->
+        <StackPanel
+            Grid.Column="1">
+            <!-- #region AboutPanel -->
+            <StackPanel Margin="{StaticResource XSmallTopMargin}">
+                <!-- about electrifier: -->
+                <TextBlock
+                    x:Uid="SettingsPage_About"
+                    Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <!-- electrifier - v1.23.x.x -->
+                <TextBlock
+                    Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}"
+                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                <!-- integrated desktop environment -->
+                <TextBlock
+                    x:Uid="SettingsPage_About_AppDescription" 
+                    Margin="{StaticResource XSmallTopMargin}" 
+                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                <!--- eine scheunenproduktion. -->
+                <HyperlinkButton
+                    x:Uid="SettingsPage_LicenseCopyright"
+                    Margin="{StaticResource SmallTopBottomMargin}"/>
+            </StackPanel>
+            <!-- #endregion -->
+
+            <!-- #region License -->
+            <StackPanel Margin="{StaticResource XSmallTopMargin}">
+                <!-- electrifier is free software. -->
+                <TextBlock
+                    x:Uid="SettingsPage_License"
+                    Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <!-- Copyright 2023 tajbender, Thorsten Jung -->
+                <TextBlock
+                    x:Uid="SettingsPage_LicenseDescription"
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                <HyperlinkButton
+                    x:Uid="SettingsPage_LicenseTermsLink"
+                    Margin="{StaticResource SmallTopBottomMargin}"/>
+                <TextBlock
+                    x:Uid="SettingsPage_LicenseDescriptionContinued"
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{ThemeResource BodyTextBlockStyle}"
+                    TextWrapping="Wrap"/>
+            </StackPanel>
+            <!-- #endregion -->
+
+            <!-- #region Privacy -->
+            <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink" 
+                                 Margin="{StaticResource SmallTopBottomMargin}"/>
+            <!-- #endregion -->
+
+            <!-- #region Credits -->
+            <TextBlock x:Uid="SettingsPage_Credits" 
+                       Style="{ThemeResource SubtitleTextBlockStyle}"/>
+            <TextBlock x:Uid="SettingsPage_CreditsDescription" 
+                       Margin="{StaticResource XSmallTopMargin}" 
+                       Style="{ThemeResource BodyTextBlockStyle}"/>
+            <!-- #endregion -->
+        </StackPanel>
+        <!-- #endregion -->
     </Grid>
 </Page>

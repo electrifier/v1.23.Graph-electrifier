@@ -121,7 +121,7 @@
     <value>electrifier</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>an integrated desktop environment</value>
+    <value>integrated desktop environment</value>
   </data>
   <data name="Shell_Workbench.Content" xml:space="preserve">
     <value>Workbench</value>
@@ -175,9 +175,9 @@
     <value>Default</value>
   </data>
   <data name="SettingsPage_About.Text" xml:space="preserve">
-    <value>about electrifier</value>
+    <value>about electrifier:</value>
   </data>
-  <data name="SettingsPage_AboutDescription.Text" xml:space="preserve">
+  <data name="SettingsPage_About_AppDescription.Text" xml:space="preserve">
     <value>integrated desktop environment</value>
   </data>
   <data name="SettingsPage_PrivacyTermsLink.Content" xml:space="preserve">
@@ -190,13 +190,13 @@
     <value>Language</value>
   </data>
   <data name="Settings_Language_Default.Content" xml:space="preserve">
-    <value>Default: (en-US) (use system setting)</value>
+    <value>Default ( %s), use system setting</value>
   </data>
   <data name="Settings_Language_English.Content" xml:space="preserve">
-    <value>English (en-US)</value>
+    <value>English (en)</value>
   </data>
-  <data name="Settings_Language_German.Content" xml:space="preserve">
-    <value>German (de-DE)</value>
+  <data name="Settings_Language_Deutsch.Content" xml:space="preserve">
+    <value>Deutsch (de)</value>
   </data>
   <data name="AppNotificationSamplePayload" xml:space="preserve">
     <value>&lt;toast launch="action=ToastClick"&gt;
@@ -216,7 +216,7 @@
     <value>tajbender salutes:</value>
   </data>
   <data name="SettingsPage_CreditsDescription.Text" xml:space="preserve">
-    <value>SettingsPage_Credits Description Text (en-US)</value>
+    <value>Mom, Dad, Sabine, Markus, Sandra, and all the others I forgot.</value>
   </data>
   <data name="SettingsPage_License.Text" xml:space="preserve">
     <value>electrifier is free software.</value>
@@ -235,13 +235,9 @@ You may obtain a copy of the License at</value>
     <value>Apache License, version 2.0 </value>
   </data>
   <data name="SettingsPage_LicenseDescriptionContinued.Text" xml:space="preserve">
-    <value>Unless required by applicable law or agreed
-to in writing, software distributed under the License is
-distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
-OR CONDITIONS OF ANY KIND, either express or implied.
+    <value>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
-See the License for the specific language governing
-permissions and limitations under the License.</value>
+See the License for the specific language governing permissions and limitations under the License.</value>
   </data>
   <data name="SettingsPage_LicenseTermsLink.NavigateUri" xml:space="preserve">
     <value>https://github.com/electrifier/electrifier/blob/main/LICENSE</value>
@@ -250,7 +246,7 @@ permissions and limitations under the License.</value>
     <value>eine Scheunenproduktion.</value>
   </data>
   <data name="SettingsPage_LicenseCopyright.NavigateUri" xml:space="preserve">
-    <value>https://www.scheunenproduktion.de/</value>
+    <value>http://www.scheunenproduktion.de/</value>
   </data>
   <data name="Settings_About.Text" xml:space="preserve">
     <value>About this application</value>
@@ -260,5 +256,8 @@ permissions and limitations under the License.</value>
   </data>
   <data name="Shell_FileManager.Content" xml:space="preserve">
     <value>Files</value>
+  </data>
+  <data name="Shell_Navigation_LocalNetwork.Content" xml:space="preserve">
+    <value>Network</value>
   </data>
 </root>
