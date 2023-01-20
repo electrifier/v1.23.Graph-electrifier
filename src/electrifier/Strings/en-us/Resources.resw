@@ -257,7 +257,22 @@ See the License for the specific language governing permissions and limitations 
   <data name="Shell_FileManager.Content" xml:space="preserve">
     <value>Files</value>
   </data>
-  <data name="Shell_Navigation_LocalNetwork.Content" xml:space="preserve">
+  <data name="Shell_Clipboard.Content" xml:space="preserve">
+    <value>Clipboard</value>
+  </data>
+  <data name="Shell_Devices.Content" xml:space="preserve">
+    <value>Devices</value>
+  </data>
+  <data name="Shell_Network.Content" xml:space="preserve">
     <value>Network</value>
+  </data>
+  <data name="Shell_NetworkDevices.Content" xml:space="preserve">
+    <value>Network Devices</value>
+  </data>
+  <data name="Shell_WebHosts.Content" xml:space="preserve">
+    <value>Hosts</value>
+  </data>
+  <data name="Shell_WebFavorites.Content" xml:space="preserve">
+    <value>Favorites</value>
   </data>
 </root>

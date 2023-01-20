@@ -68,28 +68,34 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
-            services.AddTransient<ShellPage>();
-            services.AddTransient<ShellViewModel>();
 
-            services.AddTransient<WorkbenchPage>();
-            services.AddTransient<WorkbenchViewModel>();
 
-            services.AddTransient<FileManagerPage>();
-            services.AddTransient<FileManagerViewModel>();
+
+
+
+
+
 
             services.AddTransient<ClipboardPage>();
             services.AddTransient<ClipboardViewModel>();
-
-
             services.AddTransient<DevicesPage>();
             services.AddTransient<DevicesViewModel>();
-
-            services.AddTransient<WebViewPage>();
-            services.AddTransient<WebViewViewModel>();
-
-
+            services.AddTransient<FileManagerPage>();
+            services.AddTransient<FileManagerViewModel>();
+            services.AddTransient<NetworkDevicesPage>();
+            services.AddTransient<NetworkDevicesViewModel>();
             services.AddTransient<SettingsPage>();
             services.AddTransient<SettingsViewModel>();
+            services.AddTransient<ShellPage>();
+            services.AddTransient<ShellViewModel>();
+            services.AddTransient<WebFavoritesPage>();
+            services.AddTransient<WebFavoritesViewModel>();
+            services.AddTransient<WebHostsPage>();
+            services.AddTransient<WebHostsViewModel>();
+            services.AddTransient<WebViewPage>();
+            services.AddTransient<WebViewViewModel>();
+            services.AddTransient<WorkbenchPage>();
+            services.AddTransient<WorkbenchViewModel>();
 
 
             // Configuration
