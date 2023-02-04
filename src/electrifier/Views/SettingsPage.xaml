@@ -9,30 +9,33 @@
     xmlns:xaml1="using:electrifier.ViewModels"
     mc:Ignorable="d">
 
-    <!-- x:Class="electrifier.Views.SettingsPage"-->
 
     <Page.Resources>
-        <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+        <helpers:EnumToBooleanConverter
+            x:Key="EnumToBooleanConverter" />
     </Page.Resources>
 
-    <Grid >
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition MaxWidth="300"/>
+            <ColumnDefinition
+                Width="*" />
+            <ColumnDefinition
+                MaxWidth="300" />
         </Grid.ColumnDefinitions>
 
         <!-- #region Left Block: Personalization -->
-        <StackPanel Grid.Column="0">
+        <StackPanel
+            Grid.Column="0">
             <TextBlock
                 x:Uid="Settings_Personalization"
-                Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                Style="{ThemeResource SubtitleTextBlockStyle}" />
             <StackPanel
                 Margin="{StaticResource SmallTopBottomMargin}">
 
                 <!-- Left Column: Settings -> Theme -->
 
                 <TextBlock
-                    x:Uid="Settings_Theme"/>
+                    x:Uid="Settings_Theme" />
                 <StackPanel
                     Margin="{StaticResource XSmallTopMargin}">
                     <RadioButton
@@ -69,26 +72,27 @@
 
                 <TextBlock
                     x:Uid="Settings_Language"
-                    Margin="{StaticResource LargeTopMargin}"/>
+                    Margin="{StaticResource LargeTopMargin}" />
 
                 <!-- TODO: Settings_Theme.Text -->
 
                 <StackPanel
                     Margin="{StaticResource XSmallTopMargin}">
-                
+
                     <!-- TODO: Implement language switch -->
 
                     <RadioButtons
                         IsEnabled="False">
                         <RadioButton
                             x:Uid="Settings_Language_Default"
-                            IsEnabled="False" IsChecked="True"/>
+                            IsEnabled="False"
+                            IsChecked="True" />
                         <RadioButton
                             x:Uid="Settings_Language_English"
-                            IsEnabled="False"/>
+                            IsEnabled="False" />
                         <RadioButton
                             x:Uid="Settings_Language_Deutsch"
-                            IsEnabled="False"/>
+                            IsEnabled="False" />
                     </RadioButtons>
                 </StackPanel>
             </StackPanel>
@@ -99,64 +103,69 @@
         <StackPanel
             Grid.Column="1">
             <!-- #region AboutPanel -->
-            <StackPanel Margin="{StaticResource XSmallTopMargin}">
+            <StackPanel
+                Margin="{StaticResource XSmallTopMargin}">
                 <!-- about electrifier: -->
                 <TextBlock
                     x:Uid="SettingsPage_About"
-                    Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                    Style="{ThemeResource SubtitleTextBlockStyle}" />
                 <!-- electrifier - x.x.x.x -->
                 <TextBlock
                     Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}"
-                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                    Style="{ThemeResource BodyTextBlockStyle}" />
                 <!-- integrated desktop environment -->
                 <TextBlock
-                    x:Uid="SettingsPage_About_AppDescription" 
-                    Margin="{StaticResource XSmallTopMargin}" 
-                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                    x:Uid="SettingsPage_About_AppDescription"
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{ThemeResource BodyTextBlockStyle}" />
                 <!--- eine scheunenproduktion. -->
                 <HyperlinkButton
                     x:Uid="SettingsPage_LicenseCopyright"
-                    Margin="{StaticResource SmallTopBottomMargin}"/>
+                    Margin="{StaticResource SmallTopBottomMargin}" />
             </StackPanel>
             <!-- #endregion -->
 
             <!-- #region License -->
-            <StackPanel Margin="{StaticResource XSmallTopMargin}">
+            <StackPanel
+                Margin="{StaticResource XSmallTopMargin}">
                 <!-- electrifier is free software. -->
                 <TextBlock
                     x:Uid="SettingsPage_License"
-                    Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                    Style="{ThemeResource SubtitleTextBlockStyle}" />
                 <!-- Copyright 2023 tajbender, Thorsten Jung
                      Licensed under the Apache License -->
                 <TextBlock
                     x:Uid="SettingsPage_LicenseDescription"
                     Margin="{StaticResource XSmallTopMargin}"
-                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                    Style="{ThemeResource BodyTextBlockStyle}" />
                 <!-- Apache License, version 2.0 -->
                 <HyperlinkButton
                     x:Uid="SettingsPage_LicenseTermsLink"
-                    Margin="{StaticResource SmallTopBottomMargin}"/>
+                    Margin="{StaticResource SmallTopBottomMargin}" />
                 <!-- Unless required by applicable law or agreed to in writing, software distributed under the License is
                      distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
                 <TextBlock
                     x:Uid="SettingsPage_LicenseDescriptionContinued"
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{ThemeResource BodyTextBlockStyle}"
-                    TextWrapping="Wrap"/>
+                    TextWrapping="Wrap" />
             </StackPanel>
             <!-- #endregion -->
 
             <!-- #region Privacy -->
-            <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink" 
-                                 Margin="{StaticResource SmallTopBottomMargin}"/>
+            <HyperlinkButton
+                x:Uid="SettingsPage_PrivacyTermsLink"
+                Margin="{StaticResource SmallTopBottomMargin}" />
             <!-- #endregion -->
 
             <!-- #region Credits -->
-            <TextBlock x:Uid="SettingsPage_Credits" 
-                       Style="{ThemeResource SubtitleTextBlockStyle}"/>
-            <TextBlock x:Uid="SettingsPage_CreditsDescription" 
-                       Margin="{StaticResource XSmallTopMargin}" 
-                       Style="{ThemeResource BodyTextBlockStyle}"/>
+            <TextBlock
+                x:Uid="SettingsPage_Credits"
+                Style="{ThemeResource SubtitleTextBlockStyle}" />
+            <TextBlock
+                x:Uid="SettingsPage_CreditsDescription"
+                Margin="{StaticResource XSmallTopMargin}"
+                Style="{ThemeResource BodyTextBlockStyle}" />
             <!-- #endregion -->
         </StackPanel>
         <!-- #endregion -->

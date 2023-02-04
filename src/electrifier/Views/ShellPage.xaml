@@ -120,7 +120,7 @@
                 </NavigationViewItem>
 
                 <NavigationViewItemSeparator
-                    x:Uid="Shell_ThisPC_Separator"/>
+                    x:Uid="Shell_ThisPC_Separator" />
 
                 <!-- #endregion -->
 
@@ -139,7 +139,7 @@
                             Glyph="&#xe968;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                
+
                 <NavigationViewItemSeparator
                     x:Uid="Shell_Network_Separator" />
 
@@ -183,7 +183,7 @@
                             Glyph="&#xec27;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                
+
                 <!-- #endregion -->
 
             </NavigationView.MenuItems>
@@ -195,7 +195,9 @@
                     x:Uid="Shell_Workbench"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WorkbenchViewModel">
                     <NavigationViewItem.Icon>
-                        --><!-- Icon: Tablet --><!--
+                        -->
+            <!-- Icon: Tablet -->
+            <!--
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
                             Glyph="&#xe70a;" />
@@ -206,7 +208,9 @@
                     x:Uid="Shell_WebView"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebViewViewModel">
                     <NavigationViewItem.Icon>
-                        --><!-- Icon: Website --><!--
+                        -->
+            <!-- Icon: Website -->
+            <!--
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
                             Glyph="&#xeb41;" />
@@ -217,7 +221,9 @@
                     x:Uid="Shell_FileManager"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel">
                     <NavigationViewItem.Icon>
-                        --><!-- Icon: FileExplorer --><!--
+                        -->
+            <!-- Icon: FileExplorer -->
+            <!--
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
                             Glyph="&#xec50;" />
