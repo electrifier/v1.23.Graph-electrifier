@@ -8,6 +8,20 @@
 
     <Grid
         x:Name="ContentArea">
+        <Grid.Background>
+
+        <!--@"W:\git-projects\tajbender\electrifier-v1.23\branch main\electrifier-v1.23\src\electrifier\Assets\(!) Stock Images (!)\lightning background.png"-->
+
+
+        <ImageBrush
+            ImageSource="..\Assets\(!) Stock Images (!)\lightning background.png"
+            Opacity="0.1"
+            AlignmentY="Top"
+            AlignmentX="Center"
+            Stretch="UniformToFill" />
+
+        </Grid.Background>
+
 
     </Grid>
 </Page>
