@@ -275,4 +275,7 @@ See the License for the specific language governing permissions and limitations 
   <data name="Shell_WebFavorites.Content" xml:space="preserve">
     <value>Favorites</value>
   </data>
+  <data name="Shell_Editors_WebView" xml:space="preserve">
+    <value>Web View</value>
+  </data>
 </root>

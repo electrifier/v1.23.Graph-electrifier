@@ -7,7 +7,10 @@
     xmlns:helpers="using:electrifier.Helpers"
     xmlns:xaml="using:Microsoft.UI.Xaml"
     xmlns:xaml1="using:electrifier.ViewModels"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Background="Transparent"
+    behaviors:NavigationViewHeaderBehavior.HeaderMode="Never"
+    xmlns:behaviors="using:electrifier.Behaviors">
 
 
     <Page.Resources>

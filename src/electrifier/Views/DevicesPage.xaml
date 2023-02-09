@@ -1,4 +1,7 @@
 ﻿<Page
+    Background="Transparent"
+    behaviors:NavigationViewHeaderBehavior.HeaderMode="Never"
+    xmlns:behaviors="using:electrifier.Behaviors"
     x:Class="electrifier.Views.DevicesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
