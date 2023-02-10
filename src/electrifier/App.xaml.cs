@@ -5,7 +5,9 @@ using electrifier.Notifications;
 using electrifier.Services;
 using electrifier.ViewModels;
 using electrifier.Views;
-
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
@@ -105,6 +107,8 @@ public partial class App : Application
 
         App.GetService<IAppNotificationService>().Initialize();
 
+        AppCenter.Start("{Your app secret here}", typeof(Analytics), typeof(Crashes));
+
         UnhandledException += App_UnhandledException;
     }
 
@@ -118,7 +122,7 @@ public partial class App : Application
     {
         base.OnLaunched(args);
 
-//        App.GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
+        //        App.GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
 
         await App.GetService<IActivationService>().ActivateAsync(args);
     }

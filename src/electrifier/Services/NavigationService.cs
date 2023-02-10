@@ -40,6 +40,12 @@ public class NavigationService : INavigationService
         }
     }
 
+    public string? PaneDisplayTitle
+    {
+        get; // private set;
+    }
+
+
     [MemberNotNullWhen(true, nameof(Frame), nameof(_frame))]
     public bool CanGoBack => Frame != null && Frame.CanGoBack;
 

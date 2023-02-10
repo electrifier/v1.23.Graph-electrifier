@@ -28,6 +28,8 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
+		<PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.1" />
+		<PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
 		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.230118.102" />
 		<PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
@@ -86,6 +88,7 @@
 
 	<ItemGroup>
 		<Folder Include="Assets\%28!%29 Stock Images %28!%29\" />
+		<Folder Include="Assets\NewFolder\" />
 	</ItemGroup>
 
 </Project>

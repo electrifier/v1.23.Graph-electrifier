@@ -275,7 +275,13 @@ See the License for the specific language governing permissions and limitations 
   <data name="Shell_WebFavorites.Content" xml:space="preserve">
     <value>Favorites</value>
   </data>
-  <data name="Shell_Editors_WebView" xml:space="preserve">
+  <data name="Shell_Editors_WebView.Content" xml:space="preserve">
     <value>Web View</value>
+  </data>
+  <data name="Shell_Editors_FileManager.Content" xml:space="preserve">
+    <value>FileManager</value>
+  </data>
+  <data name="Shell_Editors_Workbench.Content" xml:space="preserve">
+    <value>Workbench</value>
   </data>
 </root>

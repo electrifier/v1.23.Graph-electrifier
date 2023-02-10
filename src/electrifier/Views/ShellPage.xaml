@@ -28,25 +28,22 @@
         </Grid>
 
         <!--
-        TODO: Update item titles by updating <x:Uid>.Content entries in Strings/en-us/Resources.resw.
+        NOTE: Update item titles by updating <x:Uid>.Content entries in Strings/en-us/Resources.resw.
               https://docs.microsoft.com/windows/uwp/app-resources/localize-strings-ui-manifest#refer-to-a-string-resource-identifier-from-xaml
         -->
-
         <!--
-        TODO: Update item icons by updating FontIcon.Glyph properties.
+        NOTE: Update item icons by updating FontIcon.Glyph properties.
               https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
         -->
         <!-- 
         NOTE: SymbolIcon is defined in https://learn.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.symbol?view=winrt-22621 
         -->
-
         <!--
         TOOD: Build an <a href="https://learn.microsoft.com/en-us/windows/apps/design/controls/navigationview#hierarchical-navigation">
               https://learn.microsoft.com/en-us/windows/apps/design/controls/navigationview#hierarchical-navigation
         -->
 
         <NavigationView
-            x:Name="NavigationViewControl"
             Canvas.ZIndex="0"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             ExpandedModeThresholdWidth="800"
@@ -54,8 +51,9 @@
             IsBackButtonVisible="Visible"
             IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
             IsSettingsVisible="True"
-            PaneTitle="TODO: Workbench-name"
-            SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
+            PaneTitle="{x:Bind ViewModel.NavigationService.PaneDisplayTitle, Mode=OneWay}"
+            SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
+            x:Name="NavigationViewControl">
 
             <NavigationView.MenuItems>
                 <NavigationViewItem
@@ -71,7 +69,7 @@
 
                 <NavigationViewItemSeparator />
 
-                <!-- #region: This PC -->
+                <!--#region: This PC -->
 
                 <NavigationViewItemHeader
                     x:Uid="Shell_ComputerName"
@@ -89,8 +87,10 @@
                 </NavigationViewItem>
 
                 <NavigationViewItem
-                    x:Uid="Shell_Devices"
-                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.DevicesViewModel">
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.DevicesViewModel"
+                    IsEnabled="False"
+                    Visibility="Collapsed"
+                    x:Uid="Shell_Devices">
                     <NavigationViewItem.Icon>
                         <!-- Icon: Devices -->
                         <FontIcon
@@ -100,8 +100,10 @@
                 </NavigationViewItem>
 
                 <NavigationViewItem
-                    x:Uid="Shell_Clipboard"
-                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.ClipboardViewModel">
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.ClipboardViewModel"
+                    IsEnabled="False"
+                    Visibility="Collapsed"
+                    x:Uid="Shell_Clipboard">
                     <NavigationViewItem.Icon>
                         <!-- Icon: ClipboardList -->
                         <FontIcon
@@ -111,17 +113,21 @@
                 </NavigationViewItem>
 
                 <NavigationViewItemSeparator
-                    x:Uid="Shell_ThisPC_Separator" />
+                    x:Uid="Shell_ThisPC_Separator"
+                    Visibility="Collapsed" />
 
                 <!-- #endregion -->
 
                 <!-- #region Network -->
 
                 <NavigationViewItemHeader
-                    x:Uid="Shell_Network" />
+                    x:Uid="Shell_Network"
+                    Visibility="Collapsed" />
 
                 <NavigationViewItem
                     x:Uid="Shell_NetworkDevices"
+                    IsEnabled="False"
+                    Visibility="Collapsed"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.NetworkDevicesViewModel">
                     <NavigationViewItem.Icon>
                         <!-- Icon: FileExplorer -->
@@ -132,7 +138,8 @@
                 </NavigationViewItem>
 
                 <NavigationViewItemSeparator
-                    x:Uid="Shell_Network_Separator" />
+                    x:Uid="Shell_Network_Separator"
+                    Visibility="Collapsed" />
 
                 <!-- #endregion -->
 
@@ -154,8 +161,10 @@
                 </NavigationViewItem>
 
                 <NavigationViewItem
-                    x:Uid="Shell_WebFavorites"
-                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebFavoritesViewModel">
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebFavoritesViewModel"
+                    IsEnabled="False"
+                    Visibility="Collapsed"
+                    x:Uid="Shell_WebFavorites">
                     <!-- Icon: FavoriteList -->
                     <NavigationViewItem.Icon>
                         <FontIcon
@@ -165,8 +174,10 @@
                 </NavigationViewItem>
 
                 <NavigationViewItem
-                    x:Uid="Shell_WebHosts"
-                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebHostsViewModel">
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebHostsViewModel"
+                    IsEnabled="False"
+                    Visibility="Collapsed"
+                    x:Uid="Shell_WebHosts">
                     <!-- Icon: MyNetwork -->
                     <NavigationViewItem.Icon>
                         <FontIcon
@@ -178,6 +189,8 @@
                 <!-- #endregion -->
 
             </NavigationView.MenuItems>
+
+            <!--#region <NavigationView.FooterMenuItems> -->
 
             <NavigationView.FooterMenuItems>
 
@@ -194,7 +207,7 @@
 
                 <NavigationViewItem
                     x:Uid="Shell_Editors_FileManager"
-                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WorkbenchViewModel">
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel">
                     <NavigationViewItem.Icon>
                         <!-- Icon: Tablet -->
                         <FontIcon
@@ -215,7 +228,7 @@
                 </NavigationViewItem>
 
             </NavigationView.FooterMenuItems>
-
+            
 
             <NavigationView.HeaderTemplate>
                 <DataTemplate>
@@ -244,9 +257,6 @@
 
             <Grid
                 Margin="{StaticResource NavigationViewPageContentMargin}">
-
-
-
 
                 <Frame
                     x:Name="NavigationFrame" />
