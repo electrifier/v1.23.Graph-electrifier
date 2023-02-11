@@ -195,8 +195,9 @@
             <NavigationView.FooterMenuItems>
 
                 <NavigationViewItem
-                    x:Uid="Shell_Editors_Workbench"
-                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WorkbenchViewModel">
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WorkbenchViewModel"
+                    SelectsOnInvoked="False"
+                    x:Uid="Shell_Editors_Workbench">
                     <NavigationViewItem.Icon>
                         <!-- Icon: Tablet -->
                         <FontIcon
@@ -206,29 +207,33 @@
                 </NavigationViewItem>
 
                 <NavigationViewItem
-                    x:Uid="Shell_Editors_FileManager"
-                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel">
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel"
+                    SelectsOnInvoked="False"
+                    x:Uid="Shell_Editors_FileManager">
                     <NavigationViewItem.Icon>
                         <!-- Icon: Tablet -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe70a;" />
+                            Glyph="&#xec50;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
                 <NavigationViewItem
-                    x:Uid="Shell_Editors_WebView"
-                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebViewViewModel">
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebViewViewModel"
+                    SelectsOnInvoked="False"
+                    x:Uid="Shell_Editors_WebView">
                     <!-- Icon: WebSearch -->
                     <NavigationViewItem.Icon>
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe70a;" />
+                            Glyph="&#xf6fa;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
+                <NavigationViewItemSeparator />
+
             </NavigationView.FooterMenuItems>
-            
+
 
             <NavigationView.HeaderTemplate>
                 <DataTemplate>

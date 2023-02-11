@@ -279,7 +279,7 @@ See the License for the specific language governing permissions and limitations 
     <value>Web View</value>
   </data>
   <data name="Shell_Editors_FileManager.Content" xml:space="preserve">
-    <value>FileManager</value>
+    <value>File Manager</value>
   </data>
   <data name="Shell_Editors_Workbench.Content" xml:space="preserve">
     <value>Workbench</value>

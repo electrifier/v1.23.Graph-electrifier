@@ -6,7 +6,7 @@ namespace electrifier.Contracts.Services;
 public interface INavigationService
 {
     event NavigatedEventHandler Navigated;
-//  TODO:    event DisplayTitleEventHandler
+    //  TODO:    event DisplayTitleEventHandler
 
     bool CanGoBack
     {
@@ -26,4 +26,6 @@ public interface INavigationService
     {
         get;
     }
+
+    void SetListDataItemForNextConnectedAnimation(object item);
 }

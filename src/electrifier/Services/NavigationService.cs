@@ -1,11 +1,10 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
+﻿using CommunityToolkit.WinUI.UI.Animations;
 using electrifier.Contracts.Services;
 using electrifier.Contracts.ViewModels;
 using electrifier.Helpers;
-
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using System.Diagnostics.CodeAnalysis;
 
 namespace electrifier.Services;
 
@@ -129,4 +128,6 @@ public class NavigationService : INavigationService
             Navigated?.Invoke(sender, e);
         }
     }
+
+    public void SetListDataItemForNextConnectedAnimation(object item) => Frame.SetListDataItemForNextConnectedAnimation(item);
 }
