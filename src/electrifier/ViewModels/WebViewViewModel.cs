@@ -12,9 +12,6 @@ namespace electrifier.ViewModels;
 // TODO: Review best practices and distribution guidelines for WebView2.
 
 /// <summary>
-/// 
-/// 
-/// 
 /// To <see href="https://docs.microsoft.com/microsoft-edge/webview2/get-started/winui">get started using WebView2</see>
 /// , see <see href="https://docs.microsoft.com/microsoft-edge/webview2/concepts/developer-guide">Developer guide</see>
 /// and <see href="https://docs.microsoft.com/microsoft-edge/webview2/concepts/distribution">Distribution</see>.
@@ -158,11 +155,11 @@ public class WebViewViewModel : ObservableRecipient, INavigationAware
 
     private void OnTestCase()
     {
-//        WebViewService.
+        // TODO: TestCases
+        // TODO: (!) "www.klackedieklack", "https://www.klickklackedie/"?
     }
 
-    // TODO: TestCases
-    // TODO: Fehler: "www.klackedieklack", "https://www.klickklackedie/"?
+
     internal void BrowseTo(string stringEncodedUri)
     {
         HasFailures = false;

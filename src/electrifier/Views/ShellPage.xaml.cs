@@ -1,4 +1,5 @@
-﻿using electrifier.Contracts.Services;
+﻿using System.Net;
+using electrifier.Contracts.Services;
 using electrifier.Helpers;
 using electrifier.ViewModels;
 
@@ -19,6 +20,24 @@ public sealed partial class ShellPage : Page
         get;
     }
 
+    public string ThisComputerName
+    {
+        get;
+    }
+
+    private static string GetThisComputerName()
+    {
+        try
+        {
+            return Dns.GetHostName();
+        }
+        catch
+        {
+            return Environment.MachineName;
+        }
+    }
+
+
     public ShellPage(ShellViewModel viewModel)
     {
         ViewModel = viewModel;
@@ -34,6 +53,7 @@ public sealed partial class ShellPage : Page
         App.MainWindow.SetTitleBar(AppTitleBar);
         App.MainWindow.Activated += MainWindow_Activated;
         AppTitleBarText.Text = "AppDisplayName".GetLocalized();
+        ThisComputerName = $"This PC: { GetThisComputerName() }";    // TODO: i18n
     }
 
     private void OnLoaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

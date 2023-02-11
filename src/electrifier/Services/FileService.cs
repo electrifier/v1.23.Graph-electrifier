@@ -1,19 +1,21 @@
 ﻿using System.Text;
 
-using electrifier.Core.Contracts.Services;
+using electrifier.Contracts.Services;
 
 using Newtonsoft.Json;
 
-namespace electrifier.Core.Services;
+namespace electrifier.Services;
 
 public class FileService : IFileService
 {
     public T Read<T>(string folderPath, string fileName)
     {
         var path = Path.Combine(folderPath, fileName);
+
         if (File.Exists(path))
         {
             var json = File.ReadAllText(path);
+
             return JsonConvert.DeserializeObject<T>(json);
         }
 
@@ -28,6 +30,7 @@ public class FileService : IFileService
         }
 
         var fileContent = JsonConvert.SerializeObject(content);
+
         File.WriteAllText(Path.Combine(folderPath, fileName), fileContent, Encoding.UTF8);
     }
 

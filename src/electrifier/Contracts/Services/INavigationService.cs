@@ -6,6 +6,7 @@ namespace electrifier.Contracts.Services;
 public interface INavigationService
 {
     event NavigatedEventHandler Navigated;
+    //  TODO:    event DisplayTitleEventHandler
 
     bool CanGoBack
     {
@@ -20,4 +21,11 @@ public interface INavigationService
     bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false);
 
     bool GoBack();
+
+    string? PaneDisplayTitle
+    {
+        get;
+    }
+
+    void SetListDataItemForNextConnectedAnimation(object item);
 }

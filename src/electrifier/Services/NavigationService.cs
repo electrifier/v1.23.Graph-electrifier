@@ -1,11 +1,10 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
+﻿using CommunityToolkit.WinUI.UI.Animations;
 using electrifier.Contracts.Services;
 using electrifier.Contracts.ViewModels;
 using electrifier.Helpers;
-
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using System.Diagnostics.CodeAnalysis;
 
 namespace electrifier.Services;
 
@@ -39,6 +38,12 @@ public class NavigationService : INavigationService
             RegisterFrameEvents();
         }
     }
+
+    public string? PaneDisplayTitle
+    {
+        get; // private set;
+    }
+
 
     [MemberNotNullWhen(true, nameof(Frame), nameof(_frame))]
     public bool CanGoBack => Frame != null && Frame.CanGoBack;
@@ -123,4 +128,6 @@ public class NavigationService : INavigationService
             Navigated?.Invoke(sender, e);
         }
     }
+
+    public void SetListDataItemForNextConnectedAnimation(object item) => Frame.SetListDataItemForNextConnectedAnimation(item);
 }

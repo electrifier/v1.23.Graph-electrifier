@@ -1,4 +1,4 @@
-﻿using electrifier.Core.Helpers;
+﻿using electrifier.Helpers;
 
 using Windows.Storage;
 using Windows.Storage.Streams;

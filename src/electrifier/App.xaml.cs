@@ -1,14 +1,14 @@
 ﻿using electrifier.Activation;
 using electrifier.Contracts.Services;
-using electrifier.Core.Contracts.Services;
-using electrifier.Core.Services;
-using electrifier.Helpers;
 using electrifier.Models;
 using electrifier.Notifications;
 using electrifier.Services;
 using electrifier.ViewModels;
 using electrifier.Views;
 
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
@@ -46,12 +46,12 @@ public partial class App : Application
         InitializeComponent();
 
         Host = Microsoft.Extensions.Hosting.Host.
-        CreateDefaultBuilder().
-        UseContentRoot(AppContext.BaseDirectory).
-        ConfigureServices((context, services) =>
+            CreateDefaultBuilder().
+            UseContentRoot(AppContext.BaseDirectory).
+            ConfigureServices((context, services) =>
         {
             // Default Activation Handler
-            services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
+            _ = services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
 
             // Other Activation Handlers
             services.AddTransient<IActivationHandler, AppNotificationActivationHandler>();
@@ -60,37 +60,45 @@ public partial class App : Application
             services.AddSingleton<IAppNotificationService, AppNotificationService>();
             services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
             services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
-            services.AddTransient<IWebViewService, WebViewService>();
             services.AddTransient<INavigationViewService, NavigationViewService>();
+            services.AddTransient<IWebViewService, WebViewService>();
 
             services.AddSingleton<IActivationService, ActivationService>();
-            services.AddSingleton<IPageService, PageService>();
             services.AddSingleton<INavigationService, NavigationService>();
+            services.AddSingleton<IPageService, PageService>();
 
-            // Core Services
-            services.AddSingleton<ISampleDataService, SampleDataService>();
+            //// Core Services
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
-            services.AddTransient<FileManagerViewModel>();
+            services.AddTransient<ClipboardPage>();
+            services.AddTransient<ClipboardViewModel>();
+            services.AddTransient<DevicesPage>();
+            services.AddTransient<DevicesViewModel>();
             services.AddTransient<FileManagerPage>();
-            services.AddTransient<LocalFilesViewModel>();
-            services.AddTransient<LocalFilesPage>();
-            services.AddTransient<SettingsViewModel>();
+            services.AddTransient<FileManagerViewModel>();
+            services.AddTransient<NetworkDevicesPage>();
+            services.AddTransient<NetworkDevicesViewModel>();
             services.AddTransient<SettingsPage>();
-            services.AddTransient<WebViewViewModel>();
-            services.AddTransient<WebViewPage>();
-            services.AddTransient<WorkbenchViewModel>();
-            services.AddTransient<WorkbenchPage>();
+            services.AddTransient<SettingsViewModel>();
             services.AddTransient<ShellPage>();
             services.AddTransient<ShellViewModel>();
+            services.AddTransient<WebFavoritesPage>();
+            services.AddTransient<WebFavoritesViewModel>();
+            services.AddTransient<WebHostsPage>();
+            services.AddTransient<WebHostsViewModel>();
+            services.AddTransient<WebViewPage>();
+            services.AddTransient<WebViewViewModel>();
+            services.AddTransient<WorkbenchPage>();
+            services.AddTransient<WorkbenchViewModel>();
 
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
-        }).
-        Build();
+        }). Build();
 
         App.GetService<IAppNotificationService>().Initialize();
+
+        AppCenter.Start("{Your app secret here}", typeof(Analytics), typeof(Crashes));
 
         UnhandledException += App_UnhandledException;
     }
@@ -105,7 +113,7 @@ public partial class App : Application
     {
         base.OnLaunched(args);
 
-//        App.GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
+        // TODO: App.GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
 
         await App.GetService<IActivationService>().ActivateAsync(args);
     }

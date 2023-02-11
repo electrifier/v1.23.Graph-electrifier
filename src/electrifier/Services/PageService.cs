@@ -15,10 +15,14 @@ public class PageService : IPageService
     public PageService()
     {
         Configure<WorkbenchViewModel, WorkbenchPage>();
-        Configure<WebViewViewModel, WebViewPage>();
-        Configure<SettingsViewModel, SettingsPage>();
-        Configure<LocalFilesViewModel, LocalFilesPage>();
+        Configure<ClipboardViewModel, ClipboardPage>();
+        Configure<DevicesViewModel, DevicesPage>();
         Configure<FileManagerViewModel, FileManagerPage>();
+        Configure<NetworkDevicesViewModel, NetworkDevicesPage>();
+        Configure<SettingsViewModel, SettingsPage>();
+        Configure<WebFavoritesViewModel, WebFavoritesPage>();
+        Configure<WebHostsViewModel, WebHostsPage>();
+        Configure<WebViewViewModel, WebViewPage>();
     }
 
     public Type GetPageType(string key)

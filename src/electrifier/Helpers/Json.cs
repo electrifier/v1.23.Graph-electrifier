@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace electrifier.Core.Helpers;
+namespace electrifier.Helpers;
 
 public static class Json
 {
