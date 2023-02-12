@@ -89,6 +89,7 @@
 
 	<ItemGroup>
 		<Folder Include="Assets\%28!%29 Stock Images %28!%29\" />
+		<Folder Include="Assets\Views\Workbench\" />
 	</ItemGroup>
 
 
