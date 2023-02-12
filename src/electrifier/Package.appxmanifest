@@ -12,7 +12,7 @@
   <Identity
     Name="2277A4F6-35EA-4B0F-B71B-E03EAF2C5C8C"
     Publisher="CN=tajbe"
-    Version="1.23.1.0" />
+    Version="1.23.2.0" />
 
   <Properties>
     <DisplayName>electrifier</DisplayName>
