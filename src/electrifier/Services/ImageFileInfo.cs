@@ -14,9 +14,7 @@ namespace electrifier.Services;
 /// <summary>
 /// ImageFileInfo<br/>
 /// <br/>
-/// This is a demo class, as taken from <see href="https://learn.microsoft.com/en-us/windows/apps/get-started/simple-photo-viewer-winui3"/><br/>
-/// <br/>
-/// TODO: Remove this class
+/// Temporary listView for folders
 /// </summary>
 public class ImageFileInfo : INotifyPropertyChanged
 {
@@ -54,7 +52,8 @@ public class ImageFileInfo : INotifyPropertyChanged
 
     public async Task<BitmapImage> GetImageThumbnailAsync()
     {
-        var thumbnail = await ImageFile.GetThumbnailAsync(ThumbnailMode.PicturesView);
+
+        var thumbnail = await ImageFile.GetThumbnailAsync(ThumbnailMode.SingleItem);
 
         // Create a bitmap to be the image source.
         if (thumbnail != null)

@@ -1,30 +1,33 @@
 ﻿<Page
-    behaviors:NavigationViewHeaderBehavior.HeaderMode="Never"
-    mc:Ignorable="d"
-    x:Class="electrifier.Views.WorkbenchPage"
-    xmlns:behaviors="using:electrifier.Behaviors"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    >
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:behaviors="using:electrifier.Behaviors"
+    x:Class="electrifier.Views.WorkbenchPage"
+    mc:Ignorable="d"
+    behaviors:NavigationViewHeaderBehavior.HeaderMode="Never">
 
     <Grid
         x:Name="ContentArea">
+
         <Grid.Background>
-
-            <!--@"W:\git-projects\tajbender\electrifier-v1.23\branch main\electrifier-v1.23\src\electrifier\Assets\(!) Stock Images (!)\lightning background.png"-->
-
-
             <ImageBrush
                 ImageSource="..\Assets\(!) Stock Images (!)\lightning background.png"
                 Opacity="0.1"
                 AlignmentY="Top"
                 AlignmentX="Center"
                 Stretch="UniformToFill" />
-
         </Grid.Background>
 
+        <InfoBar
+            IsOpen="True"
+            IsIconVisible="True"
+            IsClosable="True"
+            Title="Click of the day:"
+            Message="Sleep is a sedentary state of mind and body. It is characterized by altered consciousness, relatively inhibited sensory activity, reduced muscle activity and reduced interactions with surroundings.[1] It is distinguished from wakefulness by a decreased ability to react to stimuli, but more reactive than a coma or disorders of consciousness, with sleep displaying different, active brain patterns.">
+            <Button>Got it. Thanks for briefing!</Button>
+        </InfoBar>
 
     </Grid>
 </Page>

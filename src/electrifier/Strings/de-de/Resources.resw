@@ -20,12 +20,12 @@
     <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
     <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
     <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
+    		<value>[base64 mime encoded serialized .NET Framework object]</value>
+  	</data>
     <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+    		<value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
-    </data>
+  	</data>
                 
     There are any number of "resheader" rows that contain simple 
     name/value pairs.
@@ -118,88 +118,88 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="AppDisplayName" xml:space="preserve">
-    <value>electrifier</value>
-  </data>
+		<value>electrifier</value>
+	</data>
 	<data name="AppDescription" xml:space="preserve">
-    <value>ein integrierendes desktop environment</value>
-  </data>
+		<value>ein integrierendes desktop environment</value>
+	</data>
 	<data name="Shell_Workbench.Content" xml:space="preserve">
-    <value>Workbench</value>
-  </data>
+		<value>Workbench</value>
+	</data>
 	<data name="WebView_FailedMessage.Text" xml:space="preserve">
-    <value>Die Seite %s konnte nicht geladen werden. Bitte überprüfe die Verbindung</value>
-  </data>
+		<value>Die Seite %s konnte nicht geladen werden. Bitte überprüfe die Verbindung</value>
+	</data>
 	<data name="WebView_Failed_TryReloadMessage.Content" xml:space="preserve">
-    <value>und versuche es erneut...</value>
-  </data>
+		<value>und versuche es erneut...</value>
+	</data>
 	<data name="BrowserBackButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Browser back</value>
-  </data>
+		<value>Browser back</value>
+	</data>
 	<data name="BrowserBackButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
-    <value>Browser back</value>
-  </data>
+		<value>Browser back</value>
+	</data>
 	<data name="BrowserForwardButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Browser forward</value>
-  </data>
+		<value>Browser forward</value>
+	</data>
 	<data name="BrowserForwardButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
-    <value>Browser forward</value>
-  </data>
+		<value>Browser forward</value>
+	</data>
 	<data name="ReloadButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Reload</value>
-  </data>
+		<value>Reload</value>
+	</data>
 	<data name="ReloadButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
-    <value>Reload</value>
-  </data>
+		<value>Reload</value>
+	</data>
 	<data name="OpenInBrowserButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Open in browser</value>
-  </data>
+		<value>Open in browser</value>
+	</data>
 	<data name="OpenInBrowserButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
-    <value>Open in browser</value>
-  </data>
+		<value>Open in browser</value>
+	</data>
 	<data name="Shell_WebView.Content" xml:space="preserve">
-    <value>Websites</value>
-  </data>
+		<value>Websites</value>
+	</data>
 	<data name="Settings_Personalization.Text" xml:space="preserve">
-    <value>Personalisierung</value>
-  </data>
+		<value>Personalisierung</value>
+	</data>
 	<data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Design</value>
-  </data>
+		<value>Design</value>
+	</data>
 	<data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>Hell</value>
-  </data>
+		<value>Hell</value>
+	</data>
 	<data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>Dunkel</value>
-  </data>
+		<value>Dunkel</value>
+	</data>
 	<data name="Settings_Theme_Default.Content" xml:space="preserve">
-    <value>Standard</value>
-  </data>
+		<value>Standard</value>
+	</data>
 	<data name="SettingsPage_About.Text" xml:space="preserve">
-    <value>über electrifier:</value>
-  </data>
-	<data name="SettingsPage_AboutDescription.Text" xml:space="preserve">
-    <value>ein integrierendes desktop environment</value>
-  </data>
+		<value>über electrifier:</value>
+	</data>
+	<!--<data name="SettingsPage_AboutDescription.Text" xml:space="preserve">
+		<value>ein integrierendes desktop environment</value>
+	</data>-->
 	<data name="SettingsPage_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Datenschutzerklärung</value>
-  </data>
+		<value>Datenschutzerklärung</value>
+	</data>
 	<data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://github.com/electrifier/electrifier/blob/main/PRIVACY.md</value>
-  </data>
+		<value>https://github.com/electrifier/electrifier/blob/main/PRIVACY.md</value>
+	</data>
 	<data name="Settings_Language.Text" xml:space="preserve">
-    <value>Sprache</value>
-  </data>
+		<value>Sprache</value>
+	</data>
 	<data name="Settings_Language_Default.Content" xml:space="preserve">
-    <value>Default</value>
-  </data>
+		<value>Default</value>
+	</data>
 	<data name="Settings_Language_English.Content" xml:space="preserve">
-    <value>Englisch</value>
-  </data>
+		<value>Englisch</value>
+	</data>
 	<data name="Settings_Language_German.Content" xml:space="preserve">
-    <value>Deutsch</value>
-  </data>
+		<value>Deutsch</value>
+	</data>
 	<data name="AppNotificationSamplePayload" xml:space="preserve">
-    <value>&lt;toast launch="action=ToastClick"&gt;
+		<value>&lt;toast launch="action=ToastClick"&gt;
   &lt;visual&gt;
     &lt;binding template="ToastGeneric"&gt;
       &lt;text&gt;App Notification&lt;/text&gt;
@@ -211,50 +211,41 @@
     &lt;action content="Settings" arguments="action=Settings"/&gt;
   &lt;/actions&gt;
 &lt;/toast&gt;</value>
-  </data>
+	</data>
 	<data name="SettingsPage_Credits.Text" xml:space="preserve">
-    <value>tajbender grüßt:</value>
-  </data>
+		<value>tajbender grüßt:</value>
+	</data>
 	<data name="SettingsPage_CreditsDescription.Text" xml:space="preserve">
-    <value>SettingsPage_Credits Description Text (de-DE)</value>
-  </data>
+		<value>SettingsPage_Credits Description Text (de-DE)</value>
+	</data>
 	<data name="SettingsPage_License.Text" xml:space="preserve">
-    <value>electrifier ist freie software.</value>
-  </data>
+		<value>electrifier ist freie software.</value>
+	</data>
 	<data name="SettingsPage_LicenseDescription.Text" xml:space="preserve">
-    <value>Copyright 2022 tajbender, Thorsten Jung.
+		<value>Copyright 2022 tajbender, Thorsten Jung.
 
-Licensed under the Apache License,
-Version 2.0 (the "License"); you may
-not use this file except in
-compliance with the License.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
 
 You may obtain a copy of the License at</value>
-  </data>
+	</data>
 	<data name="SettingsPage_LicenseTermsLink.Content" xml:space="preserve">
-    <value>Apache License, version 2.0 </value>
-  </data>
+		<value>Apache License, version 2.0 </value>
+	</data>
 	<data name="SettingsPage_LicenseDescriptionContinued.Text" xml:space="preserve">
-    <value>Unless required by applicable law or agreed
-to in writing, software distributed
-under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR
-CONDITIONS OF ANY KIND, either express
-or implied.
+		<value>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
-See the License for the specific language governing
-permissions and limitations under the License.</value>
-  </data>
+See the License for the specific language governing permissions and limitations under the License.</value>
+	</data>
 	<data name="SettingsPage_LicenseTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://github.com/electrifier/electrifier/blob/main/LICENSE</value>
-  </data>
+		<value>https://github.com/electrifier/electrifier/blob/main/LICENSE</value>
+	</data>
 	<data name="SettingsPage_LicenseCopyright.Content" xml:space="preserve">
-    <value>eine Scheunenproduktion.</value>
-  </data>
+		<value>eine Scheunenproduktion.</value>
+	</data>
 	<data name="SettingsPage_LicenseCopyright.NavigateUri" xml:space="preserve">
-    <value>https://www.scheunenproduktion.de</value>
-  </data>
-  <data name="Shell_FileManager.Content" xml:space="preserve">
-    <value>FileManager</value>
-  </data>
+		<value>https://www.scheunenproduktion.de</value>
+	</data>
+	<data name="Shell_FileManager.Content" xml:space="preserve">
+		<value>FileManager</value>
+	</data>
 </root>
