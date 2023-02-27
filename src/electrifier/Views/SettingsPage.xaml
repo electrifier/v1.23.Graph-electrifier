@@ -26,8 +26,8 @@
                 MaxWidth="300" />
         </Grid.ColumnDefinitions>
 
-        <!-- #region Left Block: Personalization -->
         <StackPanel
+            x:Uid="Settings"
             Grid.Column="0">
             <TextBlock
                 x:Uid="Settings_Personalization"
@@ -88,14 +88,19 @@
                         IsEnabled="False">
                         <RadioButton
                             x:Uid="Settings_Language_Default"
-                            IsEnabled="False"
-                            IsChecked="True" />
+                            Command="{x:Bind ViewModel.SwitchLanguageCommand}"
+                            IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
+                            GroupName="Language" />
                         <RadioButton
                             x:Uid="Settings_Language_English"
-                            IsEnabled="False" />
+                            Command="{x:Bind ViewModel.SwitchLanguageCommand}"
+                            IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
+                            GroupName="Language" />
                         <RadioButton
                             x:Uid="Settings_Language_Deutsch"
-                            IsEnabled="False" />
+                            Command="{x:Bind ViewModel.SwitchLanguageCommand}"
+                            IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
+                            GroupName="Language" />
                     </RadioButtons>
                 </StackPanel>
             </StackPanel>

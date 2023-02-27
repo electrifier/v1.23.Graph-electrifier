@@ -10,6 +10,11 @@ public sealed partial class WorkbenchPage : Page
     {
         get;
     }
+#if DEBUG
+    private InfoBarSeverity InfoBarSeverity => InfoBarSeverity.Warning;
+#else
+    private InfoBarSeverity InfoBarSeverity => InfoBarSeverity.Informational;
+#endif
 
     public WorkbenchPage()
     {

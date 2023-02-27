@@ -1,16 +1,12 @@
-﻿using System.Reflection;
-using System.Windows.Input;
-
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
 using electrifier.Contracts.Services;
 using electrifier.Helpers;
-
+using electrifier.Models;
 using Microsoft.UI.Xaml;
-
+using System.Reflection;
+using System.Windows.Input;
 using Windows.ApplicationModel;
-using Windows.Foundation.Metadata;
 
 namespace electrifier.ViewModels;
 
@@ -18,7 +14,8 @@ public class SettingsViewModel : ObservableRecipient
 {
     private readonly IThemeSelectorService _themeSelectorService;
     private ElementTheme _elementTheme;
-    private ElementLanguage _languageId;
+    private readonly ILocalSettingsService _localSettingsService;
+    private LocalSettingsOptions.GuiLanguage _guiLanguage;
     private string _versionDescription;
 
     public ElementTheme ElementTheme
@@ -27,10 +24,10 @@ public class SettingsViewModel : ObservableRecipient
         set => SetProperty(ref _elementTheme, value);
     }
 
-    public ElementLanguage LanguageId
+    public Models.LocalSettingsOptions.GuiLanguage LanguageId
     {
-        get => _languageId; // _languageId ?? "Default"; // TODO: i18n (String "Default")
-        set => SetProperty(ref _languageId, value);
+        get => _guiLanguage; // _languageId ?? "Default"; // TODO: i18n (String "Default")
+        set => SetProperty(ref _guiLanguage, value);
     }
 
     public string VersionDescription
@@ -49,14 +46,14 @@ public class SettingsViewModel : ObservableRecipient
         get;
     }
 
-    public SettingsViewModel(IThemeSelectorService themeSelectorService)
+    public SettingsViewModel(ILocalSettingsService localSettingsService, IThemeSelectorService themeSelectorService)
     {
-        _themeSelectorService = themeSelectorService;
-        _elementTheme = _themeSelectorService.Theme;
-        // TODO: languageSelectorService
-        _languageId = ElementLanguage.English;
-        _versionDescription = GetVersionDescription();
+        _themeSelectorService = themeSelectorService ?? throw new ArgumentNullException(nameof(themeSelectorService));
+        _localSettingsService = localSettingsService ?? throw new ArgumentNullException(nameof(localSettingsService));
 
+        _elementTheme = _themeSelectorService.Theme;
+        _guiLanguage = LocalSettingsOptions.GuiLanguage.Default;
+        _versionDescription = GetVersionDescription();
 
         SwitchThemeCommand = new RelayCommand<ElementTheme>(
             async (param) =>
@@ -68,10 +65,14 @@ public class SettingsViewModel : ObservableRecipient
                 }
             });
 
-        SwitchLanguageCommand = new RelayCommand<ElementLanguage>(
+        SwitchLanguageCommand = new RelayCommand<Models.LocalSettingsOptions.GuiLanguage>(
             async (param) =>
             {
-                await _themeSelectorService.SetThemeAsync(ElementTheme.Dark);
+                if (_guiLanguage != param)
+                {
+                    _guiLanguage = param;
+                    await _localSettingsService.SetGuiLanguageAsync(param);
+                }
             });
     }
 
@@ -92,15 +93,4 @@ public class SettingsViewModel : ObservableRecipient
 
         return $"{"AppDisplayName".GetLocalized()} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
     }
-}
-
-
-//[WindowsRuntimeType("Microsoft.UI.Xaml")]
-[ContractVersion(typeof(WinUIContract), 65536u)]
-
-public enum ElementLanguage
-{
-    Default,
-    English,
-    German,
 }
