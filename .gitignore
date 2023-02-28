@@ -348,5 +348,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-/desktop.ini.bak
-/folder.ico
+
+# Secure Area. Always ignore key files, etc.
+/.secureArea/electrifier_TemporaryKey.zip

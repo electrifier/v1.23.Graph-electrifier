@@ -86,5 +86,8 @@ public class LocalSettingsService : ILocalSettingsService
         }
     }
 
-    public Task SetGuiLanguageAsync(LocalSettingsOptions.GuiLanguage languageId) => throw new NotImplementedException();
+    public Task SetGuiLanguageAsync(LocalSettingsOptions.GuiLanguage languageId)
+    {
+        throw new NotImplementedException();
+    }
 }

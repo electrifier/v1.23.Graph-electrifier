@@ -18,6 +18,12 @@ public class SettingsViewModel : ObservableRecipient
     private LocalSettingsOptions.GuiLanguage _guiLanguage;
     private string _versionDescription;
 
+    #if DEBUG
+    public static bool DebugDescriptor => true;
+    #else
+    public static bool DebugDescriptor => false;
+    #endif
+
     public ElementTheme ElementTheme
     {
         get => _elementTheme;
@@ -91,6 +97,8 @@ public class SettingsViewModel : ObservableRecipient
             version = Assembly.GetExecutingAssembly().GetName().Version!;
         }
 
-        return $"{"AppDisplayName".GetLocalized()} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+        var versionDescription = $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+
+        return versionDescription;
     }
 }

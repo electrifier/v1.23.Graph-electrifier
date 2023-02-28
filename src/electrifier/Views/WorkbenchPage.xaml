@@ -27,8 +27,8 @@
 
             <InfoBar.ActionButton>
                 <HyperlinkButton
-                    Content="...see my Apache License 2.0 Terms"
-                    HorizontalAlignment="Right"
+                    Content="Please accept my Apache License 2.0 Terms"
+                    HorizontalAlignment="Left"
                     NavigateUri="https://github.com/electrifier/electrifier/blob/main/LICENSE" />
             </InfoBar.ActionButton>
 
@@ -93,6 +93,5 @@
                 </Grid>
             </Grid>
         </InfoBar>
-
     </Grid>
 </Page>

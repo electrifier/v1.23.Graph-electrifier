@@ -12,12 +12,10 @@
     xmlns:xaml1="using:electrifier.ViewModels"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 
-
     <Page.Resources>
         <helpers:EnumToBooleanConverter
             x:Key="EnumToBooleanConverter" />
     </Page.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition
@@ -25,17 +23,20 @@
             <ColumnDefinition
                 MaxWidth="300" />
         </Grid.ColumnDefinitions>
-
         <StackPanel
             x:Uid="Settings"
             Grid.Column="0">
-            <TextBlock
-                x:Uid="Settings_Personalization"
-                Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+            <StackPanel
+                Margin="{StaticResource XSmallTopMargin}">
+
+                <TextBlock
+                    x:Uid="Settings_Personalization"
+                    Style="{ThemeResource SubtitleTextBlockStyle}" />
+            </StackPanel>
+
             <StackPanel
                 Margin="{StaticResource SmallTopBottomMargin}">
-
-                <!-- Left Column: Settings -> Theme -->
 
                 <TextBlock
                     x:Uid="Settings_Theme" />
@@ -105,77 +106,112 @@
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-        <!-- #endregion -->
-
-        <!-- #region Right Block: About -->
         <StackPanel
-            Grid.Column="1">
-            <!-- #region AboutPanel -->
-            <StackPanel
-                Margin="{StaticResource XSmallTopMargin}">
-                <!-- about electrifier: -->
+            Grid.Column="1"
+            Name="About_StackPanel"
+            Orientation="Vertical">
+            <StackPanel.Background>
+                <ImageBrush
+                    AlignmentX="Right"
+                    AlignmentY="Bottom"
+                    ImageSource="..\Assets\Views\electrifier Media Pole.png"
+                    Opacity="0.1"
+                    Stretch="Uniform" />
+            </StackPanel.Background>
+            <TextBlock
+                Style="{ThemeResource SubtitleTextBlockStyle}"
+                Padding="{ThemeResource TabViewHeaderPadding}"
+                Text="electrifier" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
                 <TextBlock
-                    x:Uid="SettingsPage_About"
-                    Style="{ThemeResource SubtitleTextBlockStyle}" />
-                <!-- electrifier - x.x.x.x -->
-                <TextBlock
-                    Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}"
-                    Style="{ThemeResource BodyTextBlockStyle}" />
-                <!-- integrated desktop environment -->
-                <TextBlock
-                    x:Uid="SettingsPage_About_AppDescription"
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{ThemeResource BodyTextBlockStyle}" />
-                <!--- eine scheunenproduktion. -->
-                <HyperlinkButton
-                    x:Uid="SettingsPage_LicenseCopyright"
-                    Margin="{StaticResource SmallTopBottomMargin}" />
-            </StackPanel>
-            <!-- #endregion -->
-
-            <!-- #region License -->
-            <StackPanel
-                Margin="{StaticResource XSmallTopMargin}">
-                <!-- electrifier is free software. -->
-                <TextBlock
-                    x:Uid="SettingsPage_License"
-                    Style="{ThemeResource SubtitleTextBlockStyle}" />
-                <!-- Copyright 2023 tajbender, Thorsten Jung
-                     Licensed under the Apache License -->
-                <TextBlock
-                    x:Uid="SettingsPage_LicenseDescription"
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{ThemeResource BodyTextBlockStyle}" />
-                <!-- Apache License, version 2.0 -->
-                <HyperlinkButton
-                    x:Uid="SettingsPage_LicenseTermsLink"
-                    Margin="{StaticResource SmallTopBottomMargin}" />
-                <!-- Unless required by applicable law or agreed to in writing, software distributed under the License is
-                     distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
-                <TextBlock
-                    x:Uid="SettingsPage_LicenseDescriptionContinued"
-                    Margin="{StaticResource XSmallTopMargin}"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="0"
+                    Margin="{StaticResource SmallTopMargin}"
                     Style="{ThemeResource BodyTextBlockStyle}"
-                    TextWrapping="Wrap" />
+                    Text="© 2023 tajbender" />
+                <HyperlinkButton
+                    Content="eine Scheunenproduktion."
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    NavigateUri="https://www.scheunenproduktion.de/"
+                    Style="{ThemeResource DefaultHyperlinkButtonStyle}" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Style="{ThemeResource BodyTextBlockStyle}"
+                    Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Style="{ThemeResource BodyTextBlockStyle}"
+                    FontStyle="Italic"
+                    Text="march on edition."
+                    VerticalAlignment="Bottom">
+                </TextBlock>
+                <ImageIcon
+                    Grid.Column="2"
+                    Grid.RowSpan="4"
+                    MaxHeight="96"
+                    Margin="{ThemeResource TabViewItemHeaderIconMargin}"
+                    Source="..\Assets\Views\this is alpha_420px.png" />
+            </Grid>
+            <StackPanel
+                Margin="{StaticResource SmallTopMargin}"
+                Orientation="Vertical">
+                <TextBlock
+                    Style="{ThemeResource SubtitleTextBlockStyle}"
+                    Text="electrifier is free software." />
+                <TextBlock
+                    Style="{ThemeResource DetailBodyBaseMediumStyle}">
+                    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+                    
+                    You may obtain a copy of the License at
+                </TextBlock>
+                <HyperlinkButton
+                    x:Uid="SettingsPage_LicenseTermsLink" />
+                <TextBlock
+                    Style="{ThemeResource DetailBodyBaseMediumStyle}">
+                    Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+                    See the License for the specific language governing permissions and limitations under the License.
+                </TextBlock>
             </StackPanel>
-            <!-- #endregion -->
-
-            <!-- #region Privacy -->
-            <HyperlinkButton
-                x:Uid="SettingsPage_PrivacyTermsLink"
-                Margin="{StaticResource SmallTopBottomMargin}" />
-            <!-- #endregion -->
-
-            <!-- #region Credits -->
-            <TextBlock
-                x:Uid="SettingsPage_Credits"
-                Style="{ThemeResource SubtitleTextBlockStyle}" />
-            <TextBlock
-                x:Uid="SettingsPage_CreditsDescription"
-                Margin="{StaticResource XSmallTopMargin}"
-                Style="{ThemeResource BodyTextBlockStyle}" />
-            <!-- #endregion -->
+            <StackPanel
+                Margin="{StaticResource SmallTopMargin}">
+                <TextBlock
+                    x:Uid="SettingsPage_PrivacyDescription"
+                    Style="{ThemeResource SubtitleTextBlockStyle}">
+                </TextBlock>
+                <HyperlinkButton
+                    x:Uid="SettingsPage_PrivacyTermsLink"
+                    Margin="{StaticResource SmallTopBottomMargin}" />
+            </StackPanel>
+            <StackPanel
+                Margin="{StaticResource SmallTopMargin}">
+                <TextBlock
+                    x:Uid="SettingsPage_Credits"
+                    Style="{ThemeResource SubtitleTextBlockStyle}" />
+                <TextBlock
+                    x:Uid="SettingsPage_CreditsDescription"
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{ThemeResource BodyTextBlockStyle}" />
+            </StackPanel>
         </StackPanel>
-        <!-- #endregion -->
     </Grid>
 </Page>

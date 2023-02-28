@@ -1,4 +1,11 @@
-﻿using electrifier.Activation;
+﻿// Disable XAML Generated break on unhalted exception
+// <seealso href="" />
+#define DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
+
+
+using System.Text;
+using CommunityToolkit.WinUI;
+using electrifier.Activation;
 using electrifier.Contracts.Services;
 using electrifier.Models;
 using electrifier.Notifications;
@@ -94,19 +101,128 @@ public partial class App : Application
 
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
-        }). Build();
+        }).Build();
 
         App.GetService<IAppNotificationService>().Initialize();
 
         AppCenter.Start("{Your app secret here}", typeof(Analytics), typeof(Crashes));
 
         UnhandledException += App_UnhandledException;
+
+        //        App_UnhandledException(this, new Microsoft.UI.Xaml.UnhandledExceptionEventArgs(this, false));
+        //System.UnhandledExceptionEventArgs args = new System.UnhandledExceptionEventArgs();
+
+        //var v1 = new Microsoft.UI.Xaml.UnhandledExceptionEventArgs();
+
+//        UnhandledException.UnhandledException += App_UnhandledException;
+
     }
 
-    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
+    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs args) => App_UnhandledException(sender, args, false);
+
+    /// <summary>
+    /// Log and handle exceptions as appropriate.
+    /// 
+    /// <seealso href="https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception."/>
+    /// 
+    /// <seealso href="https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception?view=windows-app-sdk-1.2"/>
+    /// 
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
+    /// <param name="itIsComplicated">
+    ///     Set <b>true</b> to force shutdown in case of critical error.<br/>
+    ///     <br/>
+    ///     Triggers <see cref="UnhandledExceptionEventArgs.Handled"/>.
+    /// </param>
+    private void App_UnhandledException(
+        object sender,
+        Microsoft.UI.Xaml.UnhandledExceptionEventArgs args,
+        bool itIsComplicated = false)
     {
-        // TODO: Log and handle exceptions as appropriate.
-        // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
+        try
+        {
+            // TODO: Try to make an backup of current configuration and mark as "dirty".
+            // TODO: Log and handle exceptions as appropriate.
+
+            //var guru = App.GetService<GuruMeditationDialoge>();
+
+            //guru?.ThrowGuruMeditation(sender, args);
+
+
+
+            /* 
+            var stringBuilder = new StringBuilder()
+                .AppendLine("GURU MEDITATION")
+                .AppendLine("Sender: { }")
+                .AppendLine(args?.ToString());
+             */
+
+
+
+            //if (args is not null)
+            //{
+            //    // TODO: Exception happened!
+
+            //    args.Handled = true;
+            //}
+
+
+            /*
+
+            private async void ShowDialog_Click(object sender, RoutedEventArgs e)
+            {
+                ContentDialog dialog = new ContentDialog();
+
+                // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+                dialog.XamlRoot = this.XamlRoot;
+                dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+                dialog.Title = "Save your work?";
+                dialog.PrimaryButtonText = "Save";
+                dialog.SecondaryButtonText = "Don't Save";
+                dialog.CloseButtonText = "Cancel";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+                dialog.Content = new ContentDialogContent();
+
+                var result = await dialog.ShowAsync();
+            }
+
+            */
+
+
+            //     if (args is not null)
+            //     {
+            //         // TODO: Exception happened!
+            //     
+            //         args.Handled = true;
+            //     }
+            //     else
+            //     {
+            //         throw new ArgumentNullException(nameof(args));
+            //     }
+            //     if (!itIsComplicated)
+            //     {
+            //         args?.Handled = true;
+            //     }
+            // }
+        }
+        catch (Exception ex)
+        {
+            ex.ToString();
+        }
+        finally
+        {
+            if (args is not null)
+            {
+                //args.Handled = !itIsComplicated;
+            }
+        }
     }
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
