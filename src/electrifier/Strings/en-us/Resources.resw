@@ -212,9 +212,6 @@
   <data name="SettingsPage_Credits.Text" xml:space="preserve">
     <value>tajbender salutes:</value>
   </data>
-  <data name="SettingsPage_CreditsDescription.Text" xml:space="preserve">
-    <value>Mom, Dad, Sabine, Markus, Sandra, and all the others I forgot.</value>
-  </data>
   <data name="SettingsPage_LicenseDescription.Text" xml:space="preserve">
     <value>Copyright 2023 tajbender, Thorsten Jung
 

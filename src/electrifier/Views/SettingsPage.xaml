@@ -207,10 +207,31 @@
                 <TextBlock
                     x:Uid="SettingsPage_Credits"
                     Style="{ThemeResource SubtitleTextBlockStyle}" />
-                <TextBlock
-                    x:Uid="SettingsPage_CreditsDescription"
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{ThemeResource BodyTextBlockStyle}" />
+                <RichTextBlock
+                    SelectionHighlightColor="Aqua">
+                    <Paragraph>
+                        In aeterna caritate, Mater. Papa, Sabine, Markus, Sandra und die Jungs. Barney, Sammy, Mikesch.
+                    </Paragraph>
+                    <Paragraph>
+                        Bengalis. 
+                        Lucipetra. 
+                        Schney, do bin ich dahamm. 
+                        Bad Ste. 
+                        Abi '97
+                    </Paragraph>
+                    <Paragraph>
+                        <Hyperlink
+                            NavigateUri="https://silenceofthoughts.bandcamp.com/">Silence of Thoughts.</Hyperlink>
+                        Nebel.
+                        Dry Weave.
+                        Dawnbreed. 
+                        Monochrome. 
+                        Psycotic Waltz. 
+                        The 3rd and the Mortal. 
+                        Neurosis.
+                        All the others.
+                    </Paragraph>
+                </RichTextBlock>
             </StackPanel>
         </StackPanel>
     </Grid>
