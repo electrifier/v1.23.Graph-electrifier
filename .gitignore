@@ -350,5 +350,5 @@ MigrationBackup/
 .ionide/
 
 # Secure Area. Always ignore key files, etc.
-/.secureArea/*
-/.secureArea.7z
+.secureArea/*
+.secureArea.7z
