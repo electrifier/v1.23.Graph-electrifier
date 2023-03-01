@@ -75,9 +75,9 @@
 		<DebugType>full</DebugType>
 	</PropertyGroup>
 
-	<EnableWindowsTargeting>
-		true
-	</EnableWindowsTargeting>
+<!--	<EnableWindowsTargeting>-->
+<!--		true-->
+<!--	</EnableWindowsTargeting>-->
 
 	<ItemGroup>
 		<EditorConfigFiles Remove=".\Views\.editorconfig" />
