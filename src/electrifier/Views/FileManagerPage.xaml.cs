@@ -199,13 +199,14 @@ img.Source = bitmapImage;*/
 
         try
         {
-            //var properties = await item.Properties.GetDocumentPropertiesAsync();
+            var storageitem = item;
 
             if (item.IsOfType(StorageItemTypes.Folder))
             {
                 bool isFolder = true;
 
             }
+            await item.GetBasicPropertiesAsync();
 
             return shellItem;
         }

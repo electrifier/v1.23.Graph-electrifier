@@ -32,10 +32,10 @@ public class DosShellItem : INotifyPropertyChanged
 
     public bool IsFile => !IsFolder;
 
-    public ImageIcon ShellIcon
-    {
-        get;        // TODO: this is not initialized yet
-    }
+    //public ImageIcon ShellIcon
+    //{
+    //    get;        // TODO: this is not initialized yet
+    //}
 
     public DosShellItem(IStorageItem storageItem)
     {

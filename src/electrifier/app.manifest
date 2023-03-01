@@ -6,7 +6,9 @@
     project:    electrifier - https://github.com/electrifier
 	file:       app.manifest
 	
-	history:    23-01-11    Initial version: v1.23.1.0
+	history:
+	23-01-11    Initial version: v1.23.1.0
+	23-03-01    march on edition: v.23.3.1
 -->
 
 <assembly
@@ -14,24 +16,26 @@
 	xmlns="urn:schemas-microsoft-com:asm.v1">
 	<!-- Assembly version -->
 	<assemblyIdentity
-	  version="1.23.1.0"
+	  version="1.23.3.1"
 	  name="electrifier.app"/>
-    <compatibility
+	<compatibility
 		xmlns="urn:schemas-microsoft-com:compatibility.v1">
-      <application>
-        <supportedOS
-			Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>
-      </application>
-    </compatibility>
-  <application
-	  xmlns="urn:schemas-microsoft-com:asm.v3">
-    <windowsSettings>
-      <dpiAware
-		  xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true/PM
-	  </dpiAware>
-      <dpiAwareness
-		  xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitorV2, PerMonitor
-	  </dpiAwareness>
-    </windowsSettings>
-  </application>
+		<application>
+			<supportedOS
+				Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>
+		</application>
+	</compatibility>
+	<application
+		xmlns="urn:schemas-microsoft-com:asm.v3">
+		<windowsSettings>
+			<dpiAware
+				xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">
+				true/PM
+			</dpiAware>
+			<dpiAwareness
+				xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">
+				PerMonitorV2, PerMonitor
+			</dpiAwareness>
+		</windowsSettings>
+	</application>
 </assembly>
