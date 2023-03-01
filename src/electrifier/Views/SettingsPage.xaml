@@ -181,7 +181,6 @@
                 <TextBlock
                     Style="{ThemeResource DetailBodyBaseMediumStyle}">
                     Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
-                    
                     You may obtain a copy of the License at
                 </TextBlock>
                 <HyperlinkButton
@@ -195,12 +194,11 @@
             <StackPanel
                 Margin="{StaticResource SmallTopMargin}">
                 <TextBlock
-                    x:Uid="SettingsPage_PrivacyDescription"
                     Style="{ThemeResource SubtitleTextBlockStyle}">
+                    All your Base are belong to Us!
                 </TextBlock>
                 <HyperlinkButton
-                    x:Uid="SettingsPage_PrivacyTermsLink"
-                    Margin="{StaticResource SmallTopBottomMargin}" />
+                    x:Uid="SettingsPage_PrivacyTermsLink"/>
             </StackPanel>
             <StackPanel
                 Margin="{StaticResource SmallTopMargin}">
@@ -208,28 +206,42 @@
                     x:Uid="SettingsPage_Credits"
                     Style="{ThemeResource SubtitleTextBlockStyle}" />
                 <RichTextBlock
-                    SelectionHighlightColor="Aqua">
+                    SelectionHighlightColor="Aqua"
+                    Style="{ThemeResource DetailBodyBaseMediumStyle}">
                     <Paragraph>
-                        In aeterna caritate, Mater. Papa, Sabine, Markus, Sandra und die Jungs. Barney, Sammy, Mikesch.
+                        In aeterna caritate, Mater.
+                        Papa, Sabine, Markus, Sandra und die Jungs.
+                        Barney, Sammy, Mikesch. Benny.
                     </Paragraph>
                     <Paragraph>
                         Bengalis. 
                         Lucipetra. 
                         Schney, do bin ich dahamm. 
-                        Bad Ste. 
-                        Abi '97
+                        Abi '97.
+                        LoSPOnditos.
                     </Paragraph>
                     <Paragraph>
                         <Hyperlink
                             NavigateUri="https://silenceofthoughts.bandcamp.com/">Silence of Thoughts.</Hyperlink>
-                        Nebel.
-                        Dry Weave.
+                    </Paragraph>
+                    <Paragraph>
+                        All the others.
+                    </Paragraph>
+                    <Paragraph>
                         Dawnbreed. 
+                        Dry Weave.
                         Monochrome. 
+                        Nebel.
+                        Neurosis.
                         Psycotic Waltz. 
                         The 3rd and the Mortal. 
-                        Neurosis.
-                        All the others.
+                    </Paragraph>
+                    <Paragraph>
+                        <Hyperlink
+                            NavigateUri="https://www.Tierisch-Aktiv.eu/">Tierisch-Aktiv.eu</Hyperlink>
+                    </Paragraph>
+                    <Paragraph>
+                        Peace.                        
                     </Paragraph>
                 </RichTextBlock>
             </StackPanel>

@@ -76,7 +76,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<EditorConfigFiles Remove="W:\git-projects\tajbender\electrifier-v1.23\src\electrifier\Views\.editorconfig" />
+		<EditorConfigFiles Remove=".\Views\.editorconfig" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -84,14 +84,9 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
-		<None Include="W:\git-projects\tajbender\electrifier-v1.23\src\electrifier\Views\.editorconfig" />
-	</ItemGroup>
-
-	<ItemGroup>
+		<None Include=".\Views\.editorconfig" />
 		<Folder Include="Assets\%28!%29 Stock Images %28!%29\" />
 		<Folder Include="Assets\Views\Workbench\" />
 		<Folder Include="Models\Configuration\" />
 	</ItemGroup>
-
-
 </Project>
