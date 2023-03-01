@@ -350,4 +350,5 @@ MigrationBackup/
 .ionide/
 
 # Secure Area. Always ignore key files, etc.
-/.secureArea/electrifier_TemporaryKey.zip
+/.secureArea/*
+/.secureArea.7z
