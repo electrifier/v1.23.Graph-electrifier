@@ -13,62 +13,70 @@
     <Grid
         x:Name="ContentArea">
 
-        <Grid>
-            <Grid.Resources>
-                <DataTemplate
-                    x:Key="ImageGridView_ItemTemplate"
-                    x:DataType="local:ImageFileInfo">
-                    <Grid
-                        Height="150"
-                        Width="150"
-                        Margin="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition
-                                Height="45" />
-                        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <DataTemplate
+                x:DataType="local:DosShellItem"
+                x:Key="ImageGridView_ItemTemplate">
+                <Grid
+                    Height="150"
+                    Width="150"
+                    Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition
+                            Height="45" />
+                    </Grid.RowDefinitions>
 
-                        <Image
+                    <!--Source="{x:Bind ShellIcon}"-->
+                    <!--<BitmapIcon
+                            Grid.Row="0"
                             x:Name="ItemImage"
-                            Source="Assets/StoreLogo.png"
-                            Stretch="Uniform" />
+                            UriSource="ms-appx:///Assets/Assets\Square44x44Logo.scale-200.png" 
+                            
+                             />-->
+                    <!-- TODO: Check <BitmapIcon UriSource="ms-appx:///Assets/globe.png"/> -->
 
-                        <StackPanel
-                            Orientation="Vertical"
-                            Grid.Row="1">
-                            <TextBlock
-                                Text="{x:Bind ImageTitle}"
-                                HorizontalAlignment="Center"
-                                Style="{StaticResource SubtitleTextBlockStyle}" />
-                            <StackPanel
-                                Orientation="Vertical"
-                                HorizontalAlignment="Center">
-                                <TextBlock
-                                    Text="{x:Bind ImageFileType}"
-                                    HorizontalAlignment="Center"
-                                    Style="{StaticResource SubtitleTextBlockStyle}" />
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
+                    <!-- W:\git-projects\tajbender\electrifier-v1.23\branch main\electrifier-v1.23\src\electrifier\Assets\Views\Workbench\Shell32 Desfualt Folder.ico -->
 
-                <Style
-                    x:Key="ImageGridView_ItemContainerStyle"
-                    TargetType="GridViewItem">
-                    <Setter
-                        Property="Margin"
-                        Value="2" />
-                </Style>
-            </Grid.Resources>
+                    <ImageIcon
+                        x:Uid="ImageGridView_ItemTemplate_DefaultFolderIcon"
+                        x:Name="ImageGridView_ItemTemplate_DefaultFolderIcon"
+                        Visibility="{x:Bind IsFolder}"
+                        Source="..\Assets\Views\Workbench\Shell32 Default Folder.ico"
+                        Grid.Row="0" />
 
-            <GridView
-                x:Name="ImageGridView"
-                ItemContainerStyle="{StaticResource ImageGridView_ItemContainerStyle}"
-                ItemsSource="{x:Bind Images}"
-                ItemTemplate="{StaticResource ImageGridView_ItemTemplate}"
-                ContainerContentChanging="ImageGridView_ContainerContentChanging">
-            </GridView>
+                    <ImageIcon
+                        x:Uid="ImageGridView_ItemTemplate_DefaultFileIcon"
+                        x:Name="ImageGridView_ItemTemplate_DefaultFileIcon"
+                        Visibility="{x:Bind IsFile}"
+                        Source="..\Assets\Views\Workbench\Shell32 Default unknown File.ico"
+                        Grid.Row="0" />
 
-        </Grid>
+                    <TextBlock
+                        Grid.Row="1"
+                        Text="{x:Bind FileName}"
+                        HorizontalAlignment="Left"
+                        FontSize="12"
+                        Style="{StaticResource SubtitleTextBlockStyle}" />
+                </Grid>
+            </DataTemplate>
+
+            <Style
+                x:Key="ImageGridView_ItemContainerStyle"
+                TargetType="GridViewItem">
+                <Setter
+                    Property="Margin"
+                    Value="3" />
+            </Style>
+        </Grid.Resources>
+
+        <GridView
+            x:Name="ImageGridView"
+            ItemTemplate="{StaticResource ImageGridView_ItemTemplate}"
+            ItemsSource="{x:Bind ShellItems}"
+            ItemContainerStyle="{StaticResource ImageGridView_ItemContainerStyle}"
+            ContainerContentChanging="ImageGridView_ContainerContentChanging">
+        </GridView>
+
     </Grid>
 </Page>

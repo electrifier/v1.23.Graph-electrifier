@@ -13,7 +13,5 @@ public interface IThemeSelectorService
 
     Task SetThemeAsync(ElementTheme theme);
 
-    //    Task SetThemeAsync(string languageId); TODO
-
     Task SetRequestedThemeAsync();
 }

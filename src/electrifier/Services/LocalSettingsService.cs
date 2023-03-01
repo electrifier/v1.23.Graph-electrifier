@@ -45,6 +45,8 @@ public class LocalSettingsService : ILocalSettingsService
             _isInitialized = true;
         }
     }
+    public async Task DeleteSettingAsync<T>(string key) => throw new NotImplementedException();
+    public async Task<T> GetSettingAsync<T>(string key, T defaultValue) => throw new NotImplementedException();
 
     public async Task<T?> ReadSettingAsync<T>(string key)
     {
@@ -82,5 +84,10 @@ public class LocalSettingsService : ILocalSettingsService
 
             await Task.Run(() => _fileService.Save(_applicationDataFolder, _localsettingsFile, _settings));
         }
+    }
+
+    public Task SetGuiLanguageAsync(LocalSettingsOptions.GuiLanguage languageId)
+    {
+        throw new NotImplementedException();
     }
 }
