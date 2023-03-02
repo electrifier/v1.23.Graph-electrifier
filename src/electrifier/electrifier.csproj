@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<ApplicationIcon>Assets/WindowIcon.ico</ApplicationIcon>
 		<AssemblyName>electrifier</AssemblyName>
-		<AssemblyOriginatorKeyFile>.\.secureArea\electrifier_PrivateKey.pfx</AssemblyOriginatorKeyFile>
+		<AssemblyOriginatorKeyFile>W:\git-projects\tajbender\electrifier-v1.23\branch main\electrifier-v1.23\.secureArea\ThorstenJung_cert.pfx</AssemblyOriginatorKeyFile>
 		<Copyright>https://scheunenproduktion.de</Copyright>
 		<CreateMSIXPackage>True</CreateMSIXPackage>
 		<DelaySign>True</DelaySign>
@@ -101,6 +101,10 @@
 		<FileAlignment>4096</FileAlignment>
 	</PropertyGroup>
 
+<!--	<EnableWindowsTargeting>-->
+<!--		true-->
+<!--	</EnableWindowsTargeting>-->
+
 	<ItemGroup>
 		<EditorConfigFiles Remove=".\Views\.editorconfig" />
 	</ItemGroup>
@@ -119,9 +123,4 @@
 		<Folder Include="Assets\%28!%29 Stock Images %28!%29\" />
 		<None Include=".\*\.editorconfig" />
 	</ItemGroup>
-
-	<!--	<EnableWindowsTargeting>-->
-	<!--		true-->
-	<!--	</EnableWindowsTargeting>-->
-
 </Project>
