@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<ApplicationIcon>Assets/WindowIcon.ico</ApplicationIcon>
 		<AssemblyName>electrifier</AssemblyName>
-		<AssemblyOriginatorKeyFile>W:\git-projects\tajbender\electrifier-v1.23\branch main\electrifier-v1.23\.secureArea\ThorstenJung_cert.pfx</AssemblyOriginatorKeyFile>
+		<AssemblyOriginatorKeyFile>.\..\..\.secureArea\ThorstenJung_cert.pfx</AssemblyOriginatorKeyFile>
 		<Copyright>https://scheunenproduktion.de</Copyright>
 		<CreateMSIXPackage>True</CreateMSIXPackage>
 		<DelaySign>True</DelaySign>
