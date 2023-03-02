@@ -1,24 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<ApplicationIcon>Assets/WindowIcon.ico</ApplicationIcon>
+		<AssemblyName>electrifier</AssemblyName>
+		<AssemblyOriginatorKeyFile>.\..\..\.secureArea\ThorstenJung_cert.pfx</AssemblyOriginatorKeyFile>
+		<Copyright>https://scheunenproduktion.de</Copyright>
+		<CreateMSIXPackage>True</CreateMSIXPackage>
+		<DelaySign>True</DelaySign>
+		<EnableMsixTooling>true</EnableMsixTooling>
+		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Nullable>enable</Nullable>
 		<OutputType>WinExe</OutputType>
+		<PackageIcon>This is ALPHA 420px.png</PackageIcon>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageProjectUrl>https://github.com/electrifier</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageReleaseNotes>march on release</PackageReleaseNotes>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<PackageTags>electrifier; electrifier.org; tajbender; scheunenprduktion.de; scheunenprduktion</PackageTags>
+		<Platforms>x86;x64;arm64</Platforms>
+		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+		<PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/electrifier</RepositoryUrl>
+		<RootNamespace>electrifier</RootNamespace>
+		<RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+		<RunPostBuildEvent>Always</RunPostBuildEvent>
+		<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+		<SignAssembly>True</SignAssembly>
+		<StartupObject>electrifier.Program</StartupObject>
+		<SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
 		<TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
 		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-		<RootNamespace>electrifier</RootNamespace>
-		<ApplicationIcon>Assets/WindowIcon.ico</ApplicationIcon>
-		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<Platforms>x86;x64;arm64</Platforms>
-		<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-		<PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
+		<Title>electrifier.nuGet</Title>
 		<UseWinUI>true</UseWinUI>
-		<EnableMsixTooling>true</EnableMsixTooling>
-		<SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
-		<SignAssembly>False</SignAssembly>
-		<NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -31,15 +47,19 @@
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 		<PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.1" />
 		<PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.1.23110.8" />
 		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.230202101-experimental1" />
 		<PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
-		<PackageReference Include="WinUIEx" Version="2.1.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3-beta1" />
+		<PackageReference Include="WinUIEx" Version="2.1.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="README.md">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
 
@@ -52,46 +72,55 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-		<DebugType>full</DebugType>
+		<DebugType>none</DebugType>
+		<FileAlignment>4096</FileAlignment>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-		<DebugType>full</DebugType>
+		<DebugType>none</DebugType>
+		<FileAlignment>4096</FileAlignment>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-		<DebugType>full</DebugType>
+		<DebugType>none</DebugType>
+		<FileAlignment>4096</FileAlignment>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-		<DebugType>full</DebugType>
+		<DebugType>none</DebugType>
+		<FileAlignment>4096</FileAlignment>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|arm64'">
-		<DebugType>full</DebugType>
+		<DebugType>none</DebugType>
+		<FileAlignment>4096</FileAlignment>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm64'">
-		<DebugType>full</DebugType>
+		<DebugType>none</DebugType>
+		<FileAlignment>4096</FileAlignment>
 	</PropertyGroup>
 
+<!--	<EnableWindowsTargeting>-->
+<!--		true-->
+<!--	</EnableWindowsTargeting>-->
+
 	<ItemGroup>
-		<EditorConfigFiles Remove="W:\git-projects\tajbender\electrifier-v1.23\src\electrifier\Views\.editorconfig" />
+		<EditorConfigFiles Remove=".\Views\.editorconfig" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Include="..\..\assets\miscellaneous debris\This is ALPHA 420px.png">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+		</None>
 		<None Include="..\..\LICENSE">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
-		<None Include="W:\git-projects\tajbender\electrifier-v1.23\src\electrifier\Views\.editorconfig" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Assets\%28!%29 Stock Images %28!%29\" />
-		<Folder Include="Assets\Views\Workbench\" />
 		<Folder Include="Models\Configuration\" />
+		<Folder Include="Assets\Views\Workbench\" />
+		<Folder Include="Assets\%28!%29 Stock Images %28!%29\" />
+		<None Include=".\*\.editorconfig" />
 	</ItemGroup>
-
-
 </Project>

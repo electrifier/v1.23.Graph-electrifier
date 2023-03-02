@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Text;
 using electrifier.ViewModels;
 
 using Microsoft.UI.Xaml.Controls;
@@ -37,6 +38,8 @@ public sealed partial class WorkbenchPage : Page
     /// <returns></returns>
     private string GetDebuggerDisplay()
     {
-        return ToString();
+        return new StringBuilder("WorkBenchPage.\n")
+            .AppendLine($"ViewModel: { ViewModel.ToString() }")
+            .ToString();
     }
 }

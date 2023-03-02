@@ -69,17 +69,21 @@ public sealed partial class GuruMeditationDialoge : ContentDialog
         {
             var sb = new StringBuilder();
             sb.AppendLine($"*** GURU MEDITATION ***\n");
-            sb.AppendLine($"Reason: {args.ToString()}");
+
+            if(args != null)
+            {
+                sb.AppendLine($"Reason: {args.ToString()} \n");
+            }
 
             await ShowAsync();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-
+            // TODO: log exception
         }
         finally
         {
-            // TODO: log exception
+            // TODO: Clean up, save config.
         }
 
 
