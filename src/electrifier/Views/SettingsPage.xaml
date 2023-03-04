@@ -124,13 +124,13 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
-                        Width="*" />
+                        Width="50*" />
+                    <ColumnDefinition
+                        Width="50*" />
                     <ColumnDefinition
                         Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition
-                        Height="Auto" />
                     <RowDefinition
                         Height="Auto" />
                     <RowDefinition
@@ -144,10 +144,11 @@
                     Grid.Row="0"
                     Margin="{StaticResource SmallTopMargin}"
                     Style="{ThemeResource BodyTextBlockStyle}"
-                    Text="© 2023 tajbender" />
+                    Text="© 2023 tajbender aka Thorsten Jung, and contributors" />
                 <HyperlinkButton
                     Content="eine Scheunenproduktion."
                     Grid.Column="0"
+                    Grid.ColumnSpan="2"
                     Grid.Row="1"
                     NavigateUri="https://www.scheunenproduktion.de/"
                     Style="{ThemeResource DefaultHyperlinkButtonStyle}" />
@@ -157,20 +158,31 @@
                     Style="{ThemeResource BodyTextBlockStyle}"
                     Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" />
                 <TextBlock
-                    Grid.Column="0"
-                    Grid.Row="3"
+                    Grid.Column="1"
+                    Grid.Row="2"
                     Style="{ThemeResource BodyTextBlockStyle}"
                     FontStyle="Italic"
-                    Text="march on edition."
-                    VerticalAlignment="Bottom">
+                    Text="Imperial March">
                 </TextBlock>
                 <ImageIcon
                     Grid.Column="2"
-                    Grid.RowSpan="4"
+                    Grid.RowSpan="3"
                     MaxHeight="96"
                     Margin="{ThemeResource TabViewItemHeaderIconMargin}"
                     Source="..\Assets\Views\this is alpha_420px.png" />
             </Grid>
+
+            <TextBlock
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.Row="3"
+                HorizontalAlignment="Center"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                FontStyle="Italic"
+                Text="DEBUG VERSION: Trespassers will be prosecuted!">
+            </TextBlock>
+
+
             <StackPanel
                 Margin="{StaticResource SmallTopMargin}"
                 Orientation="Vertical">
@@ -254,6 +266,7 @@
                         The 3rd and the Mortal.
                     </Paragraph>
                     <Paragraph>
+                        No animals were harmed during this production: 
                         <Hyperlink
                             NavigateUri="https://www.Tierisch-Aktiv.eu/">Tierisch-Aktiv.eu</Hyperlink>
                     </Paragraph>
