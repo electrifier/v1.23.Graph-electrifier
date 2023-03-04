@@ -9,7 +9,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:xaml="using:Microsoft.UI.Xaml"
-    xmlns:xaml1="using:electrifier.ViewModels"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 
     <Page.Resources>
@@ -178,18 +177,22 @@
                 <TextBlock
                     Style="{ThemeResource SubtitleTextBlockStyle}"
                     Text="electrifier is free software." />
-                <TextBlock
+
+                <RichTextBlock
+                    SelectionHighlightColor="Aqua"
                     Style="{ThemeResource DetailBodyBaseMediumStyle}">
-                    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
-                    You may obtain a copy of the License at
-                </TextBlock>
-                <HyperlinkButton
-                    x:Uid="SettingsPage_LicenseTermsLink" />
-                <TextBlock
-                    Style="{ThemeResource DetailBodyBaseMediumStyle}">
-                    Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                    See the License for the specific language governing permissions and limitations under the License.
-                </TextBlock>
+                    <Paragraph
+                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                        Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+                        <Hyperlink
+                            NavigateUri="http://www.apache.org/licenses/LICENSE-2.0">www.apache.org/licenses/LICENSE-2.0</Hyperlink>
+                    </Paragraph>
+
+                    <Paragraph
+                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                        Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+                    </Paragraph>
+                </RichTextBlock>
             </StackPanel>
             <StackPanel
                 Margin="{StaticResource SmallTopMargin}">
@@ -198,7 +201,7 @@
                     All your Base are belong to Us!
                 </TextBlock>
                 <HyperlinkButton
-                    x:Uid="SettingsPage_PrivacyTermsLink"/>
+                    x:Uid="SettingsPage_PrivacyTermsLink" />
             </StackPanel>
             <StackPanel
                 Margin="{StaticResource SmallTopMargin}">
@@ -208,40 +211,60 @@
                 <RichTextBlock
                     SelectionHighlightColor="Aqua"
                     Style="{ThemeResource DetailBodyBaseMediumStyle}">
-                    <Paragraph>
+                    <Paragraph
+                        Margin="{StaticResource TextBoxTopHeaderMargin}">
                         In aeterna caritate, Mater.
-                        Papa, Sabine, Markus, Sandra und die Jungs.
-                        Barney, Sammy, Mikesch. Benny.
                     </Paragraph>
-                    <Paragraph>
-                        Bengalis. 
-                        Lucipetra. 
-                        Schney, do bin ich dahamm. 
+                    <Paragraph
+                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                        Papa,
+                        Sabine,
+                        Markus,
+                        Sandra and all the other Jungs.
+                    </Paragraph>
+                    <Paragraph
+                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                        Barney.
+                        Sammy.
+                        Mikesch.
+                        Benny.
+                    </Paragraph>
+                    <Paragraph
+                        Margin="{StaticResource TextBoxTopHeaderMargin}">
                         Abi '97.
+                        Die Bengalis.
                         LoSPOnditos.
+                        Lucipetra.
+                        Schney, do bin ich dahamm.
                     </Paragraph>
-                    <Paragraph>
+                    <Paragraph
+                        Margin="{StaticResource TextBoxTopHeaderMargin}">
                         <Hyperlink
                             NavigateUri="https://silenceofthoughts.bandcamp.com/">Silence of Thoughts.</Hyperlink>
-                    </Paragraph>
-                    <Paragraph>
-                        All the others.
-                    </Paragraph>
-                    <Paragraph>
                         Dawnbreed. 
                         Dry Weave.
+                        Forced to Decay.
                         Monochrome. 
                         Nebel.
                         Neurosis.
-                        Psycotic Waltz. 
-                        The 3rd and the Mortal. 
+                        Psychotic Waltz. 
+                        Satan Verreck.
+                        The 3rd and the Mortal.
                     </Paragraph>
-                    <Paragraph>
+                    <Paragraph
+                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                        ...and all the others... thx for reading.
+                    </Paragraph>
+                    <Paragraph
+                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                        <Hyperlink
+                            NavigateUri="https://www.github.com/electrifier">Spread the Word. And the Disk.</Hyperlink>
+                    </Paragraph>
+                    <Paragraph
+                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                        No animals have been harmed in this production: 
                         <Hyperlink
                             NavigateUri="https://www.Tierisch-Aktiv.eu/">Tierisch-Aktiv.eu</Hyperlink>
-                    </Paragraph>
-                    <Paragraph>
-                        Peace.                        
                     </Paragraph>
                 </RichTextBlock>
             </StackPanel>
