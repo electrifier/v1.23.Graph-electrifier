@@ -144,7 +144,7 @@
                     Grid.Row="0"
                     Margin="{StaticResource SmallTopMargin}"
                     Style="{ThemeResource BodyTextBlockStyle}"
-                    Text="© 2023 tajbender aka Thorsten Jung, and contributors" />
+                    Text="© 2023 tajbender aka Thorsten Jung and contributors" />
                 <HyperlinkButton
                     Content="eine Scheunenproduktion."
                     Grid.Column="0"
