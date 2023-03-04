@@ -240,8 +240,10 @@
                     <Paragraph
                         Margin="{StaticResource TextBoxTopHeaderMargin}">
                         <Hyperlink
-                            NavigateUri="https://silenceofthoughts.bandcamp.com/">Silence of Thoughts.</Hyperlink>
-                        Dawnbreed. 
+                            NavigateUri="https://silenceofthoughts.bandcamp.com/">Silence of Thoughts:</Hyperlink>
+                        Dawnbreed.
+                        <Hyperlink
+                            NavigateUri="https://de.wikipedia.org/wiki/Dead_(Band)">Dead</Hyperlink>.
                         Dry Weave.
                         Forced to Decay.
                         Monochrome. 
@@ -251,18 +253,7 @@
                         Satan Verreck.
                         The 3rd and the Mortal.
                     </Paragraph>
-                    <Paragraph
-                        Margin="{StaticResource TextBoxTopHeaderMargin}">
-                        ...and all the others... thx for reading.
-                    </Paragraph>
-                    <Paragraph
-                        Margin="{StaticResource TextBoxTopHeaderMargin}">
-                        <Hyperlink
-                            NavigateUri="https://www.github.com/electrifier">Spread the Word. And the Disk.</Hyperlink>
-                    </Paragraph>
-                    <Paragraph
-                        Margin="{StaticResource TextBoxTopHeaderMargin}">
-                        No animals have been harmed in this production: 
+                    <Paragraph>
                         <Hyperlink
                             NavigateUri="https://www.Tierisch-Aktiv.eu/">Tierisch-Aktiv.eu</Hyperlink>
                     </Paragraph>
