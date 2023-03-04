@@ -2,10 +2,10 @@
 	<PropertyGroup>
 		<ApplicationIcon>Assets/WindowIcon.ico</ApplicationIcon>
 		<AssemblyName>electrifier</AssemblyName>
-		<AssemblyOriginatorKeyFile>.\..\..\.secureArea\ThorstenJung_cert.pfx</AssemblyOriginatorKeyFile>
+		<AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
 		<Copyright>https://scheunenproduktion.de</Copyright>
-		<CreateMSIXPackage>True</CreateMSIXPackage>
-		<DelaySign>True</DelaySign>
+		<CreateMSIXPackage>False</CreateMSIXPackage>
+		<DelaySign>False</DelaySign>
 		<EnableMsixTooling>true</EnableMsixTooling>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -28,7 +28,7 @@
 		<RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-		<SignAssembly>True</SignAssembly>
+		<SignAssembly>False</SignAssembly>
 		<StartupObject>electrifier.Program</StartupObject>
 		<SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
 		<TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
