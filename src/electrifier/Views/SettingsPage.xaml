@@ -156,6 +156,7 @@
                     Grid.Column="0"
                     Grid.Row="2"
                     Style="{ThemeResource BodyTextBlockStyle}"
+                    HorizontalTextAlignment="Center"
                     Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" />
                 <TextBlock
                     Grid.Column="1"
@@ -172,13 +173,10 @@
                     Source="..\Assets\Views\this is alpha_420px.png" />
             </Grid>
             <TextBlock
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Grid.Row="3"
-                HorizontalAlignment="Center"
-                Style="{ThemeResource BodyStrongTextBlockStyle}"
                 FontStyle="Italic"
-                Text="DEBUG VERSION: Trespassers will be prosecuted!">
+                TextAlignment="Center"
+                Style="{ThemeResource BodyTextBlockStyle}">
+                DEBUG VERSION<LineBreak />Trespassers will be prosecuted!
             </TextBlock>
             <StackPanel
                 Margin="{StaticResource SmallTopMargin}"
@@ -248,10 +246,10 @@
                     <Paragraph
                         Margin="{StaticResource TextBoxTopHeaderMargin}">
                         <Hyperlink
-                            NavigateUri="https://silenceofthoughts.bandcamp.com/">Silence of Thoughts</Hyperlink>.
+                            NavigateUri="https://silenceofthoughts.bandcamp.com/">Silence of Thoughts.</Hyperlink> 
                         Dawnbreed.
                         <Hyperlink
-                            NavigateUri="https://de.wikipedia.org/wiki/Dead_(Band)">Dead</Hyperlink>.
+                            NavigateUri="https://de.wikipedia.org/wiki/Dead_(Band)">Dead.</Hyperlink>
                         Dry Weave.
                         Forced to Decay.
                         Monochrome.
