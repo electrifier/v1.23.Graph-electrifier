@@ -207,7 +207,9 @@
                     All your Base are belong to Us!
                 </TextBlock>
                 <HyperlinkButton
-                    x:Uid="SettingsPage_PrivacyTermsLink" />
+                    Content="Privacy Statement."
+                    NavigateUri="https://github.com/electrifier/electrifier/blob/main/PRIVACY.md"
+                    Style="{ThemeResource DefaultHyperlinkButtonStyle}" />
             </StackPanel>
             <StackPanel
                 Margin="{StaticResource SmallTopMargin}">
@@ -260,12 +262,13 @@
                         The 3rd and the Mortal.
                     </Paragraph>
                 </RichTextBlock>
-                <RichTextBlock
-                    Margin="{StaticResource SmallTopMargin}"
-                    Style="{ThemeResource DetailBodyBaseMediumStyle}">
-                    <Paragraph
-                        FontStyle="Oblique">No animals were harmed during this production.</Paragraph>
-                </RichTextBlock>
+            </StackPanel>
+            <StackPanel
+                Margin="{StaticResource SmallTopMargin}">
+                <TextBlock
+                    Style="{ThemeResource BodyTextBlockStyle}">
+                    No animals were harmed during this production.
+                </TextBlock>
                 <HyperlinkButton
                     Content="Tierisch-Aktiv.eu"
                     NavigateUri="https://www.Tierisch-Aktiv.eu/"

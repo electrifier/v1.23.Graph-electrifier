@@ -52,6 +52,8 @@ public partial class App : Application
     {
         InitializeComponent();
 
+        UnhandledException += App_UnhandledException;
+
         Host = Microsoft.Extensions.Hosting.Host.
             CreateDefaultBuilder().
             UseContentRoot(AppContext.BaseDirectory).
@@ -105,16 +107,14 @@ public partial class App : Application
 
         App.GetService<IAppNotificationService>().Initialize();
 
-        AppCenter.Start("{Your app secret here}", typeof(Analytics), typeof(Crashes));
-
-        UnhandledException += App_UnhandledException;
+        //        AppCenter.Start("{Your app secret here}", typeof(Analytics), typeof(Crashes));
 
         //        App_UnhandledException(this, new Microsoft.UI.Xaml.UnhandledExceptionEventArgs(this, false));
         //System.UnhandledExceptionEventArgs args = new System.UnhandledExceptionEventArgs();
 
         //var v1 = new Microsoft.UI.Xaml.UnhandledExceptionEventArgs();
 
-//        UnhandledException.UnhandledException += App_UnhandledException;
+        //        UnhandledException.UnhandledException += App_UnhandledException;
 
     }
 

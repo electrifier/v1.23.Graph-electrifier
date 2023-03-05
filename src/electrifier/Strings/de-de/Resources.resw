@@ -177,12 +177,6 @@
   <data name="SettingsPage_About.Text" xml:space="preserve">
     <value>über electrifier:</value>
   </data>
-  <data name="SettingsPage_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Datenschutzerklärung</value>
-  </data>
-  <data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://github.com/electrifier/electrifier/blob/main/PRIVACY.md</value>
-  </data>
   <data name="Settings_Language.Text" xml:space="preserve">
     <value>Sprache</value>
   </data>
