@@ -52,7 +52,7 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        UnhandledException += App_UnhandledException;
+        //UnhandledException += App_UnhandledException;
 
         Host = Microsoft.Extensions.Hosting.Host.
             CreateDefaultBuilder().
