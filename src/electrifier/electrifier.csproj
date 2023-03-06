@@ -2,12 +2,12 @@
 	<PropertyGroup>
 		<ApplicationIcon>Assets/WindowIcon.ico</ApplicationIcon>
 		<AssemblyName>electrifier</AssemblyName>
-		<AssemblyOriginatorKeyFile>.\..\..\.secureArea\ThorstenJung_cert.pfx</AssemblyOriginatorKeyFile>
+		<AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
 		<Copyright>https://scheunenproduktion.de</Copyright>
-		<CreateMSIXPackage>True</CreateMSIXPackage>
-		<DelaySign>True</DelaySign>
+		<CreateMSIXPackage>False</CreateMSIXPackage>
+		<EnableWindowsTargeting>true</EnableWindowsTargeting>
+		<DelaySign>False</DelaySign>
 		<EnableMsixTooling>true</EnableMsixTooling>
-		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<NeutralLanguage>en</NeutralLanguage>
 		<Nullable>enable</Nullable>
@@ -16,24 +16,22 @@
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageProjectUrl>https://github.com/electrifier</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageReleaseNotes>march on release</PackageReleaseNotes>
+		<PackageReleaseNotes>Imperial March</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<PackageTags>electrifier; electrifier.org; tajbender; scheunenprduktion.de; scheunenprduktion</PackageTags>
 		<Platforms>x86;x64;arm64</Platforms>
-		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
 		<PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/electrifier</RepositoryUrl>
 		<RootNamespace>electrifier</RootNamespace>
-		<RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-		<SignAssembly>True</SignAssembly>
+		<SignAssembly>False</SignAssembly>
 		<StartupObject>electrifier.Program</StartupObject>
 		<SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
 		<TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
 		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-		<Title>electrifier.nuGet</Title>
 		<UseWinUI>true</UseWinUI>
 	</PropertyGroup>
 
@@ -55,7 +53,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="README.md">
 		  <Pack>True</Pack>
@@ -100,10 +98,6 @@
 		<DebugType>none</DebugType>
 		<FileAlignment>4096</FileAlignment>
 	</PropertyGroup>
-
-<!--	<EnableWindowsTargeting>-->
-<!--		true-->
-<!--	</EnableWindowsTargeting>-->
 
 	<ItemGroup>
 		<EditorConfigFiles Remove=".\Views\.editorconfig" />
