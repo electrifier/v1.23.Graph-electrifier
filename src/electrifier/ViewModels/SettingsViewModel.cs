@@ -15,7 +15,7 @@ public class SettingsViewModel : ObservableRecipient
     private readonly IThemeSelectorService _themeSelectorService;
     private ElementTheme _elementTheme;
     private readonly ILocalSettingsService _localSettingsService;
-    private LocalSettingsOptions.GuiLanguage _guiLanguage;
+    private LocalSettingsOptions.GuiLanguage _guiLanguage = LocalSettingsOptions.GuiLanguage.Default;
     private string _versionDescription;
 
     #if DEBUG
@@ -38,7 +38,12 @@ public class SettingsViewModel : ObservableRecipient
 
     public string VersionDescription
     {
-        get => _versionDescription;
+        get
+        {
+            _versionDescription ??= GetVersionDescription();
+
+            return _versionDescription;
+        }
         set => SetProperty(ref _versionDescription, value);
     }
 
@@ -58,8 +63,6 @@ public class SettingsViewModel : ObservableRecipient
         _localSettingsService = localSettingsService ?? throw new ArgumentNullException(nameof(localSettingsService));
 
         _elementTheme = _themeSelectorService.Theme;
-        _guiLanguage = LocalSettingsOptions.GuiLanguage.Default;
-        _versionDescription = GetVersionDescription();
 
         SwitchThemeCommand = new RelayCommand<ElementTheme>(
             async (param) =>
