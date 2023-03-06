@@ -35,3 +35,9 @@ FYI: @electrifier is contributing to [30 days of Learning](https://github.com/ta
 ![landing](https://user-images.githubusercontent.com/10961499/222470044-30215bee-064b-4d05-80db-2698363a347f.png)
 
 See https://github.com/tajbender/30daysof.
+
+# Appendix
+
+## Time Capsule
+
+See what electrifier looked like in the past.
