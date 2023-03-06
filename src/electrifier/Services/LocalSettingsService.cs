@@ -1,9 +1,7 @@
 ﻿using electrifier.Contracts.Services;
 using electrifier.Helpers;
 using electrifier.Models;
-
 using Microsoft.Extensions.Options;
-
 using Windows.ApplicationModel;
 using Windows.Storage;
 
@@ -45,8 +43,51 @@ public class LocalSettingsService : ILocalSettingsService
             _isInitialized = true;
         }
     }
-    public async Task DeleteSettingAsync<T>(string key) => throw new NotImplementedException();
-    public async Task<T> GetSettingAsync<T>(string key, T defaultValue) => throw new NotImplementedException();
+    public async Task DeleteSettingAsync<T>(string key)
+    {
+        // TODO: Don't delete but move to 'recycle bin'
+
+        if (RuntimeHelper.IsMSIX)
+        {
+            ApplicationData.Current.LocalSettings.DeleteContainer(key);
+        }
+        else
+        {
+            await InitializeAsync();
+            // TODO:
+            //_settings[key] = await Json.StringifyAsync(value);
+            //await Task.Run(() => _fileService.Save(_applicationDataFolder, _localsettingsFile, _settings));
+        }
+    }
+
+    public async Task<T> GetSettingAsync<T>(string key, T defaultValue)
+    {
+        var result = defaultValue;
+
+        if (defaultValue == null)
+        {
+            result = default;
+        }
+
+        if (RuntimeHelper.IsMSIX)
+        {
+            if (ApplicationData.Current.LocalSettings.Values.TryGetValue(key, out var obj))
+            {
+                result = await Json.ToObjectAsync<T>((string)obj);
+            }
+        }
+        else
+        {
+            await InitializeAsync();
+
+            if (_settings != null && _settings.TryGetValue(key, out var obj))
+            {
+                result = await Json.ToObjectAsync<T>((string)obj);
+            }
+        }
+
+        return result;
+    }
 
     public async Task<T?> ReadSettingAsync<T>(string key)
     {
