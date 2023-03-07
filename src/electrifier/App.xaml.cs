@@ -3,6 +3,7 @@
 #define DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
 
 
+using System.Diagnostics;
 using System.Text;
 using electrifier.Activation;
 using electrifier.Contracts.Services;
@@ -30,15 +31,26 @@ public partial class App : Application
         get;
     }
 
-    public static T GetService<T>()
+    public static T? GetService<T>()
         where T : class
     {
-        if ((App.Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
+        try
         {
-            throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
+            if ((App.Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
+            {
+                throw new ArgumentException(
+                    $"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
+            }
+
+            return service;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            Debug.WriteLine(ex.StackTrace);
         }
 
-        return service;
+        return null;
     }
 
     public static WindowEx MainWindow { get; } = new MainWindow();

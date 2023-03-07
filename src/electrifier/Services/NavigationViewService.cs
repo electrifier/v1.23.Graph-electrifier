@@ -34,7 +34,7 @@ public class NavigationViewService : INavigationViewService
         _navigationView.ItemInvoked += OnItemInvoked;
     }
 
-    public void UnregisterEvents()
+    public void UnregisterMyEvents()
     {
         if (_navigationView != null)
         {
