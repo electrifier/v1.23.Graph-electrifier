@@ -1,27 +1,30 @@
 # electrifier
 integrated desktop environment
 
-## What is electrifier about?
+## Hack Together: Microsoft Graph and .NET (Running)
+[![Hack Together: Microsoft Graph and .NET](https://img.shields.io/badge/Microsoft%20-Hack--Together-orange?style=for-the-badge&logo=microsoft)](https://github.com/microsoft/hack-together)
 
-electrifier is a project i've been working on in my spare time for some years now.
+## What is this site about?
+electrifier is a project i've been working on in my spare time for some years now. Several parts had been re-written:
 
-I've re-written several parts many times. It's just a fun project to test out what's happening in .net - world. The Original .net-version just brought tab-support to _Windows File Explorer_ 🙌 🎉.
+* The Original Windows Forms version brought tab-support to _Windows File Explorer_ 🙌 🎉.
+The project has been archived in the meantime, but you may make a fork here:
+
+* When I heard about WinApp SDK last year, I was very excited. I never used WPF for perfomance reasons, but I love WinUI.
+
+## Contributors:
+
+* [David Hall](https://github.com/dahall)'s [@dahall/Vanara](https://github.com/dahall/Vanara) project. It's not _that other WinAPI-Abstraction Layer_ but a complete collection of wrappers around every classic, good old *Windows 32 API*. And It's a great source for good practices.
+* The great people at [JetBrains](https://www.jetbrains.com/community/opensource/) for providing a open source license of JetBrains ToolBox. Thx a lot!
+
+<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" height="200" />
+
+## Used Techniques
+* [Graph](https://developer.microsoft.com/de-de/graph/) will be used for _Cloud Features_
+  A history will keep track of which ressources you were using on this or that device.
  
-When I heard about WinApp SDK last year, I was very excited. I never used WPF for perfomance reasons, but I love WinUI.
-
-I also like using [@dahall/Vanara](https://github.com/dahall/Vanara) by [David Hall](https://github.com/dahall). It's a great project, for everyone who's interested. It's not _that other WinAPI-Abstraction Layer_ but a complete shell around about every native windows API.
- 
-And It's a great source for good practices.
-
-[Graph](https://developer.microsoft.com/de-de/graph/) will be used for _Cloud Features_: Think of a history of when I have worked on or with
-* that project,
-* that document,
-* on this device.
- 
-Cloud features are still WIP. But I think, Microsoft Graph sounds the place to store the database stuff I want to collect and analyze.
 
 # Events
-
 ## Hack Together: Microsoft Graph and .NET (Running)
 
 https://github.com/microsoft/hack-together/issues/38
