@@ -107,7 +107,7 @@
         </StackPanel>
         <StackPanel
             Grid.Column="1"
-            Name="About_StackPanel"
+            Name="AboutStackPanel"
             Orientation="Vertical">
             <StackPanel.Background>
                 <ImageBrush
@@ -185,9 +185,9 @@
                     Style="{ThemeResource SubtitleTextBlockStyle}"
                     Text="electrifier is free software." />
                 <RichTextBlock
-                    Style="{ThemeResource DetailBodyBaseMediumStyle}">
+                    Style="{ThemeResource BodyRichTextBlockStyle}">
                     <Paragraph
-                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                        Margin="{StaticResource MediumTopMargin}">
                         Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
                         <Hyperlink
                             NavigateUri="http://www.apache.org/licenses/LICENSE-2.0">www.apache.org/licenses/LICENSE-2.0</Hyperlink>

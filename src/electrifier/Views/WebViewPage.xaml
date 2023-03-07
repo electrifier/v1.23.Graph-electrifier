@@ -38,7 +38,7 @@
                     x:Uid="BrowserBackButton"
                     Command="{x:Bind ViewModel.BrowserBackCommand, Mode=OneWay}"
                     Margin="{StaticResource XSmallLeftTopRightBottomMargin}"
-                    Padding="{StaticResource XXSmallLeftTopRightBottomMargin}"
+                    Padding="{StaticResource XxSmallLeftTopRightBottomMargin}"
                     BorderBrush="Transparent">
                     <SymbolIcon
                         Symbol="Back" />
@@ -47,7 +47,7 @@
                     x:Uid="BrowserForwardButton"
                     Command="{x:Bind ViewModel.BrowserForwardCommand, Mode=OneWay}"
                     Margin="{StaticResource XSmallLeftTopRightBottomMargin}"
-                    Padding="{StaticResource XXSmallLeftTopRightBottomMargin}"
+                    Padding="{StaticResource XxSmallLeftTopRightBottomMargin}"
                     BorderBrush="Transparent">
                     <SymbolIcon
                         Symbol="Forward" />
@@ -56,7 +56,7 @@
                     x:Uid="ReloadButton"
                     Command="{x:Bind ViewModel.ReloadCommand}"
                     Margin="{StaticResource XSmallLeftTopRightBottomMargin}"
-                    Padding="{StaticResource XXSmallLeftTopRightBottomMargin}"
+                    Padding="{StaticResource XxSmallLeftTopRightBottomMargin}"
                     BorderBrush="Transparent"
                     Background="Transparent">
                     <SymbolIcon
@@ -68,21 +68,21 @@
 
             <AutoSuggestBox
                 x:Uid="AddressURLAutoSuggestBox"
-                x:Name="AddressURLAutoSuggestBox"
+                x:Name="AddressUrlAutoSuggestBox"
                 Grid.Column="1"
                 Text="{x:Bind ViewModel.CurrentSourceForDisplay, Mode=OneWay}"
                 PlaceholderText="{x:Bind ViewModel.Source, Mode=OneWay}"
                 QueryIcon="Find"
                 KeyUp="AutoSuggestBox_KeyUp"
                 Margin="{StaticResource XSmallLeftTopRightBottomMargin}"
-                Padding="{StaticResource XXSmallLeftTopRightBottomMargin}" />
+                Padding="{StaticResource XxSmallLeftTopRightBottomMargin}" />
 
             <Button
                 x:Uid="OpenInBrowserButton"
                 Grid.Column="2"
                 Command="{x:Bind ViewModel.OpenInBrowserCommand}"
                 Margin="{StaticResource XSmallLeftTopRightBottomMargin}"
-                Padding="{StaticResource XXSmallLeftTopRightBottomMargin}">
+                Padding="{StaticResource XxSmallLeftTopRightBottomMargin}">
                 <SymbolIcon
                     Symbol="Globe" />
             </Button>

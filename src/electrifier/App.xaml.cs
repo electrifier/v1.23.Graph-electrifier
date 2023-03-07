@@ -3,6 +3,7 @@
 #define DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
 
 
+using System.Text;
 using electrifier.Activation;
 using electrifier.Contracts.Services;
 using electrifier.Models;
@@ -133,7 +134,7 @@ public partial class App : Application
     /// <param name="itIsComplicated">
     ///     Set <b>true</b> to force shutdown in case of critical error.<br/>
     ///     <br/>
-    ///     Triggers <see cref="UnhandledExceptionEventArgs.Handled"/>.
+    ///     Triggers <see cref="ABI.Microsoft.UI.Xaml.UnhandledExceptionEventArgs.Handled"/>.
     /// </param>
     private void App_UnhandledException(
         object sender,
@@ -142,31 +143,14 @@ public partial class App : Application
     {
         try
         {
+            StringBuilder sb = new();
+
+            sb.AppendJoin("\n", "Exception happened!", "line 1", "line 2");
+
             // TODO: Try to make an backup of current configuration and mark as "dirty".
             // TODO: Log and handle exceptions as appropriate.
 
-            //var guru = App.GetService<GuruMeditationDialoge>();
-
             //guru?.ThrowGuruMeditation(sender, args);
-
-
-
-            /* 
-            var stringBuilder = new StringBuilder()
-                .AppendLine("GURU MEDITATION")
-                .AppendLine("Sender: { }")
-                .AppendLine(args?.ToString());
-             */
-
-
-
-            //if (args is not null)
-            //{
-            //    // TODO: Exception happened!
-
-            //    args.Handled = true;
-            //}
-
 
             /*
 

@@ -16,7 +16,7 @@
         <Grid.Resources>
             <DataTemplate
                 x:DataType="local:DosShellItem"
-                x:Key="ImageGridView_ItemTemplate">
+                x:Key="ImageGridViewItemTemplate">
                 <Grid
                     Height="150"
                     Width="150"
@@ -62,7 +62,7 @@
             </DataTemplate>
 
             <Style
-                x:Key="ImageGridView_ItemContainerStyle"
+                x:Key="ImageGridViewItemContainerStyle"
                 TargetType="GridViewItem">
                 <Setter
                     Property="Margin"
@@ -72,9 +72,9 @@
 
         <GridView
             x:Name="ImageGridView"
-            ItemTemplate="{StaticResource ImageGridView_ItemTemplate}"
+            ItemTemplate="{StaticResource ImageGridViewItemTemplate}"
             ItemsSource="{x:Bind ShellItems}"
-            ItemContainerStyle="{StaticResource ImageGridView_ItemContainerStyle}"
+            ItemContainerStyle="{StaticResource ImageGridViewItemContainerStyle}"
             ContainerContentChanging="ImageGridView_ContainerContentChanging">
         </GridView>
 

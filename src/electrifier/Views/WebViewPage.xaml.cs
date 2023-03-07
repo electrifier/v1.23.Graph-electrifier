@@ -26,7 +26,7 @@ public sealed partial class WebViewPage : Page
     {
         if (e.Key == VirtualKey.Enter)
         {
-            var urlText = AddressURLAutoSuggestBox.Text;
+            var urlText = AddressUrlAutoSuggestBox.Text;
 
             if (!string.IsNullOrWhiteSpace(urlText))
             {
