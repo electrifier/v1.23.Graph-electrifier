@@ -39,14 +39,12 @@
                     <!-- W:\git-projects\tajbender\electrifier-v1.23\branch main\electrifier-v1.23\src\electrifier\Assets\Views\Workbench\Shell32 Desfualt Folder.ico -->
 
                     <ImageIcon
-                        x:Uid="ImageGridView_ItemTemplate_DefaultFolderIcon"
                         x:Name="ImageGridView_ItemTemplate_DefaultFolderIcon"
                         Visibility="{x:Bind IsFolder}"
                         Source="..\Assets\Views\Workbench\Shell32 Default Folder.ico"
                         Grid.Row="0" />
 
                     <ImageIcon
-                        x:Uid="ImageGridView_ItemTemplate_DefaultFileIcon"
                         x:Name="ImageGridView_ItemTemplate_DefaultFileIcon"
                         Visibility="{x:Bind IsFile}"
                         Source="..\Assets\Views\Workbench\Shell32 Default unknown File.ico"

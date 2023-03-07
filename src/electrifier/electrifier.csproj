@@ -104,6 +104,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Models\MsGraph\" />
+		<Folder Include="ViewModels\MsGraph\" />
+		<Folder Include="Views\MsGraph\" />
 		<None Include="..\..\assets\miscellaneous debris\This is ALPHA 420px.png">
 		  <Pack>True</Pack>
 		  <PackagePath>\</PackagePath>

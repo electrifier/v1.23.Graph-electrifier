@@ -18,75 +18,98 @@
                 Opacity="0.1"
                 Stretch="UniformToFill" />
         </Grid.Background>
-        
-        <InfoBar
-            Name="ApacheLicenseInfoBar"
-            x:Uid="ApacheLicenseInfoBar"
-            IsOpen="True"
-            Severity="{x:Bind InfoBarSeverity}"
-            Title="Caution! This Is Alpha!">
-            <InfoBar.ActionButton>
-                <HyperlinkButton
-                    Content="Please accept my Apache License 2.0 Terms"
-                    HorizontalAlignment="Left"
-                    NavigateUri="https://github.com/electrifier/electrifier/blob/main/LICENSE" />
-            </InfoBar.ActionButton>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid
-                    Grid.Row="0"
-                    HorizontalAlignment="Stretch">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            MaxWidth="255" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Image
-                        Grid.Column="0"
-                        HorizontalAlignment="Center"
-                        MaxWidth="225"
-                        VerticalAlignment="Top">
-                        <Image.Source>
-                            <BitmapImage
-                                UriSource="/Assets/Views/this is alpha_420px.png" />
-                        </Image.Source>
-                    </Image>
-                    <TextBlock
-                        Grid.Column="1"
-                        TextWrapping="Wrap"
-                        VerticalAlignment="Stretch">
+        <StackPanel
+            Orientation="Vertical">
+            <InfoBar
+                Name="ApacheLicenseInfoBar"
+                x:Uid="ApacheLicenseInfoBar"
+                IsOpen="True"
+                Severity="{x:Bind InfoBarSeverity}"
+                Title="Caution! This Is Alpha!">
+                <InfoBar.ActionButton>
+                    <HyperlinkButton
+                        Content="Take care! This is a debug build, that will contain errors and untested functionality."
+                        HorizontalAlignment="Center" />
+                </InfoBar.ActionButton>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid
+                        Grid.Row="0"
+                        HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                MaxWidth="255" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Image
+                            Grid.Column="0"
+                            HorizontalAlignment="Center"
+                            MaxWidth="225"
+                            VerticalAlignment="Top">
+                            <Image.Source>
+                                <BitmapImage
+                                    UriSource="/Assets/Views/this is alpha_420px.png" />
+                            </Image.Source>
+                        </Image>
+                        <TextBlock
+                            Grid.Column="1"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="Stretch">
                         Disclaimer of Warranty. Unless required by applicable law or agreed to in writing, Licensor provides the Work (and each Contributor provides its Contributions) on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. You are solely responsible for determining the appropriateness of using or redistributing the Work and assume any risks associated with Your exercise of permissions under this License.
-                    </TextBlock>
+                        </TextBlock>
+                    </Grid>
+                    <Grid
+                        Grid.Row="1"
+                        HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="*" />
+                            <ColumnDefinition
+                                Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <CheckBox
+                            Grid.Column="0"
+                            IsEnabled="False"
+                            HorizontalAlignment="Left">
+                            I understood the consequences of using beta software.
+                        </CheckBox>
+                        <Button
+                            Grid.Column="1"
+                            IsEnabled="False"
+                            HorizontalAlignment="Right">
+                            Got it. Thanks for briefing!
+                        </Button>
+                    </Grid>
                 </Grid>
-                <Grid
-                    Grid.Row="1"
-                    HorizontalAlignment="Stretch">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="*" />
-                        <ColumnDefinition
-                            Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <CheckBox
-                        Grid.Column="0"
-                        IsEnabled="False"
-                        HorizontalAlignment="Left">
-                        I understood.
-                        Don't ask me again.
-                    </CheckBox>
-                    <Button
-                        Grid.Column="1"
-                        IsEnabled="False"
-                        HorizontalAlignment="Right">
-                        Got it. Thanks for briefing!
-                    </Button>
-                </Grid>
-            </Grid>
-        </InfoBar>
+            </InfoBar>
+            <BreadcrumbBar
+                x:Name="TopBreadcrumbBar" />
+            <VariableSizedWrapGrid
+                Orientation="Horizontal"
+                MaximumRowsOrColumns="3"
+                ItemHeight="44"
+                ItemWidth="44">
+                <Rectangle
+                    Fill="Red" />
+                <Rectangle
+                    Fill="Blue"
+                    Height="80"
+                    VariableSizedWrapGrid.RowSpan="2" />
+                <Rectangle
+                    Fill="Green"
+                    Width="80"
+                    VariableSizedWrapGrid.ColumnSpan="2" />
+                <Rectangle
+                    Fill="Yellow"
+                    Height="80"
+                    Width="80"
+                    VariableSizedWrapGrid.RowSpan="2"
+                    VariableSizedWrapGrid.ColumnSpan="2" />
+            </VariableSizedWrapGrid>
 
-        <!--// TODO: Move InfoBar to AppNatification-->
+        </StackPanel>
     </Grid>
 </Page>

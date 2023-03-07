@@ -1,10 +1,11 @@
 ﻿// Disable XAML Generated break on unhalted exception
 // <seealso href="" />
-#define DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
+//#define DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
 
 
 using System.Diagnostics;
 using System.Text;
+using CommunityToolkit.WinUI;
 using electrifier.Activation;
 using electrifier.Contracts.Services;
 using electrifier.Models;
@@ -12,6 +13,9 @@ using electrifier.Notifications;
 using electrifier.Services;
 using electrifier.ViewModels;
 using electrifier.Views;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
@@ -112,25 +116,32 @@ public partial class App : Application
                 services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
             }).Build();
 
-        App.GetService<IAppNotificationService>().Initialize();
 
-        //        AppCenter.Start("{Your app secret here}", typeof(Analytics), typeof(Crashes));
 
-        //        App_UnhandledException(this, new Microsoft.UI.Xaml.UnhandledExceptionEventArgs(this, false));
-        //System.UnhandledExceptionEventArgs args = new System.UnhandledExceptionEventArgs();
+        GetService<IAppNotificationService>()?
+            .Initialize();
 
-        //var v1 = new Microsoft.UI.Xaml.UnhandledExceptionEventArgs();
-
-        //        UnhandledException.UnhandledException += App_UnhandledException;
-
+        UnhandledException += App_UnhandledException;
     }
 
+    private void App_StartAppCenter()
+    {
+        AppCenter.Start("{ TODO:Your_app_secret_here }", typeof(Analytics), typeof(Crashes));
+    }
     /// <summary>
     /// 
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="args"></param>
-    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs args) => App_UnhandledException(sender, args, false);
+    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs args)
+    {
+        if (args is null)
+        {
+            throw new ArgumentNullException(nameof(args));
+        }
+
+        App_UnhandledException(sender, args, false);
+    }
 
     /// <summary>
     /// Log and handle exceptions as appropriate.
@@ -219,8 +230,9 @@ public partial class App : Application
     {
         base.OnLaunched(args);
 
-        // TODO: App.GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
+        //GetService<IAppNotificationService>()?
+        //    .Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
 
-        await App.GetService<IActivationService>().ActivateAsync(args);
+        await GetService<IActivationService>()?.ActivateAsync(args);
     }
 }
