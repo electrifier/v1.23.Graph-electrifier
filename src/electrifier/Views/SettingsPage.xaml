@@ -10,7 +10,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:xaml="using:Microsoft.UI.Xaml"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-
     <Page.Resources>
         <helpers:EnumToBooleanConverter
             x:Key="EnumToBooleanConverter" />
@@ -25,18 +24,14 @@
         <StackPanel
             x:Uid="Settings"
             Grid.Column="0">
-
             <StackPanel
                 Margin="{StaticResource XSmallTopMargin}">
-
                 <TextBlock
                     x:Uid="Settings_Personalization"
                     Style="{ThemeResource SubtitleTextBlockStyle}" />
             </StackPanel>
-
             <StackPanel
                 Margin="{StaticResource SmallTopBottomMargin}">
-
                 <TextBlock
                     x:Uid="Settings_Theme" />
                 <StackPanel
@@ -72,7 +67,6 @@
                         </RadioButton.CommandParameter>
                     </RadioButton>
                 </StackPanel>
-
                 <TextBlock
                     x:Uid="Settings_Language"
                     Margin="{StaticResource LargeTopMargin}" />
@@ -81,26 +75,28 @@
 
                 <StackPanel
                     Margin="{StaticResource XSmallTopMargin}">
-
-                    <!-- TODO: Implement language switch -->
-
-                    <RadioButtons
-                        IsEnabled="False">
+                    <RadioButtons>
                         <RadioButton
                             x:Uid="Settings_Language_Default"
                             Command="{x:Bind ViewModel.SwitchLanguageCommand}"
                             IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
-                            GroupName="Language" />
+                            GroupName="Language">
+                            English (use Windows setting)
+                        </RadioButton>
                         <RadioButton
                             x:Uid="Settings_Language_English"
                             Command="{x:Bind ViewModel.SwitchLanguageCommand}"
                             IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
-                            GroupName="Language" />
+                            GroupName="Language">
+                            English
+                        </RadioButton>
                         <RadioButton
                             x:Uid="Settings_Language_Deutsch"
                             Command="{x:Bind ViewModel.SwitchLanguageCommand}"
                             IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
-                            GroupName="Language" />
+                            GroupName="Language">
+                            Deutsch
+                        </RadioButton>
                     </RadioButtons>
                 </StackPanel>
             </StackPanel>
@@ -246,7 +242,7 @@
                     <Paragraph
                         Margin="{StaticResource TextBoxTopHeaderMargin}">
                         <Hyperlink
-                            NavigateUri="https://silenceofthoughts.bandcamp.com/">Silence of Thoughts.</Hyperlink> 
+                            NavigateUri="https://silenceofthoughts.bandcamp.com/">Silence of Thoughts.</Hyperlink>
                         Dawnbreed.
                         <Hyperlink
                             NavigateUri="https://de.wikipedia.org/wiki/Dead_(Band)">Dead.</Hyperlink>

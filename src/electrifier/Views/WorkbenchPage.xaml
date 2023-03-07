@@ -18,6 +18,7 @@
                 Opacity="0.1"
                 Stretch="UniformToFill" />
         </Grid.Background>
+        
         <InfoBar
             Name="ApacheLicenseInfoBar"
             x:Uid="ApacheLicenseInfoBar"
@@ -85,5 +86,7 @@
                 </Grid>
             </Grid>
         </InfoBar>
+
+        <!--// TODO: Move InfoBar to AppNatification-->
     </Grid>
 </Page>
