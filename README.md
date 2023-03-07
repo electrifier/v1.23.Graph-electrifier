@@ -1,8 +1,10 @@
 # electrifier
 integrated desktop environment
 
-## What is electrifier about?
+## Hack Together: Microsoft Graph and .NET (Running)
+[![Hack Together: Microsoft Graph and .NET](https://img.shields.io/badge/Microsoft%20-Hack--Together-orange?style=for-the-badge&logo=microsoft)](https://github.com/microsoft/hack-together)
 
+## What is this site about?
 electrifier is a project i've been working on in my spare time for some years now.
 
 I've re-written several parts many times. It's just a fun project to test out what's happening in .net - world. The Original .net-version just brought tab-support to _Windows File Explorer_ 🙌 🎉.
