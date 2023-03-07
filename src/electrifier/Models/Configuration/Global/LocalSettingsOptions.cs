@@ -1,6 +1,4 @@
-﻿using Microsoft.UI.Xaml;
-using Windows.ApplicationModel.Resources.Core;
-using Windows.Foundation.Metadata;
+﻿using Windows.ApplicationModel.Resources.Core;
 
 namespace electrifier.Models;
 

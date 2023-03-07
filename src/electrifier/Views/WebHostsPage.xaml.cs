@@ -16,4 +16,6 @@ public sealed partial class WebHostsPage : Page
         ViewModel = App.GetService<WebHostsViewModel>();
         InitializeComponent();
     }
+
+    public bool ApacheLicenseInfoBarVisibility => true; //ApacheLicenseInfoBar.IsVisible;
 }
