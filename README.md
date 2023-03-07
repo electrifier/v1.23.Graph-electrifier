@@ -15,7 +15,7 @@ The project has been archived in the meantime, but you may make a fork here:
 ## Contributors:
 
 * [David Hall](https://github.com/dahall)'s great [@dahall/Vanara](https://github.com/dahall/Vanara) project. It's not _that other WinAPI-Abstraction Layer_ but a complete collection of wrappers around every classic, good old *Windows 32 API*. And It's a great source for good practices.
-* The great people at (JetBrains)[]
+* The great people at [JetBrains](https://www.jetbrains.com/community/opensource/) for providing a open source license of their fabulous JetBrains ToolBox. Thx a lot!
 
 ## Used Techniques
 * [Graph](https://developer.microsoft.com/de-de/graph/) will be used for _Cloud Features_
