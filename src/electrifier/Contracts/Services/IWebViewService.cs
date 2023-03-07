@@ -3,7 +3,6 @@ using Microsoft.Web.WebView2.Core;
 
 namespace electrifier.Contracts.Services;
 
-
 /// <summary>
 /// See: <see href="https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/navigation-events">Navigation events for WebView2 apps</see>
 /// </summary>

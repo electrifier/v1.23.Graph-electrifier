@@ -18,11 +18,11 @@ public class SettingsViewModel : ObservableRecipient
     private LocalSettingsOptions.GuiLanguage _guiLanguage = LocalSettingsOptions.GuiLanguage.Default;
     private string _versionDescription;
 
-    #if DEBUG
+#if DEBUG
     public static bool DebugDescriptor => true;
-    #else
+#else
     public static bool DebugDescriptor => false;
-    #endif
+#endif
 
     public ElementTheme ElementTheme
     {

@@ -14,8 +14,6 @@ public class LocalSettingsOptions
         get; set;
     }
 
-    //[WindowsRuntimeType("Microsoft.UI.Xaml")]
-    //[ContractVersion(typeof(WinUIContract), 65536u)]
     public enum GuiLanguage
     {
         Default,
@@ -27,7 +25,7 @@ public class LocalSettingsOptions
     {
         get
         {
-            string runtimeLanguages = ResourceContext.GetForCurrentView().QualifierValues["Language"];
+            var runtimeLanguages = ResourceContext.GetForCurrentView().QualifierValues["Language"];
 
             // TODO: get language
 
@@ -36,9 +34,13 @@ public class LocalSettingsOptions
 
         set
         {
-            string runtimeLanguages = ResourceContext.GetForCurrentView().QualifierValues["Language"];
+            var runtimeLanguages = ResourceContext.GetForCurrentView().QualifierValues["Language"];
 
-            // TODO: set language
+            //if (runtimeLanguages.Contains(value))
+            //{
+            //    // TODO: set language
+            //}
+            //                throw new InvalidOperationException("");
         }
     }
 }

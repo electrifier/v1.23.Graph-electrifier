@@ -52,52 +52,52 @@ public partial class App : Application
             CreateDefaultBuilder().
             UseContentRoot(AppContext.BaseDirectory).
             ConfigureServices((context, services) =>
-        {
-            // Default Activation Handler
-            _ = services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
+            {
+                // Default Activation Handler
+                _ = services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
 
-            // Other Activation Handlers
-            services.AddTransient<IActivationHandler, AppNotificationActivationHandler>();
+                // Other Activation Handlers
+                services.AddTransient<IActivationHandler, AppNotificationActivationHandler>();
 
-            // Services
-            services.AddSingleton<IAppNotificationService, AppNotificationService>();
-            services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
-            services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
-            services.AddTransient<INavigationViewService, NavigationViewService>();
-            services.AddTransient<IWebViewService, WebViewService>();
+                // Services
+                services.AddSingleton<IAppNotificationService, AppNotificationService>();
+                services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
+                services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
+                services.AddTransient<INavigationViewService, NavigationViewService>();
+                services.AddTransient<IWebViewService, WebViewService>();
 
-            services.AddSingleton<IActivationService, ActivationService>();
-            services.AddSingleton<INavigationService, NavigationService>();
-            services.AddSingleton<IPageService, PageService>();
+                services.AddSingleton<IActivationService, ActivationService>();
+                services.AddSingleton<INavigationService, NavigationService>();
+                services.AddSingleton<IPageService, PageService>();
 
-            //// Core Services
-            services.AddSingleton<IFileService, FileService>();
+                //// Core Services
+                services.AddSingleton<IFileService, FileService>();
 
-            // Views and ViewModels
-            services.AddTransient<ClipboardPage>();
-            services.AddTransient<ClipboardViewModel>();
-            services.AddTransient<DevicesPage>();
-            services.AddTransient<DevicesViewModel>();
-            services.AddTransient<FileManagerPage>();
-            services.AddTransient<FileManagerViewModel>();
-            services.AddTransient<NetworkDevicesPage>();
-            services.AddTransient<NetworkDevicesViewModel>();
-            services.AddTransient<SettingsPage>();
-            services.AddTransient<SettingsViewModel>();
-            services.AddTransient<ShellPage>();
-            services.AddTransient<ShellViewModel>();
-            services.AddTransient<WebFavoritesPage>();
-            services.AddTransient<WebFavoritesViewModel>();
-            services.AddTransient<WebHostsPage>();
-            services.AddTransient<WebHostsViewModel>();
-            services.AddTransient<WebViewPage>();
-            services.AddTransient<WebViewViewModel>();
-            services.AddTransient<WorkbenchPage>();
-            services.AddTransient<WorkbenchViewModel>();
+                // Views and ViewModels
+                services.AddTransient<ClipboardPage>();
+                services.AddTransient<ClipboardViewModel>();
+                services.AddTransient<DevicesPage>();
+                services.AddTransient<DevicesViewModel>();
+                services.AddTransient<FileManagerPage>();
+                services.AddTransient<FileManagerViewModel>();
+                services.AddTransient<NetworkDevicesPage>();
+                services.AddTransient<NetworkDevicesViewModel>();
+                services.AddTransient<SettingsPage>();
+                services.AddTransient<SettingsViewModel>();
+                services.AddTransient<ShellPage>();
+                services.AddTransient<ShellViewModel>();
+                services.AddTransient<WebFavoritesPage>();
+                services.AddTransient<WebFavoritesViewModel>();
+                services.AddTransient<WebHostsPage>();
+                services.AddTransient<WebHostsViewModel>();
+                services.AddTransient<WebViewPage>();
+                services.AddTransient<WebViewViewModel>();
+                services.AddTransient<WorkbenchPage>();
+                services.AddTransient<WorkbenchViewModel>();
 
-            // Configuration
-            services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
-        }).Build();
+                // Configuration
+                services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
+            }).Build();
 
         App.GetService<IAppNotificationService>().Initialize();
 

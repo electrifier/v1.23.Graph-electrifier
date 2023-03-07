@@ -4,7 +4,6 @@ using Microsoft.UI.Xaml.Controls;
 using Windows.System;
 
 namespace electrifier.Views;
-
 // To learn more about WebView2, see https://docs.microsoft.com/microsoft-edge/webview2/.
 
 public sealed partial class WebViewPage : Page
