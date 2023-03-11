@@ -116,30 +116,20 @@ public partial class App : Application
                 services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
             }).Build();
 
-
-
         GetService<IAppNotificationService>()?
             .Initialize();
 
         UnhandledException += App_UnhandledException;
     }
 
-    private void App_StartAppCenter()
-    {
-        AppCenter.Start("{ TODO:Your_app_secret_here }", typeof(Analytics), typeof(Crashes));
-    }
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
+    //private void App_StartAppCenter()
+    //{
+    //    AppCenter.Start("{ TODO:Your_app_secret_here }", typeof(Analytics), typeof(Crashes));
+    //}
+
+
     private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs args)
     {
-        if (args is null)
-        {
-            throw new ArgumentNullException(nameof(args));
-        }
-
         App_UnhandledException(sender, args, false);
     }
 
@@ -215,12 +205,16 @@ public partial class App : Application
         }
         catch (Exception ex)
         {
-            ex.ToString();
+            var innerExceptionStr = ex.ToString();
+
+
+            // TODO: Log inner exception
         }
         finally
         {
             if (args is not null)
             {
+                args.Handled = true;
                 //args.Handled = !itIsComplicated;
             }
         }

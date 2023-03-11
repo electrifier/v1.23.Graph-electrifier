@@ -6,8 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:viewModels="using:electrifier.ViewModels">
     <Grid
         x:Name="ContentArea">
         <Grid.Background>
@@ -20,16 +20,62 @@
         </Grid.Background>
         <StackPanel
             Orientation="Vertical">
+            <MenuBar>
+                <MenuBarItem
+                    IsEnabled="False"
+                    Title="File">
+                    <MenuFlyoutItem
+                        Text="New" />
+                    <MenuFlyoutItem
+                        Text="Open..." />
+                    <MenuFlyoutItem
+                        Text="Save" />
+                    <MenuFlyoutItem
+                        Text="Exit" />
+                </MenuBarItem>
+
+                <MenuBarItem
+                    IsEnabled="False"
+                    Title="Edit">
+                    <MenuFlyoutItem
+                        Text="Undo" />
+                    <MenuFlyoutItem
+                        Text="Cut" />
+                    <MenuFlyoutItem
+                        Text="Copy" />
+                    <MenuFlyoutItem
+                        Text="Paste" />
+                </MenuBarItem>
+                <MenuBarItem
+                    IsEnabled="True"
+                    Title="Collaborate">
+                    <MenuFlyoutItem
+                        Text="Connect..." />
+                    <MenuFlyoutItem
+                        Text="Disconnect" />
+
+
+
+
+                </MenuBarItem>
+
+                <MenuBarItem
+                    IsEnabled="False"
+                    Title="Help">
+                    <MenuFlyoutItem
+                        Text="About" />
+                </MenuBarItem>
+            </MenuBar>
             <InfoBar
-                Name="ApacheLicenseInfoBar"
-                x:Uid="ApacheLicenseInfoBar"
+                Name="WarrantyDisclaimerInfoBar"
                 IsOpen="True"
                 Severity="{x:Bind InfoBarSeverity}"
                 Title="Caution! This Is Alpha!">
                 <InfoBar.ActionButton>
                     <HyperlinkButton
                         Content="Take care! This is a debug build, that will contain errors and untested functionality."
-                        HorizontalAlignment="Center" />
+                        HorizontalAlignment="Center"
+                        NavigateUri="https://github.com/electrifier/electrifier/wiki/Debug-Builds" />
                 </InfoBar.ActionButton>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -72,43 +118,22 @@
                         </Grid.ColumnDefinitions>
                         <CheckBox
                             Grid.Column="0"
-                            IsEnabled="False"
                             HorizontalAlignment="Left">
-                            I understood the consequences of using beta software.
+                            I understand the consequences of using beta software.
                         </CheckBox>
                         <Button
                             Grid.Column="1"
-                            IsEnabled="False"
                             HorizontalAlignment="Right">
                             Got it. Thanks for briefing!
                         </Button>
                     </Grid>
                 </Grid>
             </InfoBar>
-            <BreadcrumbBar
-                x:Name="TopBreadcrumbBar" />
-            <VariableSizedWrapGrid
-                Orientation="Horizontal"
-                MaximumRowsOrColumns="3"
-                ItemHeight="44"
-                ItemWidth="44">
-                <Rectangle
-                    Fill="Red" />
-                <Rectangle
-                    Fill="Blue"
-                    Height="80"
-                    VariableSizedWrapGrid.RowSpan="2" />
-                <Rectangle
-                    Fill="Green"
-                    Width="80"
-                    VariableSizedWrapGrid.ColumnSpan="2" />
-                <Rectangle
-                    Fill="Yellow"
-                    Height="80"
-                    Width="80"
-                    VariableSizedWrapGrid.RowSpan="2"
-                    VariableSizedWrapGrid.ColumnSpan="2" />
-            </VariableSizedWrapGrid>
+
+            <PersonPicture
+                ProfilePicture="https://docs.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />
+
+
 
         </StackPanel>
     </Grid>
