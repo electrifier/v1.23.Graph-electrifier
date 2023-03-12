@@ -1,4 +1,5 @@
 ﻿using electrifier.Models;
+using electrifier.Models.Configuration.Global;
 
 namespace electrifier.Contracts.Services;
 

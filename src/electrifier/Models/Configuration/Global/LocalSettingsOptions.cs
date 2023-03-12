@@ -1,6 +1,6 @@
 ﻿using Windows.ApplicationModel.Resources.Core;
 
-namespace electrifier.Models;
+namespace electrifier.Models.Configuration.Global;
 
 public class LocalSettingsOptions
 {

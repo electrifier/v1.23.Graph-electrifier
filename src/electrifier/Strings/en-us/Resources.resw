@@ -184,10 +184,7 @@
     <value>Default ( %s), use system setting</value>
   </data>
   <data name="Settings_Language_English.Content" xml:space="preserve">
-    <value>English (en)</value>
-  </data>
-  <data name="Settings_Language_Deutsch.Content" xml:space="preserve">
-    <value>Deutsch (de)</value>
+    <value>English (new)</value>
   </data>
   <data name="AppNotificationSamplePayload" xml:space="preserve">
     <value>&lt;toast launch="action=ToastClick"&gt;
@@ -231,9 +228,6 @@ You may obtain a copy of the License at</value>
   <data name="Settings_About.Text" xml:space="preserve">
     <value>About this application</value>
   </data>
-  <data name="LocalFiles_NoSelection.Text" xml:space="preserve">
-    <value>Select an item from the list.</value>
-  </data>
   <data name="Shell_FileManager.Content" xml:space="preserve">
     <value>Files</value>
   </data>
@@ -265,7 +259,7 @@ You may obtain a copy of the License at</value>
     <value>Workbench</value>
   </data>
   <data name="Settings_Language_German.Content" xml:space="preserve">
-    <value>Deutsch</value>
+    <value>Deutsch (new)</value>
   </data>
   <data name="SettingsPage_PrivacyDescription.Text" xml:space="preserve">
     <value>All your base are belong to us!</value>

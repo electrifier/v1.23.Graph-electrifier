@@ -9,7 +9,7 @@ using CommunityToolkit.WinUI;
 using electrifier.Activation;
 using electrifier.Contracts.Services;
 using electrifier.Models;
-using electrifier.Notifications;
+using electrifier.Models.Configuration.Global;
 using electrifier.Services;
 using electrifier.ViewModels;
 using electrifier.Views;

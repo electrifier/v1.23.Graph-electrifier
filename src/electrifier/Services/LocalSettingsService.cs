@@ -3,6 +3,7 @@ using electrifier.Helpers;
 using electrifier.Models;
 using Microsoft.Extensions.Options;
 using Windows.Storage;
+using electrifier.Models.Configuration.Global;
 
 namespace electrifier.Services;
 
@@ -126,8 +127,8 @@ public class LocalSettingsService : ILocalSettingsService
         }
     }
 
-    public Task SetGuiLanguageAsync(LocalSettingsOptions.GuiLanguage languageId)
+    public async Task SetGuiLanguageAsync(LocalSettingsOptions.GuiLanguage languageId)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }
