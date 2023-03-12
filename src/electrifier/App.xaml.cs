@@ -87,7 +87,7 @@ public partial class App : Application
                 services.AddSingleton<INavigationService, NavigationService>();
                 services.AddSingleton<IPageService, PageService>();
 
-                //// Core Services
+                // Core Services
                 services.AddSingleton<IFileService, FileService>();
 
                 // Views and ViewModels
@@ -147,12 +147,12 @@ public partial class App : Application
     /// <param name="itIsComplicated">
     ///     Set <b>true</b> to force shutdown in case of critical error.<br/>
     ///     <br/>
-    ///     Triggers <see cref="ABI.Microsoft.UI.Xaml.UnhandledExceptionEventArgs.Handled"/>.
+    ///     Triggers <see cref="Microsoft.UI.Xaml.UnhandledExceptionEventArgs.Handled"/>.
     /// </param>
     private void App_UnhandledException(
         object sender,
         Microsoft.UI.Xaml.UnhandledExceptionEventArgs args,
-        bool itIsComplicated = false)
+        bool itIsComplicated)
     {
         try
         {
@@ -205,18 +205,15 @@ public partial class App : Application
         }
         catch (Exception ex)
         {
-            var innerExceptionStr = ex.ToString();
+            var dummy = ex.ToString();
 
 
             // TODO: Log inner exception
         }
         finally
         {
-            if (args is not null)
-            {
-                args.Handled = true;
-                //args.Handled = !itIsComplicated;
-            }
+                args.Handled = true;                // TODO: For test purposes only
+                //args.Handled = !itIsComplicated; // TODO 
         }
     }
 
