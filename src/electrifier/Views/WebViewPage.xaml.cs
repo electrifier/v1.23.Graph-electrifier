@@ -15,7 +15,7 @@ public sealed partial class WebViewPage : Page
 
     public WebViewPage()
     {
-        ViewModel = App.GetService<WebViewViewModel>();
+        ViewModel = App.GetService<WebViewViewModel>() ?? throw new InvalidOperationException();
 
         InitializeComponent();
 

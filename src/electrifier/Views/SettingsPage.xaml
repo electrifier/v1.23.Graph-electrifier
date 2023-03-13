@@ -68,7 +68,7 @@
                     </RadioButton>
                 </StackPanel>
 
-                <StackPanel
+                <!--<StackPanel
                     Margin="{StaticResource XSmallTopMargin}">
                     <TextBlock
                         x:Uid="Settings_Language" />
@@ -90,7 +90,7 @@
                         IsEnabled="False"
                         GroupName="Language">
                     </RadioButton>
-                </StackPanel>
+                </StackPanel>-->
             </StackPanel>
         </StackPanel>
         <StackPanel

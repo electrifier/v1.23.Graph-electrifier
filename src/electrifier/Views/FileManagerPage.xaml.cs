@@ -17,7 +17,8 @@ public sealed partial class FileManagerPage : Page
 
     public FileManagerPage()
     {
-        ViewModel = App.GetService<FileManagerViewModel>();
+        ViewModel = App.GetService<FileManagerViewModel>() ?? throw new InvalidOperationException();
+
         InitializeComponent();
 
         // StorageFolder storageFolder = Package.Current.InstalledLocation;
@@ -70,11 +71,12 @@ public sealed partial class FileManagerPage : Page
                 {
                     if (args.Item is DosShellItem item)
                     {
-                        var bitmap = new BitmapImage();
-                        //imageElement.Source = new BitmapImage();
-
-                        //                        bitmap.UriSource = new Uri("ms-appx:///Assets/Square44x44Logo.scale-200.png");
-                        bitmap.UriSource = new Uri("ms-appx:///../Assets/Square44x44Logo.scale-200.png");
+                        var bitmap = new BitmapImage
+                        {
+                            //imageElement.Source = new BitmapImage();
+                            //                        bitmap.UriSource = new Uri("ms-appx:///Assets/Square44x44Logo.scale-200.png");
+                            UriSource = new Uri("ms-appx:///../Assets/Square44x44Logo.scale-200.png")
+                        };
 
 
                         //new Uri(img.BaseUri, "Assets/StoreLogo.png");
@@ -102,8 +104,9 @@ img.Source = bitmapImage;*/
 
                     }
                     else
+                    {
                         throw new ArgumentNullException(nameof(args.Item));
-
+                    }
                 }
             }
         }
@@ -199,7 +202,7 @@ img.Source = bitmapImage;*/
 
             if (item.IsOfType(StorageItemTypes.Folder))
             {
-                bool isFolder = true;
+                var isFolder = true;
 
             }
             await item.GetBasicPropertiesAsync();
