@@ -53,10 +53,6 @@
                         Text="Connect..." />
                     <MenuFlyoutItem
                         Text="Disconnect" />
-
-
-
-
                 </MenuBarItem>
 
                 <MenuBarItem
@@ -68,9 +64,10 @@
             </MenuBar>
             <InfoBar
                 Name="WarrantyDisclaimerInfoBar"
-                IsOpen="True"
-                Severity="{x:Bind InfoBarSeverity}"
+                IsOpen="{x:Bind WarrantyDisclaimerInfoBarInfoBarIsOpen, Mode=TwoWay}"
+                Severity="Warning"
                 Title="Caution! This Is Alpha!">
+
                 <InfoBar.ActionButton>
                     <HyperlinkButton
                         Content="Take care! This is a debug build, that will contain errors and untested functionality."

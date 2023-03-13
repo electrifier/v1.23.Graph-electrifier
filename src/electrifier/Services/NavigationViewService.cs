@@ -20,8 +20,12 @@ public class NavigationViewService : INavigationViewService
 
     public object? SettingsItem => _navigationView?.SettingsItem;
 
-    public NavigationViewService(INavigationService navigationService, IPageService pageService)
+    private readonly ILocalSettingsService _localSettingsService;
+
+
+    public NavigationViewService(INavigationService navigationService, IPageService pageService, ILocalSettingsService localSettingsService)
     {
+        _localSettingsService = localSettingsService;
         _navigationService = navigationService;
         _pageService = pageService;
     }
@@ -36,11 +40,13 @@ public class NavigationViewService : INavigationViewService
 
     public void UnregisterMyEvents()
     {
-        if (_navigationView != null)
+        if (_navigationView == null)
         {
-            _navigationView.BackRequested -= OnBackRequested;
-            _navigationView.ItemInvoked -= OnItemInvoked;
+            return;
         }
+
+        _navigationView.BackRequested -= OnBackRequested;
+        _navigationView.ItemInvoked -= OnItemInvoked;
     }
 
     public NavigationViewItem? GetSelectedItem(Type pageType)
