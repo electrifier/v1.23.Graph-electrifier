@@ -10,7 +10,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:xaml="using:Microsoft.UI.Xaml"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-
     <Page.Resources>
         <helpers:EnumToBooleanConverter
             x:Key="EnumToBooleanConverter" />
@@ -25,22 +24,27 @@
         <StackPanel
             x:Uid="Settings"
             Grid.Column="0">
-
+            <!-- TODO:
+            <StackPanel.Background>
+                <ImageBrush
+                    AlignmentX="Center"
+                    AlignmentY="Bottom"
+                    ImageSource="..\Assets\Views\electrifier Media Pole.png"
+                    Opacity="0.1"
+                    Stretch="Uniform" />
+            </StackPanel.Background>-->
             <StackPanel
                 Margin="{StaticResource XSmallTopMargin}">
-
                 <TextBlock
                     x:Uid="Settings_Personalization"
                     Style="{ThemeResource SubtitleTextBlockStyle}" />
             </StackPanel>
-
             <StackPanel
                 Margin="{StaticResource SmallTopBottomMargin}">
-
-                <TextBlock
-                    x:Uid="Settings_Theme" />
                 <StackPanel
                     Margin="{StaticResource XSmallTopMargin}">
+                    <TextBlock
+                        x:Uid="Settings_Theme" />
                     <RadioButton
                         x:Uid="Settings_Theme_Light"
                         Command="{x:Bind ViewModel.SwitchThemeCommand}"
@@ -72,51 +76,36 @@
                         </RadioButton.CommandParameter>
                     </RadioButton>
                 </StackPanel>
-
-                <TextBlock
-                    x:Uid="Settings_Language"
-                    Margin="{StaticResource LargeTopMargin}" />
-
-                <!-- TODO: Settings_Theme.Text -->
-
+                <!-- TODO:
                 <StackPanel
                     Margin="{StaticResource XSmallTopMargin}">
-
-                    <!-- TODO: Implement language switch -->
-
-                    <RadioButtons
-                        IsEnabled="False">
-                        <RadioButton
-                            x:Uid="Settings_Language_Default"
-                            Command="{x:Bind ViewModel.SwitchLanguageCommand}"
-                            IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
-                            GroupName="Language" />
-                        <RadioButton
-                            x:Uid="Settings_Language_English"
-                            Command="{x:Bind ViewModel.SwitchLanguageCommand}"
-                            IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
-                            GroupName="Language" />
-                        <RadioButton
-                            x:Uid="Settings_Language_Deutsch"
-                            Command="{x:Bind ViewModel.SwitchLanguageCommand}"
-                            IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
-                            GroupName="Language" />
-                    </RadioButtons>
-                </StackPanel>
+                    <TextBlock
+                        x:Uid="Settings_Language" />
+                    <RadioButton
+                        x:Uid="Settings_Language_Default"
+                        Command="{x:Bind ViewModel.SwitchLanguageCommand}"
+                        IsEnabled="False"
+                        GroupName="Language">
+                    </RadioButton>
+                    <RadioButton
+                        x:Uid="Settings_Language_English"
+                        Command="{x:Bind ViewModel.SwitchLanguageCommand}"
+                        IsEnabled="False"
+                        GroupName="Language">
+                    </RadioButton>
+                    <RadioButton
+                        x:Uid="Settings_Language_German"
+                        Command="{x:Bind ViewModel.SwitchLanguageCommand}"
+                        IsEnabled="False"
+                        GroupName="Language">
+                    </RadioButton>
+                </StackPanel>-->
             </StackPanel>
         </StackPanel>
         <StackPanel
             Grid.Column="1"
-            Name="About_StackPanel"
+            Name="AboutStackPanel"
             Orientation="Vertical">
-            <StackPanel.Background>
-                <ImageBrush
-                    AlignmentX="Right"
-                    AlignmentY="Bottom"
-                    ImageSource="..\Assets\Views\electrifier Media Pole.png"
-                    Opacity="0.1"
-                    Stretch="Uniform" />
-            </StackPanel.Background>
             <TextBlock
                 Style="{ThemeResource SubtitleTextBlockStyle}"
                 Padding="{ThemeResource TabViewHeaderPadding}"
@@ -185,15 +174,15 @@
                     Style="{ThemeResource SubtitleTextBlockStyle}"
                     Text="electrifier is free software." />
                 <RichTextBlock
-                    Style="{ThemeResource DetailBodyBaseMediumStyle}">
+                    Style="{ThemeResource BodyRichTextBlockStyle}">
                     <Paragraph
-                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                        Margin="{StaticResource MediumTopMargin}">
                         Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
                         <Hyperlink
                             NavigateUri="http://www.apache.org/licenses/LICENSE-2.0">www.apache.org/licenses/LICENSE-2.0</Hyperlink>
                     </Paragraph>
                     <Paragraph
-                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                        Margin="{StaticResource SmallTopBottomMargin}">
                         Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
                     </Paragraph>
                 </RichTextBlock>
@@ -215,38 +204,33 @@
                     x:Uid="SettingsPage_Credits"
                     Style="{ThemeResource SubtitleTextBlockStyle}" />
                 <RichTextBlock
-                    Style="{ThemeResource DetailBodyBaseMediumStyle}">
-                    <Paragraph
-                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                    Style="{ThemeResource BodyRichTextBlockStyle}">
+                    <Paragraph>
                         In aeterna caritate, Mater.
                     </Paragraph>
-                    <Paragraph
-                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                    <Paragraph>
                         Papa,
                         Sabine,
                         Markus,
                         Sandra,
                         Tobias and all the other Jungs.
                     </Paragraph>
-                    <Paragraph
-                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                    <Paragraph>
                         Barney.
                         Sammy.
                         Mikesch.
                         Benny.
                     </Paragraph>
-                    <Paragraph
-                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                    <Paragraph>
                         Abi '97.
                         Die Bengalis.
                         LoSPOnditos.
                         Lucipetra.
                         Schney, do bin ich dahamm.
                     </Paragraph>
-                    <Paragraph
-                        Margin="{StaticResource TextBoxTopHeaderMargin}">
+                    <Paragraph>
                         <Hyperlink
-                            NavigateUri="https://silenceofthoughts.bandcamp.com/">Silence of Thoughts.</Hyperlink> 
+                            NavigateUri="https://silenceofthoughts.bandcamp.com/">Silence of Thoughts.</Hyperlink>
                         Dawnbreed.
                         <Hyperlink
                             NavigateUri="https://de.wikipedia.org/wiki/Dead_(Band)">Dead.</Hyperlink>

@@ -1,24 +1,24 @@
 ﻿// Disable XAML Generated break on unhalted exception
 // <seealso href="" />
-#define DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
+//#define DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
 
 
-using System.Text;
 using CommunityToolkit.WinUI;
 using electrifier.Activation;
 using electrifier.Contracts.Services;
+using electrifier.Models.Configuration.Global;
 using electrifier.Models;
-using electrifier.Notifications;
 using electrifier.Services;
 using electrifier.ViewModels;
 using electrifier.Views;
-
-using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
+using System.Diagnostics;
+using System.Text;
 
 namespace electrifier;
 
@@ -35,15 +35,26 @@ public partial class App : Application
         get;
     }
 
-    public static T GetService<T>()
+    public static T? GetService<T>()
         where T : class
     {
-        if ((App.Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
+        try
         {
-            throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
+            if ((App.Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
+            {
+                throw new ArgumentException(
+                    $"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
+            }
+
+            return service;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            Debug.WriteLine(ex.StackTrace);
         }
 
-        return service;
+        return null;
     }
 
     public static WindowEx MainWindow { get; } = new MainWindow();
@@ -58,72 +69,69 @@ public partial class App : Application
             CreateDefaultBuilder().
             UseContentRoot(AppContext.BaseDirectory).
             ConfigureServices((context, services) =>
-        {
-            // Default Activation Handler
-            _ = services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
+            {
+                // Default Activation Handler
+                _ = services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
 
-            // Other Activation Handlers
-            services.AddTransient<IActivationHandler, AppNotificationActivationHandler>();
+                // Other Activation Handlers
+                services.AddTransient<IActivationHandler, AppNotificationActivationHandler>();
 
-            // Services
-            services.AddSingleton<IAppNotificationService, AppNotificationService>();
-            services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
-            services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
-            services.AddTransient<INavigationViewService, NavigationViewService>();
-            services.AddTransient<IWebViewService, WebViewService>();
+                // Services
+                services.AddSingleton<IAppNotificationService, AppNotificationService>();
+                services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
+                services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
+                services.AddTransient<INavigationViewService, NavigationViewService>();
+                services.AddTransient<IWebViewService, WebViewService>();
 
-            services.AddSingleton<IActivationService, ActivationService>();
-            services.AddSingleton<INavigationService, NavigationService>();
-            services.AddSingleton<IPageService, PageService>();
+                services.AddSingleton<IActivationService, ActivationService>();
+                services.AddSingleton<INavigationService, NavigationService>();
+                services.AddSingleton<IPageService, PageService>();
 
-            //// Core Services
-            services.AddSingleton<IFileService, FileService>();
+                // Core Services
+                services.AddSingleton<IFileService, FileService>();
 
-            // Views and ViewModels
-            services.AddTransient<ClipboardPage>();
-            services.AddTransient<ClipboardViewModel>();
-            services.AddTransient<DevicesPage>();
-            services.AddTransient<DevicesViewModel>();
-            services.AddTransient<FileManagerPage>();
-            services.AddTransient<FileManagerViewModel>();
-            services.AddTransient<NetworkDevicesPage>();
-            services.AddTransient<NetworkDevicesViewModel>();
-            services.AddTransient<SettingsPage>();
-            services.AddTransient<SettingsViewModel>();
-            services.AddTransient<ShellPage>();
-            services.AddTransient<ShellViewModel>();
-            services.AddTransient<WebFavoritesPage>();
-            services.AddTransient<WebFavoritesViewModel>();
-            services.AddTransient<WebHostsPage>();
-            services.AddTransient<WebHostsViewModel>();
-            services.AddTransient<WebViewPage>();
-            services.AddTransient<WebViewViewModel>();
-            services.AddTransient<WorkbenchPage>();
-            services.AddTransient<WorkbenchViewModel>();
+                // Views and ViewModels
+                services.AddTransient<ClipboardPage>();
+                services.AddTransient<ClipboardViewModel>();
+                services.AddTransient<DevicesPage>();
+                services.AddTransient<DevicesViewModel>();
+                services.AddTransient<FileManagerPage>();
+                services.AddTransient<FileManagerViewModel>();
+                services.AddTransient<NetworkDevicesPage>();
+                services.AddTransient<NetworkDevicesViewModel>();
+                services.AddTransient<SettingsPage>();
+                services.AddTransient<SettingsViewModel>();
+                services.AddTransient<ShellPage>();
+                services.AddTransient<ShellViewModel>();
+                services.AddTransient<WebFavoritesPage>();
+                services.AddTransient<WebFavoritesViewModel>();
+                services.AddTransient<WebHostsPage>();
+                services.AddTransient<WebHostsViewModel>();
+                services.AddTransient<WebViewPage>();
+                services.AddTransient<WebViewViewModel>();
+                services.AddTransient<WorkbenchPage>();
+                services.AddTransient<WorkbenchViewModel>();
 
-            // Configuration
-            services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
-        }).Build();
+                // Configuration
+                services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
+            }).Build();
 
-        App.GetService<IAppNotificationService>().Initialize();
+        GetService<IAppNotificationService>()?
+            .Initialize();
 
-        //        AppCenter.Start("{Your app secret here}", typeof(Analytics), typeof(Crashes));
-
-        //        App_UnhandledException(this, new Microsoft.UI.Xaml.UnhandledExceptionEventArgs(this, false));
-        //System.UnhandledExceptionEventArgs args = new System.UnhandledExceptionEventArgs();
-
-        //var v1 = new Microsoft.UI.Xaml.UnhandledExceptionEventArgs();
-
-        //        UnhandledException.UnhandledException += App_UnhandledException;
-
+        UnhandledException += App_UnhandledException;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs args) => App_UnhandledException(sender, args, false);
+    //private void App_StartAppCenter()
+    //{
+    //    AppCenter.Start("{ TODO:Your_app_secret_here }", typeof(Analytics), typeof(Crashes));
+    //}
+
+
+    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs args)
+    {
+        App_UnhandledException(sender, args, false);
+    }
 
     /// <summary>
     /// Log and handle exceptions as appropriate.
@@ -139,40 +147,23 @@ public partial class App : Application
     /// <param name="itIsComplicated">
     ///     Set <b>true</b> to force shutdown in case of critical error.<br/>
     ///     <br/>
-    ///     Triggers <see cref="UnhandledExceptionEventArgs.Handled"/>.
+    ///     Triggers <see cref="Microsoft.UI.Xaml.UnhandledExceptionEventArgs.Handled"/>.
     /// </param>
     private void App_UnhandledException(
         object sender,
         Microsoft.UI.Xaml.UnhandledExceptionEventArgs args,
-        bool itIsComplicated = false)
+        bool itIsComplicated)
     {
         try
         {
+            StringBuilder sb = new();
+
+            sb.AppendJoin("\n", "Exception happened!", "line 1", "line 2");
+
             // TODO: Try to make an backup of current configuration and mark as "dirty".
             // TODO: Log and handle exceptions as appropriate.
 
-            //var guru = App.GetService<GuruMeditationDialoge>();
-
             //guru?.ThrowGuruMeditation(sender, args);
-
-
-
-            /* 
-            var stringBuilder = new StringBuilder()
-                .AppendLine("GURU MEDITATION")
-                .AppendLine("Sender: { }")
-                .AppendLine(args?.ToString());
-             */
-
-
-
-            //if (args is not null)
-            //{
-            //    // TODO: Exception happened!
-
-            //    args.Handled = true;
-            //}
-
 
             /*
 
@@ -214,14 +205,15 @@ public partial class App : Application
         }
         catch (Exception ex)
         {
-            ex.ToString();
+            var dummy = ex.ToString();
+
+
+            // TODO: Log inner exception
         }
         finally
         {
-            if (args is not null)
-            {
-                //args.Handled = !itIsComplicated;
-            }
+                args.Handled = true;                // TODO: For test purposes only
+                //args.Handled = !itIsComplicated; // TODO 
         }
     }
 
@@ -229,8 +221,9 @@ public partial class App : Application
     {
         base.OnLaunched(args);
 
-        // TODO: App.GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
+        //GetService<IAppNotificationService>()?
+        //    .Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
 
-        await App.GetService<IActivationService>().ActivateAsync(args);
+        await GetService<IActivationService>()?.ActivateAsync(args);
     }
 }

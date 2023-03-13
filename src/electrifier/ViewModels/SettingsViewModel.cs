@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml;
 using System.Reflection;
 using System.Windows.Input;
 using Windows.ApplicationModel;
+using electrifier.Models.Configuration.Global;
 
 namespace electrifier.ViewModels;
 
@@ -18,11 +19,11 @@ public class SettingsViewModel : ObservableRecipient
     private LocalSettingsOptions.GuiLanguage _guiLanguage = LocalSettingsOptions.GuiLanguage.Default;
     private string _versionDescription;
 
-    #if DEBUG
+#if DEBUG
     public static bool DebugDescriptor => true;
-    #else
+#else
     public static bool DebugDescriptor => false;
-    #endif
+#endif
 
     public ElementTheme ElementTheme
     {
@@ -30,7 +31,7 @@ public class SettingsViewModel : ObservableRecipient
         set => SetProperty(ref _elementTheme, value);
     }
 
-    public Models.LocalSettingsOptions.GuiLanguage LanguageId
+    public LocalSettingsOptions.GuiLanguage GuiLanguage
     {
         get => _guiLanguage; // _languageId ?? "Default"; // TODO: i18n (String "Default")
         set => SetProperty(ref _guiLanguage, value);
@@ -38,12 +39,7 @@ public class SettingsViewModel : ObservableRecipient
 
     public string VersionDescription
     {
-        get
-        {
-            _versionDescription ??= GetVersionDescription();
-
-            return _versionDescription;
-        }
+        get => _versionDescription;
         set => SetProperty(ref _versionDescription, value);
     }
 
@@ -63,6 +59,8 @@ public class SettingsViewModel : ObservableRecipient
         _localSettingsService = localSettingsService ?? throw new ArgumentNullException(nameof(localSettingsService));
 
         _elementTheme = _themeSelectorService.Theme;
+        _guiLanguage = LocalSettingsOptions.GuiLanguage.Default;
+        _versionDescription ??= GetVersionDescription();
 
         SwitchThemeCommand = new RelayCommand<ElementTheme>(
             async (param) =>
@@ -74,7 +72,7 @@ public class SettingsViewModel : ObservableRecipient
                 }
             });
 
-        SwitchLanguageCommand = new RelayCommand<Models.LocalSettingsOptions.GuiLanguage>(
+        SwitchLanguageCommand = new RelayCommand<LocalSettingsOptions.GuiLanguage>(
             async (param) =>
             {
                 if (_guiLanguage != param)
@@ -93,11 +91,12 @@ public class SettingsViewModel : ObservableRecipient
         {
             var packageVersion = Package.Current.Id.Version;
 
-            version = new(packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
+            version = new Version(packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
         }
         else
         {
-            version = Assembly.GetExecutingAssembly().GetName().Version!;
+            //            version = Assembly.GetExecutingAssembly().GetName().Version;
+            version = new Version(1, 0);
         }
 
         var versionDescription = $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";

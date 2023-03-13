@@ -1,15 +1,6 @@
-﻿using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media.Imaging;
-using Microsoft.UI.Xaml.Media;
-using muxc = Microsoft.UI.Xaml.Controls;
+﻿using muxc = Microsoft.UI.Xaml.Controls;
 using System.ComponentModel;
-using System.Drawing;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System;
-using Windows.Storage.FileProperties;
-using Windows.Storage.Streams;
 using Windows.Storage;
 
 namespace electrifier.Services;

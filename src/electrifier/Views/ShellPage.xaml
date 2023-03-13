@@ -28,7 +28,7 @@
     <Grid>
         <Grid.Background>
             <ImageBrush
-                ImageSource="..\Assets\Views\Workbench\this is alpha_420px.png"
+                ImageSource="/Assets/Views/this is alpha_420px.png"
                 Opacity="0.1"
                 AlignmentY="Bottom"
                 AlignmentX="Right"

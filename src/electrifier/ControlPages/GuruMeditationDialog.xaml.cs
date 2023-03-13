@@ -1,8 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Text;
-using Microsoft.AppCenter.Ingestion.Models;
-using Microsoft.Extensions.Logging;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace electrifier.ControlPages;

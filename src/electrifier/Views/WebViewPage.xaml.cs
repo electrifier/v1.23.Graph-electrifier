@@ -4,7 +4,6 @@ using Microsoft.UI.Xaml.Controls;
 using Windows.System;
 
 namespace electrifier.Views;
-
 // To learn more about WebView2, see https://docs.microsoft.com/microsoft-edge/webview2/.
 
 public sealed partial class WebViewPage : Page
@@ -16,7 +15,7 @@ public sealed partial class WebViewPage : Page
 
     public WebViewPage()
     {
-        ViewModel = App.GetService<WebViewViewModel>();
+        ViewModel = App.GetService<WebViewViewModel>() ?? throw new InvalidOperationException();
 
         InitializeComponent();
 
@@ -27,7 +26,7 @@ public sealed partial class WebViewPage : Page
     {
         if (e.Key == VirtualKey.Enter)
         {
-            var urlText = AddressURLAutoSuggestBox.Text;
+            var urlText = AddressUrlAutoSuggestBox.Text;
 
             if (!string.IsNullOrWhiteSpace(urlText))
             {

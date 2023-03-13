@@ -13,7 +13,8 @@ public sealed partial class ClipboardPage : Page
 
     public ClipboardPage()
     {
-        ViewModel = App.GetService<ClipboardViewModel>();
+        ViewModel = App.GetService<ClipboardViewModel>() ?? throw new InvalidOperationException();
+
         InitializeComponent();
     }
 }

@@ -13,7 +13,8 @@ public sealed partial class DevicesPage : Page
 
     public DevicesPage()
     {
-        ViewModel = App.GetService<DevicesViewModel>();
+        ViewModel = App.GetService<DevicesViewModel>() ?? throw new InvalidOperationException();
+
         InitializeComponent();
     }
 }

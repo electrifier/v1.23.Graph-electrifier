@@ -1,12 +1,9 @@
 ﻿using System.Collections.Specialized;
 using System.Web;
-
 using electrifier.Contracts.Services;
-using electrifier.ViewModels;
-
 using Microsoft.Windows.AppNotifications;
 
-namespace electrifier.Notifications;
+namespace electrifier.Services;
 
 public class AppNotificationService : IAppNotificationService
 {

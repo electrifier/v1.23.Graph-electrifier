@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Diagnostics;
+using System.Net;
 using electrifier.Contracts.Services;
 using electrifier.Helpers;
 using electrifier.ViewModels;
@@ -56,7 +57,7 @@ public sealed partial class ShellPage : Page
         ThisComputerName = $"This PC: { GetThisComputerName() }";    // TODO: i18n
     }
 
-    private void OnLoaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void OnLoaded(object sender, RoutedEventArgs e)
     {
         TitleBarHelper.UpdateTitleBar(RequestedTheme);
 
@@ -68,7 +69,7 @@ public sealed partial class ShellPage : Page
     {
         var resource = args.WindowActivationState == WindowActivationState.Deactivated ? "WindowCaptionForegroundDisabled" : "WindowCaptionForeground";
 
-        AppTitleBarText.Foreground = (SolidColorBrush)App.Current.Resources[resource];
+        AppTitleBarText.Foreground = (SolidColorBrush)Application.Current.Resources[resource];
     }
 
     private void NavigationViewControl_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
@@ -100,6 +101,7 @@ public sealed partial class ShellPage : Page
     {
         var navigationService = App.GetService<INavigationService>();
 
+        Debug.Assert(navigationService != null, nameof(navigationService) + " != null");
         var result = navigationService.GoBack();
 
         args.Handled = result;

@@ -12,7 +12,6 @@
 		<NeutralLanguage>en</NeutralLanguage>
 		<Nullable>enable</Nullable>
 		<OutputType>WinExe</OutputType>
-		<PackageIcon>This is ALPHA 420px.png</PackageIcon>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageProjectUrl>https://github.com/electrifier</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -56,8 +55,8 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="README.md">
-		  <Pack>True</Pack>
-		  <PackagePath>\</PackagePath>
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
 
@@ -104,15 +103,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\..\assets\miscellaneous debris\This is ALPHA 420px.png">
-		  <Pack>True</Pack>
-		  <PackagePath>\</PackagePath>
-		</None>
+		<Folder Include="Models\MsGraph\" />
+		<Folder Include="ViewModels\MsGraph\" />
+		<Folder Include="Views\MsGraph\" />
 		<None Include="..\..\LICENSE">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
-		<Folder Include="Models\Configuration\" />
 		<Folder Include="Assets\Views\Workbench\" />
 		<Folder Include="Assets\%28!%29 Stock Images %28!%29\" />
 		<None Include=".\*\.editorconfig" />

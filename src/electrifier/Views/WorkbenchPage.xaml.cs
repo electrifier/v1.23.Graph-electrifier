@@ -1,23 +1,21 @@
-﻿using System.Diagnostics;
-using System.Text;
-using electrifier.ViewModels;
-
+﻿using electrifier.ViewModels;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using System.CodeDom;
+using System.Diagnostics;
+using System.Text;
 
 namespace electrifier.Views;
 
 [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public sealed partial class WorkbenchPage : Page
 {
-#if DEBUG
-    public InfoBarSeverity InfoBarSeverity => InfoBarSeverity.Warning;
-#else
-    public InfoBarSeverity InfoBarSeverity => InfoBarSeverity.Warning;
-#endif
+    public bool WarrantyDisclaimerInfoBarInfoBarIsOpen
+    {
+        get;
+        set;
+    }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public WorkbenchViewModel ViewModel
     {
         get;
@@ -28,14 +26,14 @@ public sealed partial class WorkbenchPage : Page
     /// </summary>
     public WorkbenchPage()
     {
-        ViewModel = App.GetService<WorkbenchViewModel>();
+        ViewModel = App.GetService<WorkbenchViewModel>() ?? 
+                    throw new InvalidOperationException(nameof(ViewModel));
+
         InitializeComponent();
+
+        WarrantyDisclaimerInfoBarInfoBarIsOpen = true;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns></returns>
     private string GetDebuggerDisplay()
     {
         return new StringBuilder("WorkBenchPage.\n")

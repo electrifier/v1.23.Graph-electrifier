@@ -13,7 +13,8 @@ public sealed partial class WebFavoritesPage : Page
 
     public WebFavoritesPage()
     {
-        ViewModel = App.GetService<WebFavoritesViewModel>();
+        ViewModel = App.GetService<WebFavoritesViewModel>() ?? throw new InvalidOperationException();
+
         InitializeComponent();
     }
 }

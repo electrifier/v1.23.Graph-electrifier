@@ -352,3 +352,4 @@ MigrationBackup/
 # Secure Area. Always ignore key files, etc.
 .secureArea/*
 .secureArea.7z
+/src/electrifier/Strings/de-de/Resources.resw
