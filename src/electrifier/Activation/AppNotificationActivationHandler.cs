@@ -1,7 +1,9 @@
 ﻿using electrifier.Contracts.Services;
+using electrifier.ViewModels;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.AppLifecycle;
+using Microsoft.Windows.AppNotifications;
 
 namespace electrifier.Activation;
 
@@ -25,18 +27,18 @@ public class AppNotificationActivationHandler : ActivationHandler<LaunchActivate
     {
         // TODO: Handle notification activations.
 
-        //// // Access the AppNotificationActivatedEventArgs.
-        //// var activatedEventArgs = (AppNotificationActivatedEventArgs)AppInstance.GetCurrent().GetActivatedEventArgs().Data;
+        // Access the AppNotificationActivatedEventArgs.
+        var activatedEventArgs = (AppNotificationActivatedEventArgs)AppInstance.GetCurrent().GetActivatedEventArgs().Data;
 
-        //// // Navigate to a specific page based on the notification arguments.
-        //// if (_notificationService.ParseArguments(activatedEventArgs.Argument)["action"] == "Settings")
-        //// {
-        ////     // Queue navigation with low priority to allow the UI to initialize.
-        ////     App.MainWindow.DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () =>
-        ////     {
-        ////         _navigationService.NavigateTo(typeof(SettingsViewModel).FullName!);
-        ////     });
-        //// }
+        // Navigate to a specific page based on the notification arguments.
+        if (_notificationService.ParseArguments(activatedEventArgs.Argument)["action"] == "Settings")
+        {
+            // Queue navigation with low priority to allow the UI to initialize.
+            App.MainWindow.DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () =>
+            {
+                _navigationService.NavigateTo(typeof(SettingsViewModel).FullName!);
+            });
+        }
 
         App.MainWindow.DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () =>
         {

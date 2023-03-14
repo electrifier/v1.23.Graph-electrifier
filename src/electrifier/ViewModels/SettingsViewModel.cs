@@ -2,9 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using electrifier.Contracts.Services;
 using electrifier.Helpers;
-using electrifier.Models;
 using Microsoft.UI.Xaml;
-using System.Reflection;
 using System.Windows.Input;
 using Windows.ApplicationModel;
 using electrifier.Models.Configuration.Global;
@@ -55,12 +53,12 @@ public class SettingsViewModel : ObservableRecipient
 
     public SettingsViewModel(ILocalSettingsService localSettingsService, IThemeSelectorService themeSelectorService)
     {
-        _themeSelectorService = themeSelectorService ?? throw new ArgumentNullException(nameof(themeSelectorService));
         _localSettingsService = localSettingsService ?? throw new ArgumentNullException(nameof(localSettingsService));
+        _themeSelectorService = themeSelectorService ?? throw new ArgumentNullException(nameof(themeSelectorService));
 
         _elementTheme = _themeSelectorService.Theme;
         _guiLanguage = LocalSettingsOptions.GuiLanguage.Default;
-        _versionDescription ??= GetVersionDescription();
+        _versionDescription = GetVersionDescription();
 
         SwitchThemeCommand = new RelayCommand<ElementTheme>(
             async (param) =>

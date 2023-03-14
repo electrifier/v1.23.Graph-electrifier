@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 
 using Windows.System;
+using CommunityToolkit.WinUI;
 
 namespace electrifier.Views;
 
@@ -20,13 +21,13 @@ public sealed partial class ShellPage : Page
     {
         get;
     }
-
+    
     public string ThisComputerName
     {
         get;
     }
 
-    private static string GetThisComputerName()
+    internal static string GetThisComputerName()
     {
         try
         {
@@ -37,8 +38,11 @@ public sealed partial class ShellPage : Page
             return Environment.MachineName;
         }
     }
-
-
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="viewModel"></param>
     public ShellPage(ShellViewModel viewModel)
     {
         ViewModel = viewModel;
@@ -53,8 +57,9 @@ public sealed partial class ShellPage : Page
         App.MainWindow.ExtendsContentIntoTitleBar = true;
         App.MainWindow.SetTitleBar(AppTitleBar);
         App.MainWindow.Activated += MainWindow_Activated;
-        AppTitleBarText.Text = "AppDisplayName".GetLocalized();
-        ThisComputerName = $"This PC: { GetThisComputerName() }";    // TODO: i18n
+
+        AppTitleBarText.Text = ResourceExtensions.GetLocalized("AppDisplayName");
+        ThisComputerName = StringExtensions.GetLocalized($"This PC: {GetThisComputerName()}");    // TODO: i18n
     }
 
     private void OnLoaded(object sender, RoutedEventArgs e)
@@ -67,13 +72,17 @@ public sealed partial class ShellPage : Page
 
     private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
     {
-        var resource = args.WindowActivationState == WindowActivationState.Deactivated ? "WindowCaptionForegroundDisabled" : "WindowCaptionForeground";
+        var resource = args.WindowActivationState == WindowActivationState.Deactivated
+            ? "WindowCaptionForegroundDisabled"
+            : "WindowCaptionForeground";
 
         AppTitleBarText.Foreground = (SolidColorBrush)Application.Current.Resources[resource];
     }
 
     private void NavigationViewControl_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
     {
+        Debug.Assert(AppTitleBar != null, nameof(AppTitleBar) + " != null");
+
         AppTitleBar.Margin = new Thickness()
         {
             Left = sender.CompactPaneLength * (sender.DisplayMode == NavigationViewDisplayMode.Minimal ? 2 : 1),

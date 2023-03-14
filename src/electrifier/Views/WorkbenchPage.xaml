@@ -20,58 +20,17 @@
         </Grid.Background>
         <StackPanel
             Orientation="Vertical">
-            <MenuBar>
-                <MenuBarItem
-                    IsEnabled="False"
-                    Title="File">
-                    <MenuFlyoutItem
-                        Text="New" />
-                    <MenuFlyoutItem
-                        Text="Open..." />
-                    <MenuFlyoutItem
-                        Text="Save" />
-                    <MenuFlyoutItem
-                        Text="Exit" />
-                </MenuBarItem>
 
-                <MenuBarItem
-                    IsEnabled="False"
-                    Title="Edit">
-                    <MenuFlyoutItem
-                        Text="Undo" />
-                    <MenuFlyoutItem
-                        Text="Cut" />
-                    <MenuFlyoutItem
-                        Text="Copy" />
-                    <MenuFlyoutItem
-                        Text="Paste" />
-                </MenuBarItem>
-                <MenuBarItem
-                    IsEnabled="True"
-                    Title="Collaborate">
-                    <MenuFlyoutItem
-                        Text="Connect..." />
-                    <MenuFlyoutItem
-                        Text="Disconnect" />
-                </MenuBarItem>
-
-                <MenuBarItem
-                    IsEnabled="False"
-                    Title="Help">
-                    <MenuFlyoutItem
-                        Text="About" />
-                </MenuBarItem>
-            </MenuBar>
             <InfoBar
                 Name="WarrantyDisclaimerInfoBar"
                 IsOpen="{x:Bind WarrantyDisclaimerInfoBarInfoBarIsOpen, Mode=TwoWay}"
                 Severity="Warning"
-                Title="Caution! This Is Alpha!">
+                Title="Disclaimer of Warranty">
 
                 <InfoBar.ActionButton>
                     <HyperlinkButton
-                        Content="Take care! This is a debug build, that will contain errors and untested functionality."
-                        HorizontalAlignment="Center"
+                        Content="Caution! This is a debug build of electrifier. It contains errors beside unfinished and untested functionality."
+                        HorizontalAlignment="Left"
                         NavigateUri="https://github.com/electrifier/electrifier/wiki/Debug-Builds" />
                 </InfoBar.ActionButton>
                 <Grid>
@@ -127,11 +86,30 @@
                 </Grid>
             </InfoBar>
 
-            <PersonPicture
-                ProfilePicture="https://docs.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="Auto" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-
-
+                <StackPanel
+                    Grid.Column="0">
+                    <Button>tajbender@hotmail.de</Button>
+                    <Button>taj@electrifier.org</Button>
+                    <Button>MSFT</Button>
+                </StackPanel>
+                <TextBlock
+                    Grid.Column="1">
+                    tajbender
+                </TextBlock>
+                <PersonPicture
+                    x:Name="PersonPicture"
+                    Grid.Column="2" />
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>

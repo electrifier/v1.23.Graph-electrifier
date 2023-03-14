@@ -3,17 +3,12 @@
 //#define DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
 
 
-using CommunityToolkit.WinUI;
 using electrifier.Activation;
 using electrifier.Contracts.Services;
 using electrifier.Models.Configuration.Global;
-using electrifier.Models;
 using electrifier.Services;
 using electrifier.ViewModels;
 using electrifier.Views;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
@@ -77,15 +72,14 @@ public partial class App : Application
                 services.AddTransient<IActivationHandler, AppNotificationActivationHandler>();
 
                 // Services
+                services.AddSingleton<IActivationService, ActivationService>();
                 services.AddSingleton<IAppNotificationService, AppNotificationService>();
                 services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
+                services.AddSingleton<INavigationService, NavigationService>();
+                services.AddSingleton<IPageService, PageService>();
                 services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
                 services.AddTransient<INavigationViewService, NavigationViewService>();
                 services.AddTransient<IWebViewService, WebViewService>();
-
-                services.AddSingleton<IActivationService, ActivationService>();
-                services.AddSingleton<INavigationService, NavigationService>();
-                services.AddSingleton<IPageService, PageService>();
 
                 // Core Services
                 services.AddSingleton<IFileService, FileService>();

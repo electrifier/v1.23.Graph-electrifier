@@ -1,13 +1,9 @@
 ﻿using electrifier.ViewModels;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml;
-using System.CodeDom;
-using System.Diagnostics;
 using System.Text;
 
 namespace electrifier.Views;
 
-[DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public sealed partial class WorkbenchPage : Page
 {
     public bool WarrantyDisclaimerInfoBarInfoBarIsOpen
@@ -21,23 +17,19 @@ public sealed partial class WorkbenchPage : Page
         get;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public WorkbenchPage()
     {
-        ViewModel = App.GetService<WorkbenchViewModel>() ?? 
+        ViewModel = App.GetService<WorkbenchViewModel>() ??
                     throw new InvalidOperationException(nameof(ViewModel));
 
         InitializeComponent();
 
-        WarrantyDisclaimerInfoBarInfoBarIsOpen = true;
-    }
+        // TODO: Read and write settings
+        WarrantyDisclaimerInfoBarInfoBarIsOpen = false;
 
-    private string GetDebuggerDisplay()
-    {
-        return new StringBuilder("WorkBenchPage.\n")
-            .AppendLine($"ViewModel: { ViewModel.ToString() }")
-            .ToString();
+
+        //var graphClient = new GraphServiceClient(requestAdapter);
+        //var manager = await graphClient.Me.Manager.GetAsync();
+
     }
 }
