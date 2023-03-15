@@ -13,17 +13,19 @@ namespace electrifier.Views;
 
 public sealed partial class WorkbenchPage : Page
 {
+    public GraphServiceClient GraphServiceClient
+    {
+        get;
+    }
+    public WorkbenchViewModel ViewModel
+    {
+        get;
+    }
     public bool WarrantyDisclaimerInfoBarInfoBarIsOpen
     {
         get;
         set;
     }
-
-    public WorkbenchViewModel ViewModel
-    {
-        get;
-    }
-
     public WorkbenchPage()
     {
         ViewModel = App.GetService<WorkbenchViewModel>() ??
@@ -39,7 +41,6 @@ public sealed partial class WorkbenchPage : Page
         //var manager = await graphClient.Me.Manager.GetAsync();
 
     }
-
     private void ButtonTajbenderHotmail_OnClickAsync(object sender, RoutedEventArgs args)
     {
         var scopes = new[] { "User.Read" };
@@ -60,18 +61,17 @@ public sealed partial class WorkbenchPage : Page
 
         // https://learn.microsoft.com/dotnet/api/azure.identity.usernamepasswordcredential
         var userNamePasswordCredential = new UsernamePasswordCredential(
-            userName, password, tenantId, clientId, options);
-
-
-
+            userName,
+            password,
+            tenantId,
+            clientId,
+            options);
 
         var graphClient = new GraphServiceClient(userNamePasswordCredential, scopes);
 
-        Console.WriteLine($@"Got Graph Client: {graphClient.ToString()}");
 
-
-        var result = graphClient.Me.Messages["{message-id}"].GetAsync();
-        var result2 = graphClient.Me.Messages["{message-id}"].SingleValueExtendedProperties;
+        //        var result = graphClient.Me.Messages["{message-id}"].GetAsync();
+        //        var result2 = graphClient.Me.Messages["{message-id}"].SingleValueExtendedProperties;
 
 
 
