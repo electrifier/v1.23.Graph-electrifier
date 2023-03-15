@@ -62,6 +62,7 @@
             Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
             IsBackButtonVisible="Visible"
             IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
+            IsPaneOpen="False"
             IsSettingsVisible="True"
             PaneTitle="{x:Bind ViewModel.NavigationService.PaneDisplayTitle, Mode=OneWay}"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"

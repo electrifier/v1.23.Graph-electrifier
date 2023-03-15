@@ -92,23 +92,42 @@
                         Width="Auto" />
                     <ColumnDefinition
                         Width="*" />
-                    <ColumnDefinition
-                        Width="Auto" />
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
 
-                <StackPanel
-                    Grid.Column="0">
-                    <Button>tajbender@hotmail.de</Button>
-                    <Button>taj@electrifier.org</Button>
-                    <Button>MSFT</Button>
-                </StackPanel>
-                <TextBlock
-                    Grid.Column="1">
-                    tajbender
-                </TextBlock>
                 <PersonPicture
                     x:Name="PersonPicture"
-                    Grid.Column="2" />
+                    Grid.Column="0"
+                    Grid.Row="0" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="1">
+                    Not Connected
+                </TextBlock>
+
+                <StackPanel
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Orientation="Vertical">
+                    <Button
+                        Click="ButtonTajbenderHotmail_OnClickAsync">
+                        Login tajbender@hotmail.de
+                    </Button>
+                    <Button
+                        Click="ButtonTajElectrifier_OnClick">
+                        Login taj@electrifier.org
+                    </Button>
+                    <Button
+                        Click="ButtonMSFTDummy_OnClick">
+                        Login MSFT Dummy
+                    </Button>
+                </StackPanel>
             </Grid>
         </StackPanel>
     </Grid>

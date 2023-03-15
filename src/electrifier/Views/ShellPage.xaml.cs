@@ -59,7 +59,7 @@ public sealed partial class ShellPage : Page
         App.MainWindow.Activated += MainWindow_Activated;
 
         AppTitleBarText.Text = ResourceExtensions.GetLocalized("AppDisplayName");
-        ThisComputerName = StringExtensions.GetLocalized($"This PC: {GetThisComputerName()}");    // TODO: i18n
+        ThisComputerName = $"This PC: {GetThisComputerName()}";    // TODO: i18n
     }
 
     private void OnLoaded(object sender, RoutedEventArgs e)

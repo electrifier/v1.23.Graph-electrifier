@@ -66,6 +66,7 @@ public partial class App : Application
             ConfigureServices((context, services) =>
             {
                 // Default Activation Handler
+                Debug.Assert(services != null, nameof(services) + " != null");
                 _ = services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
 
                 // Other Activation Handlers
@@ -113,7 +114,7 @@ public partial class App : Application
         GetService<IAppNotificationService>()?
             .Initialize();
 
-        UnhandledException += App_UnhandledException;
+//        UnhandledException += App_UnhandledException;
     }
 
     //private void App_StartAppCenter()
@@ -122,10 +123,10 @@ public partial class App : Application
     //}
 
 
-    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs args)
-    {
-        App_UnhandledException(sender, args, false);
-    }
+//    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs args)
+//    {
+//        App_UnhandledException(sender, args, false);
+//    }
 
     /// <summary>
     /// Log and handle exceptions as appropriate.
