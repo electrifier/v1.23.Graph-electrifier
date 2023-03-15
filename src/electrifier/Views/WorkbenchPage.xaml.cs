@@ -1,10 +1,6 @@
-﻿using System.Reflection.Metadata;
-using electrifier.ViewModels;
+﻿using electrifier.ViewModels;
 using Microsoft.UI.Xaml.Controls;
-using System.Text;
-using Windows.ApplicationModel.Resources;
 using Microsoft.UI.Xaml;
-using Microsoft.Identity.Client;
 using CommunityToolkit.Authentication;
 using Microsoft.Graph;
 using Azure.Identity;

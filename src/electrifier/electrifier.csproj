@@ -63,6 +63,12 @@
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<Page Update="Views\Microsoft365Page.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</Page>
+		<Page Update="Microsoft365Page.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</Page>
 		<None Update="README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
@@ -122,5 +128,10 @@
 		<Folder Include="Assets\Views\Workbench\" />
 		<Folder Include="Assets\%28!%29 Stock Images %28!%29\" />
 		<None Include=".\*\.editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Microsoft365Page.xaml" />
+	  <None Remove="Views\Microsoft365Page.xaml" />
 	</ItemGroup>
 </Project>

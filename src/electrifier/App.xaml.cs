@@ -3,6 +3,7 @@
 //#define DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
 
 
+using CommunityToolkit.WinUI;
 using electrifier.Activation;
 using electrifier.Contracts.Services;
 using electrifier.Models.Configuration.Global;
@@ -14,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
 using System.Diagnostics;
 using System.Text;
+using Microsoft.UI.Xaml.Controls;
+using WinRT;
 
 namespace electrifier;
 
@@ -58,15 +61,12 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        //UnhandledException += App_UnhandledException;
-
         Host = Microsoft.Extensions.Hosting.Host.
             CreateDefaultBuilder().
             UseContentRoot(AppContext.BaseDirectory).
             ConfigureServices((context, services) =>
             {
                 // Default Activation Handler
-                Debug.Assert(services != null, nameof(services) + " != null");
                 _ = services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
 
                 // Other Activation Handlers
@@ -92,6 +92,8 @@ public partial class App : Application
                 services.AddTransient<DevicesViewModel>();
                 services.AddTransient<FileManagerPage>();
                 services.AddTransient<FileManagerViewModel>();
+                services.AddTransient<Microsoft365Page>();
+                services.AddTransient<Microsoft365ViewModel>();
                 services.AddTransient<NetworkDevicesPage>();
                 services.AddTransient<NetworkDevicesViewModel>();
                 services.AddTransient<SettingsPage>();
@@ -128,6 +130,17 @@ public partial class App : Application
 //        App_UnhandledException(sender, args, false);
 //    }
 
+    protected async override void OnLaunched(LaunchActivatedEventArgs args)
+    {
+        base.OnLaunched(args);
+
+        //GetService<IAppNotificationService>()?
+        //    .Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
+
+        await GetService<IActivationService>()?.ActivateAsync(args);
+    }
+
+
     /// <summary>
     /// Log and handle exceptions as appropriate.
     /// 
@@ -149,43 +162,41 @@ public partial class App : Application
         Microsoft.UI.Xaml.UnhandledExceptionEventArgs args,
         bool itIsComplicated)
     {
+        // TODO: Try to make an backup of current configuration and mark as "dirty".
+        // TODO: Log and handle exceptions as appropriate.
+
         try
         {
             StringBuilder sb = new();
+            sb.Append($"{nameof(App_UnhandledException)}:");
+            sb.Append($"Sender: {sender.As<string>()}");
+            sb.Append($"args: {args.As<string>()}");
 
-            sb.AppendJoin("\n", "Exception happened!", "line 1", "line 2");
-
-            // TODO: Try to make an backup of current configuration and mark as "dirty".
-            // TODO: Log and handle exceptions as appropriate.
-
-            //guru?.ThrowGuruMeditation(sender, args);
+            // TODO: guru?.ThrowGuruMeditation(sender, args);
 
             /*
+private async void ShowDialog_Click(object sender, RoutedEventArgs e)
+{
+    ContentDialog dialog = new ContentDialog();
 
-            private async void ShowDialog_Click(object sender, RoutedEventArgs e)
-            {
-                ContentDialog dialog = new ContentDialog();
-
-                // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
-                dialog.XamlRoot = this.XamlRoot;
-                dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-                dialog.Title = "Save your work?";
-                dialog.PrimaryButtonText = "Save";
-                dialog.SecondaryButtonText = "Don't Save";
-                dialog.CloseButtonText = "Cancel";
-                dialog.DefaultButton = ContentDialogButton.Primary;
-                dialog.Content = new ContentDialogContent();
-
-                var result = await dialog.ShowAsync();
-            }
-
-            */
+    // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+    dialog.XamlRoot = this.XamlRoot;
+    dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+    dialog.Title = "Save your work?";
+    dialog.PrimaryButtonText = "Save";
+    dialog.SecondaryButtonText = "Don't Save";
+    dialog.CloseButtonText = "Cancel";
+    dialog.DefaultButton = ContentDialogButton.Primary;
+    dialog.Content = new ContentDialogContent();
+    var result = await dialog.ShowAsync();
+}
+*/
 
 
+            // sb.AppendJoin("\n", "Exception happened!", "line 1", "line 2");
             //     if (args is not null)
             //     {
             //         // TODO: Exception happened!
-            //     
             //         args.Handled = true;
             //     }
             //     else
@@ -196,29 +207,32 @@ public partial class App : Application
             //     {
             //         args?.Handled = true;
             //     }
-            // }
         }
         catch (Exception ex)
         {
             var dummy = ex.ToString();
-
-
             // TODO: Log inner exception
         }
         finally
         {
-                args.Handled = true;                // TODO: For test purposes only
-                //args.Handled = !itIsComplicated; // TODO 
+            args.Handled = true;                // TODO: For test purposes only
+                                                //args.Handled = !itIsComplicated; // TODO 
         }
     }
 
-    protected async override void OnLaunched(LaunchActivatedEventArgs args)
+    private async void ShowDialog_Click(object sender, RoutedEventArgs e)
     {
-        base.OnLaunched(args);
+        ContentDialog dialog = new ContentDialog();
 
-        //GetService<IAppNotificationService>()?
-        //    .Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
-
-        await GetService<IActivationService>()?.ActivateAsync(args);
+        // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+        //dialog.XamlRoot = this.XamlRoot;
+        dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+        dialog.Title = "Save your work?";
+        dialog.PrimaryButtonText = "Save";
+        dialog.SecondaryButtonText = "Don't Save";
+        dialog.CloseButtonText = "Cancel";
+        dialog.DefaultButton = ContentDialogButton.Primary;
+        //dialog.Content = new ContentDialogContent();
+        var result = await dialog.ShowAsync();
     }
 }

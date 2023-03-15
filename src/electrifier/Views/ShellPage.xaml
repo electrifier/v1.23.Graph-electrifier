@@ -73,11 +73,11 @@
                 </NavigationViewItem>
                 <NavigationViewItemSeparator />
                 <NavigationViewItemHeader
-                    Content="Office" />
+                    Content="Microsoft 365" />
                 <NavigationViewItem
                     x:Uid="Shell_Microsoft365"
-                    Content="Microsoft 365">
-                    <!--helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel"-->
+                    Content="Microsoft 365"
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.Microsoft365ViewModel">
                     <NavigationViewItem.Icon>
                         <!-- Icon:  -->
                         <FontIcon
@@ -85,18 +85,9 @@
                             Glyph="&#xec50;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
-                <!-- 
-
-
-
--->
-                <!--#region: This PC -->
-
                 <NavigationViewItemHeader
                     x:Uid="Shell_ComputerName"
                     Content="{x:Bind ThisComputerName}" />
-
                 <NavigationViewItem
                     x:Uid="Shell_FileManager"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel">
@@ -107,7 +98,6 @@
                             Glyph="&#xec50;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.DevicesViewModel"
                     IsEnabled="False"
@@ -120,7 +110,6 @@
                             Glyph="&#xe772;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.ClipboardViewModel"
                     IsEnabled="False"
@@ -133,19 +122,12 @@
                             Glyph="&#xf0e3;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItemSeparator
                     x:Uid="Shell_ThisPC_Separator"
                     Visibility="Collapsed" />
-
-                <!-- #endregion -->
-
-                <!-- #region Network -->
-
                 <NavigationViewItemHeader
                     x:Uid="Shell_Network"
                     Visibility="Collapsed" />
-
                 <NavigationViewItem
                     x:Uid="Shell_NetworkDevices"
                     IsEnabled="False"
@@ -158,19 +140,12 @@
                             Glyph="&#xe968;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItemSeparator
                     x:Uid="Shell_Network_Separator"
                     Visibility="Collapsed" />
-
-                <!-- #endregion -->
-
-                <!-- #region Web -->
-
                 <NavigationViewItemHeader>
                     <NavigationViewItemHeader.Content>World wide web</NavigationViewItemHeader.Content>
                 </NavigationViewItemHeader>
-
                 <NavigationViewItem
                     x:Uid="Shell_WebView"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebViewViewModel">
@@ -181,7 +156,6 @@
                             Glyph="&#xf6fa;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebFavoritesViewModel"
                     IsEnabled="False"
@@ -194,7 +168,6 @@
                             Glyph="&#xe728;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebHostsViewModel"
                     IsEnabled="False"
@@ -207,15 +180,8 @@
                             Glyph="&#xec27;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
-                <!-- #endregion -->
-
             </NavigationView.MenuItems>
-
-            <!--#region <NavigationView.FooterMenuItems> -->
-
             <NavigationView.FooterMenuItems>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WorkbenchViewModel"
                     SelectsOnInvoked="False"
@@ -227,7 +193,6 @@
                             Glyph="&#xe70a;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel"
                     SelectsOnInvoked="False"
@@ -239,7 +204,6 @@
                             Glyph="&#xec50;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebViewViewModel"
                     SelectsOnInvoked="False"
@@ -251,12 +215,8 @@
                             Glyph="&#xf6fa;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItemSeparator />
-
             </NavigationView.FooterMenuItems>
-
-
             <NavigationView.HeaderTemplate>
                 <DataTemplate>
                     <Grid>
@@ -266,7 +226,6 @@
                     </Grid>
                 </DataTemplate>
             </NavigationView.HeaderTemplate>
-
             <i:Interaction.Behaviors>
                 <behaviors:NavigationViewHeaderBehavior
                     DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
@@ -281,14 +240,11 @@
                     </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                 </behaviors:NavigationViewHeaderBehavior>
             </i:Interaction.Behaviors>
-
             <Grid
                 Margin="{StaticResource NavigationViewPageContentMargin}">
-
                 <Frame
                     x:Name="NavigationFrame" />
             </Grid>
-
         </NavigationView>
     </Grid>
 </Page>
