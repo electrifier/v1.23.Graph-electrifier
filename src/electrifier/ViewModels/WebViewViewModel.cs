@@ -1,12 +1,9 @@
-﻿using System.Windows.Input;
-
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
 using electrifier.Contracts.Services;
 using electrifier.Contracts.ViewModels;
-
 using Microsoft.Web.WebView2.Core;
+using System.Windows.Input;
 
 namespace electrifier.ViewModels;
 // TODO: Review best practices and distribution guidelines for WebView2.
@@ -23,7 +20,7 @@ public class WebViewViewModel : ObservableRecipient, INavigationAware
 
     /// <summary>Backing fields</summary>
     private string _currentSourceForDisplay = _defaultSourceOnLaunch;
-    private Uri _source = new(_defaultSourceOnLaunch);
+    private Uri _webViewSourceUri = new(_defaultSourceOnLaunch);
     private bool _isLoading = true;
     private bool _hasFailures;
 
@@ -38,10 +35,10 @@ public class WebViewViewModel : ObservableRecipient, INavigationAware
         private set => SetProperty(ref _currentSourceForDisplay, value);
     }
 
-    public Uri Source
+    public Uri WebViewSourceUri
     {
-        get => _source;
-        private set => SetProperty(ref _source, value);
+        get => _webViewSourceUri;
+        private set => SetProperty(ref _webViewSourceUri, value);
     }
 
     public bool IsLoading
@@ -127,24 +124,16 @@ public class WebViewViewModel : ObservableRecipient, INavigationAware
         }
         else
         {
+            // TODO: Do we have to set a new URL to avoid infinite loop?
             var webErrorStatus = naviCompleted.WebErrorStatus;
 
-
-
             //if (naviStarting.WebErrorStatus == CoreWebView2WebErrorStatus.HostNameNotResolved) { }
-
-
             //var errorHtmlSource = $"<h1>Die gewünschte Seite konnte nicht geladen werden.</h1><br/><h2>Fehlerursache: <i>{naviCompleted.WebErrorStatus}</i></h2></html>";
             //WebViewService.NavigateToString(errorHtmlSource);
 
             HasFailures = true;
-
-            // TODO: neue URL setzen?!? um endlos-Schleife zu verhindern
         }
     }
-
-
-
     private void OnReloadCommand()
     {
         HasFailures = false;
@@ -152,47 +141,50 @@ public class WebViewViewModel : ObservableRecipient, INavigationAware
 
         WebViewService.Reload();
     }
-
     private void OnTestCase()
     {
         // TODO: TestCases
         // TODO: (!) "www.klackedieklack", "https://www.klickklackedie/"?
     }
-
-
     internal void BrowseTo(string stringEncodedUri)
     {
         HasFailures = false;
         IsLoading = true;
 
-        if (stringEncodedUri.Where(x => (x == '.')).Count() < 2)
+        try
         {
-            stringEncodedUri = $"www.{stringEncodedUri}";
-        }
-
-        if (stringEncodedUri.StartsWith("www."))
-        {
-            stringEncodedUri = $"https://{stringEncodedUri}";
-        }
-
-
-        if (Uri.TryCreate(stringEncodedUri, UriKind.RelativeOrAbsolute, out var newCreatedUri))
-        {
-            if (Uri.IsWellFormedUriString(stringEncodedUri, UriKind.Absolute))
+            if (stringEncodedUri.Count(x => (x == '.')) < 2)
             {
-
-
-                CurrentSourceForDisplay = newCreatedUri.ToString();
-
-                // TODO: WebViewService.Navigate(newCreatedUri)
-                // WebViewService, corewebview -> Navigate()
-
-
-                Source = newCreatedUri;
+                stringEncodedUri = $"www.{stringEncodedUri}";
             }
-        }
 
-        IsLoading = false;
-        // TODO: Show some meaningful error
+            if (stringEncodedUri.StartsWith("www."))
+            {
+                stringEncodedUri = $"https://{stringEncodedUri}";
+            }
+
+            if (Uri.TryCreate(stringEncodedUri, UriKind.RelativeOrAbsolute, out var newCreatedUri))
+            {
+                if (Uri.IsWellFormedUriString(stringEncodedUri, UriKind.Absolute))
+                {
+                    CurrentSourceForDisplay = newCreatedUri.ToString();
+
+                    // TODO: WebViewService.Navigate(newCreatedUri)
+                    // WebViewService, corewebview -> Navigate()
+
+                    WebViewSourceUri = newCreatedUri;
+                }
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        finally
+        {
+            IsLoading = false;
+        }
     }
 }

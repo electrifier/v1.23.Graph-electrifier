@@ -65,6 +65,7 @@ public sealed partial class ShellPage : Page
     {
         TitleBarHelper.UpdateTitleBar(RequestedTheme);
 
+        Debug.Assert(KeyboardAccelerators != null, nameof(KeyboardAccelerators) + " != null");
         KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
         KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
     }

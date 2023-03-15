@@ -1,9 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-
 using electrifier.Contracts.Services;
 using electrifier.ViewModels;
 using electrifier.Views;
-
 using Microsoft.UI.Xaml.Controls;
 
 namespace electrifier.Services;
@@ -14,15 +12,16 @@ public class PageService : IPageService
 
     public PageService()
     {
-        Configure<WorkbenchViewModel, WorkbenchPage>();
         Configure<ClipboardViewModel, ClipboardPage>();
         Configure<DevicesViewModel, DevicesPage>();
         Configure<FileManagerViewModel, FileManagerPage>();
+        Configure<Microsoft365ViewModel, Microsoft365Page>();
         Configure<NetworkDevicesViewModel, NetworkDevicesPage>();
         Configure<SettingsViewModel, SettingsPage>();
         Configure<WebFavoritesViewModel, WebFavoritesPage>();
         Configure<WebHostsViewModel, WebHostsPage>();
         Configure<WebViewViewModel, WebViewPage>();
+        Configure<WorkbenchViewModel, WorkbenchPage>();
     }
 
     public Type GetPageType(string key)
@@ -39,19 +38,19 @@ public class PageService : IPageService
         return pageType;
     }
 
-    private void Configure<VM, V>()
-        where VM : ObservableObject
-        where V : Page
+    private void Configure<TObservableObjectViewModel, TPage>()
+        where TObservableObjectViewModel : ObservableObject
+        where TPage : Page
     {
         lock (_pages)
         {
-            var key = typeof(VM).FullName!;
+            var key = typeof(TObservableObjectViewModel).FullName!;
             if (_pages.ContainsKey(key))
             {
                 throw new ArgumentException($"The key {key} is already configured in PageService");
             }
 
-            var type = typeof(V);
+            var type = typeof(TPage);
             if (_pages.Any(p => p.Value == type))
             {
                 throw new ArgumentException($"This type is already configured with key {_pages.First(p => p.Value == type).Key}");

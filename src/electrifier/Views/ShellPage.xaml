@@ -76,7 +76,6 @@
                     Content="Microsoft 365" />
                 <NavigationViewItem
                     x:Uid="Shell_Microsoft365"
-                    Content="Microsoft 365"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.Microsoft365ViewModel">
                     <NavigationViewItem.Icon>
                         <!-- Icon:  -->

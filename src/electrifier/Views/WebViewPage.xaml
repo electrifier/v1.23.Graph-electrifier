@@ -71,7 +71,7 @@
                 x:Name="AddressUrlAutoSuggestBox"
                 Grid.Column="1"
                 Text="{x:Bind ViewModel.CurrentSourceForDisplay, Mode=OneWay}"
-                PlaceholderText="{x:Bind ViewModel.Source, Mode=OneWay}"
+                PlaceholderText="{x:Bind ViewModel.WebViewSourceUri, Mode=OneWay}"
                 QueryIcon="Find"
                 KeyUp="AutoSuggestBox_KeyUp"
                 Margin="{StaticResource XSmallLeftTopRightBottomMargin}"
@@ -108,7 +108,7 @@
             x:Uid="WebViewContent"
             Name="WebViewContent"
             Grid.Row="2"
-            Source="{x:Bind ViewModel.Source, Mode=OneWay}" />
+            Source="{x:Bind ViewModel.WebViewSourceUri, Mode=OneWay}" />
 
     </Grid>
 </Page>
