@@ -43,45 +43,58 @@ public sealed partial class WorkbenchPage : Page
     }
     private void ButtonTajbenderHotmail_OnClickAsync(object sender, RoutedEventArgs args)
     {
-        var scopes = new[] { "User.Read" };
-
-        // Multi-tenant apps can use "common", single-tenant apps must use the tenant ID from the Azure portal
-        var tenantId = "common";
-
-        // Value from app registration
-        var clientId = "67501219-8281-4e6f-8348-aad08088c13b";
-
-        var options = new TokenCredentialOptions
+        try
         {
-            AuthorityHost = AzureAuthorityHosts.AzurePublicCloud
-        };
+            var scopes = new[] { "User.Read" };
 
-        var userName = "tajbender@hotmail.de";
-        var password = string.Empty;
+            // Multi-tenant apps can use "common", single-tenant apps must use the tenant ID from the Azure portal
+            var tenantId = "common";
 
-        // https://learn.microsoft.com/dotnet/api/azure.identity.usernamepasswordcredential
-        var userNamePasswordCredential = new UsernamePasswordCredential(
-            userName,
-            password,
-            tenantId,
-            clientId,
-            options);
+            // Value from app registration
+            var clientId = "67501219-8281-4e6f-8348-aad08088c13b";
 
-        var graphClient = new GraphServiceClient(userNamePasswordCredential, scopes);
+            var options = new TokenCredentialOptions
+            {
+                AuthorityHost = AzureAuthorityHosts.AzurePublicCloud
+            };
+
+            var userName = "tajbender@hotmail.de";
+            var password = string.Empty;
+
+            // https://learn.microsoft.com/dotnet/api/azure.identity.usernamepasswordcredential
+            var userNamePasswordCredential = new UsernamePasswordCredential(
+                userName,
+                password,
+                tenantId,
+                clientId,
+                options);
 
 
         //        var result = graphClient.Me.Messages["{message-id}"].GetAsync();
         //        var result2 = graphClient.Me.Messages["{message-id}"].SingleValueExtendedProperties;
+            var graphClient = new GraphServiceClient(userNamePasswordCredential, scopes);
 
+            //        var msalClient = PublicClientApplicationBuilder.Create(appId)
+            //            .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+            //            .Build();
 
+            //        ProviderManager.Instance.GlobalProvider = new MsalProvider(msalClient, scopes.Split(' '));
 
+            //        // Handle auth state change
+            //        ProviderManager.Instance.ProviderStateChanged += GraphProviderUpdated;
+        }
+        catch (Exception ex)
+        {
+            var message = ex.ToString();
+            throw;
+        }
+
+        //        var result = graphClient.Me.Messages["{message-id}"].GetAsync();
+        //        var result2 = graphClient.Me.Messages["{message-id}"].SingleValueExtendedProperties;
         //var strings = result?.BodyPreview;
-
-
         //try
         //{
         //    var graphClient = new GraphServiceClient(requestAdapter);
-
         //    var result = await graphClient.Me.Messages["{message-id}"].GetAsync();
         //}
         //catch (Exception e)
@@ -89,20 +102,14 @@ public sealed partial class WorkbenchPage : Page
         //    Console.WriteLine(e);
         //    throw;
         //}
-
-
-
         //// Load OAuth settings
         //try
         //{
         //    //var oauthSettings = ResourceLoader.GetForCurrentView("OAuth");
-
         //    //var appId = oauthSettings.GetString("AppId");
         //    //var scopes = oauthSettings.GetString("Scopes");
-
         //    var appId = "";
         //    var scopes = "";
-
         //    if (string.IsNullOrEmpty(appId) || string.IsNullOrEmpty(scopes))
         //    {
         //        // TODO:            Notification.Show("Could not load OAuth Settings from resource file.");
@@ -113,17 +120,12 @@ public sealed partial class WorkbenchPage : Page
         //        var msalClient = PublicClientApplicationBuilder.Create(appId)
         //            .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
         //            .Build();
-
         //        ProviderManager.Instance.GlobalProvider = new MsalProvider(msalClient, scopes.Split(' '));
-
         //        // Handle auth state change
         //        ProviderManager.Instance.ProviderStateChanged += GraphProviderUpdated;
-
         //        //// Navigate to HomePage.xaml
         //        //RootFrame.Navigate(typeof(HomePage));
         //    }
-
-
         //}
         //catch (Exception e)
         //{
