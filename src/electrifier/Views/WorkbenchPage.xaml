@@ -20,13 +20,11 @@
         </Grid.Background>
         <StackPanel
             Orientation="Vertical">
-
             <InfoBar
                 Name="WarrantyDisclaimerInfoBar"
                 IsOpen="{x:Bind WarrantyDisclaimerInfoBarInfoBarIsOpen, Mode=TwoWay}"
                 Severity="Warning"
                 Title="Disclaimer of Warranty">
-
                 <InfoBar.ActionButton>
                     <HyperlinkButton
                         Content="Caution! This is a debug build of electrifier. It contains errors beside unfinished and untested functionality."
@@ -85,9 +83,10 @@
                     </Grid>
                 </Grid>
             </InfoBar>
-
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="Auto" />
                     <ColumnDefinition
                         Width="Auto" />
                     <ColumnDefinition
@@ -99,34 +98,45 @@
                     <RowDefinition
                         Height="Auto" />
                 </Grid.RowDefinitions>
-
                 <PersonPicture
                     x:Name="PersonPicture"
                     Grid.Column="0"
                     Grid.Row="0" />
                 <TextBlock
                     Grid.Column="0"
-                    Grid.Row="1">
-                    Not Connected
+                    Grid.Row="1"
+                    x:Name="PersonInfoTextBlock">
                 </TextBlock>
-
                 <StackPanel
                     Grid.Column="1"
                     Grid.Row="0"
                     Grid.RowSpan="2"
                     Orientation="Vertical">
                     <Button
-                        Click="ButtonTajbenderHotmail_OnClickAsync">
-                        Login tajbender@hotmail.de
+                        Click="ButtonTajbenderHotmail_OnClickAsync"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch">
+                        Login as tajbender@hotmail.de
                     </Button>
                     <Button
-                        Click="ButtonTajElectrifier_OnClick">
-                        Login taj@electrifier.org
+                        Click="ButtonTajElectrifier_OnClick"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch">
+                        Login as taj@electrifier.org
                     </Button>
                     <Button
-                        Click="ButtonMSFTDummy_OnClick">
-                        Login MSFT Dummy
+                        Click="ButtonMSFTDummy_OnClick"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch">
+                        Login as MSFT Dummy
                     </Button>
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Orientation="Vertical">
+
                 </StackPanel>
             </Grid>
         </StackPanel>

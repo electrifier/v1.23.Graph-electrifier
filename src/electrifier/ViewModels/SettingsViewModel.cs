@@ -38,7 +38,7 @@ public class SettingsViewModel : ObservableRecipient
     public string VersionDescription
     {
         get => _versionDescription;
-        set => SetProperty(ref _versionDescription, value);
+        private set => SetProperty(ref _versionDescription, value);
     }
 
     public ICommand SwitchThemeCommand

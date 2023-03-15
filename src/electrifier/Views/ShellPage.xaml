@@ -13,9 +13,6 @@
         TOOD: Build an <a href="https://learn.microsoft.com/en-us/windows/apps/design/controls/navigationview#hierarchical-navigation">
               https://learn.microsoft.com/en-us/windows/apps/design/controls/navigationview#hierarchical-navigation
         -->
-
-
-
 <Page
     Loaded="OnLoaded"
     x:Class="electrifier.Views.ShellPage"
@@ -24,7 +21,6 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-
     <Grid>
         <Grid.Background>
             <ImageBrush
@@ -34,7 +30,6 @@
                 AlignmentX="Right"
                 Stretch="None" />
         </Grid.Background>
-
         <Grid
             x:Name="AppTitleBar"
             Canvas.ZIndex="1"
@@ -53,8 +48,6 @@
                 Style="{StaticResource CaptionTextBlockStyle}"
                 Margin="28,0,0,0" />
         </Grid>
-
-
         <NavigationView
             Canvas.ZIndex="0"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
@@ -67,7 +60,6 @@
             PaneTitle="{x:Bind ViewModel.NavigationService.PaneDisplayTitle, Mode=OneWay}"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
             x:Name="NavigationViewControl">
-
             <NavigationView.MenuItems>
                 <NavigationViewItem
                     x:Uid="Shell_Workbench"
@@ -79,9 +71,26 @@
                             Glyph="&#xe70a;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItemSeparator />
+                <NavigationViewItemHeader
+                    Content="Office" />
+                <NavigationViewItem
+                    x:Uid="Shell_Microsoft365"
+                    Content="Microsoft 365">
+                    <!--helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel"-->
+                    <NavigationViewItem.Icon>
+                        <!-- Icon:  -->
+                        <FontIcon
+                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                            Glyph="&#xec50;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
 
+                <!-- 
+
+
+
+-->
                 <!--#region: This PC -->
 
                 <NavigationViewItemHeader
