@@ -1,10 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using electrifier.Contracts.Services;
-using electrifier.Contracts.ViewModels;
 using Microsoft.Web.WebView2.Core;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace electrifier.ViewModels;

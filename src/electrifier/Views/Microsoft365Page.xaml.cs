@@ -1,15 +1,9 @@
-using Azure.Identity;
-using CommunityToolkit.Authentication;
 using electrifier.Contracts.Services;
-using electrifier.Helpers;
 using electrifier.ViewModels;
-using Microsoft.Graph;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml;
 using System.Diagnostics;
-using System.Net;
 using Windows.System;
 
 namespace electrifier.Views;

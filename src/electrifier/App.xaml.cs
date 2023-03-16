@@ -3,7 +3,6 @@
 //#define DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
 
 
-using CommunityToolkit.WinUI;
 using electrifier.Activation;
 using electrifier.Contracts.Services;
 using electrifier.Models.Configuration.Global;
@@ -116,7 +115,7 @@ public partial class App : Application
         GetService<IAppNotificationService>()?
             .Initialize();
 
-//        UnhandledException += App_UnhandledException;
+        //        UnhandledException += App_UnhandledException;
     }
 
     //private void App_StartAppCenter()
@@ -125,10 +124,10 @@ public partial class App : Application
     //}
 
 
-//    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs args)
-//    {
-//        App_UnhandledException(sender, args, false);
-//    }
+    //    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs args)
+    //    {
+    //        App_UnhandledException(sender, args, false);
+    //    }
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
@@ -222,17 +221,19 @@ private async void ShowDialog_Click(object sender, RoutedEventArgs e)
 
     private async void ShowDialog_Click(object sender, RoutedEventArgs e)
     {
-        ContentDialog dialog = new ContentDialog();
+        var dialog = new ContentDialog
+        {
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Primary,
+            PrimaryButtonText = "Save all changes made.",
+            SecondaryButtonText = "Don't save changes. Any progress made will be lost.",
+            Style= Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+            Title = "Save your work?",
+        };
 
         // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
         //dialog.XamlRoot = this.XamlRoot;
-        dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-        dialog.Title = "Save your work?";
-        dialog.PrimaryButtonText = "Save";
-        dialog.SecondaryButtonText = "Don't Save";
-        dialog.CloseButtonText = "Cancel";
-        dialog.DefaultButton = ContentDialogButton.Primary;
         //dialog.Content = new ContentDialogContent();
-        var result = await dialog.ShowAsync();
+        _ = await dialog.ShowAsync();
     }
 }
