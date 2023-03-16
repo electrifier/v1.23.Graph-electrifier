@@ -1,10 +1,11 @@
-﻿{
-    "profiles": {
-      "electrifier (Package)": {
-        "commandName": "MsixPackage"
-      },
-      "electrifier (Unpackaged)": {
-        "commandName": "Project"
-      }
+{
+  "profiles": {
+    "electrifier (Package)": {
+      "commandName": "MsixPackage",
+      "nativeDebugging": true
+    },
+    "electrifier (Unpackaged)": {
+      "commandName": "Project"
     }
+  }
 }

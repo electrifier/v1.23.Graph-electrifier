@@ -7,8 +7,9 @@
 	file:       app.manifest
 	
 	history:
-	23-01-11    Initial version: v1.23.1.0
-	23-03-01    march on edition: v.23.3.1
+	23-01-11	1.23.1.0	Initial version
+	23-03-01	v.23.3.1	Imperial March
+	23-03-14	v.23.3.2	Imperial March
 -->
 
 <assembly
@@ -16,7 +17,7 @@
 	xmlns="urn:schemas-microsoft-com:asm.v1">
 	<!-- Assembly version -->
 	<assemblyIdentity
-	  version="1.23.3.1"
+	  version="1.23.3.2"
 	  name="electrifier.app"/>
 	<compatibility
 		xmlns="urn:schemas-microsoft-com:compatibility.v1">

@@ -1,4 +1,5 @@
-﻿using electrifier.Contracts.Services;
+﻿using System.Diagnostics;
+using electrifier.Contracts.Services;
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -25,14 +26,22 @@ public class NavigationViewHeaderBehavior : Behavior<NavigationView>
     }
 
     public static readonly DependencyProperty DefaultHeaderProperty =
-        DependencyProperty.Register("DefaultHeader", typeof(object), typeof(NavigationViewHeaderBehavior), new PropertyMetadata(null, (d, e) => _current!.UpdateHeader()));
+        DependencyProperty.Register(nameof(DefaultHeader), typeof(object), typeof(NavigationViewHeaderBehavior), new PropertyMetadata(null, (d, e) => _current!.UpdateHeader()));
 
     public static NavigationViewHeaderMode GetHeaderMode(Page item) => (NavigationViewHeaderMode)item.GetValue(HeaderModeProperty);
 
     public static void SetHeaderMode(Page item, NavigationViewHeaderMode value) => item.SetValue(HeaderModeProperty, value);
 
     public static readonly DependencyProperty HeaderModeProperty =
-        DependencyProperty.RegisterAttached("HeaderMode", typeof(bool), typeof(NavigationViewHeaderBehavior), new PropertyMetadata(NavigationViewHeaderMode.Always, (d, e) => _current!.UpdateHeader()));
+        DependencyProperty.RegisterAttached(
+            "HeaderMode",
+            typeof(bool),
+            typeof(NavigationViewHeaderBehavior),
+            new PropertyMetadata(
+                NavigationViewHeaderMode.Always,
+                (
+                    d,
+                    e) => _current!.UpdateHeader()));
 
     public static object GetHeaderContext(Page item) => item.GetValue(HeaderContextProperty);
 
@@ -53,6 +62,9 @@ public class NavigationViewHeaderBehavior : Behavior<NavigationView>
         base.OnAttached();
 
         var navigationService = App.GetService<INavigationService>();
+
+        Debug.Assert(navigationService != null, nameof(navigationService) + " != null");
+
         navigationService.Navigated += OnNavigated;
 
         _current = this;
@@ -63,17 +75,25 @@ public class NavigationViewHeaderBehavior : Behavior<NavigationView>
         base.OnDetaching();
 
         var navigationService = App.GetService<INavigationService>();
+
+        Debug.Assert(navigationService != null, nameof(navigationService) + " != null");
+
         navigationService.Navigated -= OnNavigated;
     }
 
     private void OnNavigated(object sender, NavigationEventArgs e)
     {
-        if (sender is Frame frame && frame.Content is Page page)
+        switch (sender)
         {
-            _currentPage = page;
+            case Frame { Content: Page page }:
+                _currentPage = page;
 
-            UpdateHeader();
-            UpdateHeaderTemplate();
+                UpdateHeader();
+                UpdateHeaderTemplate();
+                break;
+            default:
+                Debug.Fail("sender unknown");
+                break;
         }
     }
 

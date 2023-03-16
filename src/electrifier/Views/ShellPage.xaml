@@ -13,9 +13,6 @@
         TOOD: Build an <a href="https://learn.microsoft.com/en-us/windows/apps/design/controls/navigationview#hierarchical-navigation">
               https://learn.microsoft.com/en-us/windows/apps/design/controls/navigationview#hierarchical-navigation
         -->
-
-
-
 <Page
     Loaded="OnLoaded"
     x:Class="electrifier.Views.ShellPage"
@@ -24,7 +21,6 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-
     <Grid>
         <Grid.Background>
             <ImageBrush
@@ -34,7 +30,6 @@
                 AlignmentX="Right"
                 Stretch="None" />
         </Grid.Background>
-
         <Grid
             x:Name="AppTitleBar"
             Canvas.ZIndex="1"
@@ -53,20 +48,18 @@
                 Style="{StaticResource CaptionTextBlockStyle}"
                 Margin="28,0,0,0" />
         </Grid>
-
-
         <NavigationView
             Canvas.ZIndex="0"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             ExpandedModeThresholdWidth="800"
-            Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
             IsBackButtonVisible="Visible"
             IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
+            IsPaneOpen="False"
             IsSettingsVisible="True"
             PaneTitle="{x:Bind ViewModel.NavigationService.PaneDisplayTitle, Mode=OneWay}"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
             x:Name="NavigationViewControl">
-
+            <!-- Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}" -->
             <NavigationView.MenuItems>
                 <NavigationViewItem
                     x:Uid="Shell_Workbench"
@@ -75,18 +68,25 @@
                         <!-- Icon: Tablet -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe70a;" />
+                            Glyph="&#xE70A;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItemSeparator />
-
-                <!--#region: This PC -->
-
+                <NavigationViewItemHeader
+                    Content="Microsoft 365" />
+                <NavigationViewItem
+                    x:Uid="Shell_Microsoft365"
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.Microsoft365ViewModel">
+                    <NavigationViewItem.Icon>
+                        <!-- Icon:  -->
+                        <FontIcon
+                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                            Glyph="&#xEC25;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
                 <NavigationViewItemHeader
                     x:Uid="Shell_ComputerName"
                     Content="{x:Bind ThisComputerName}" />
-
                 <NavigationViewItem
                     x:Uid="Shell_FileManager"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel">
@@ -94,10 +94,9 @@
                         <!-- Icon: FileExplorer -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xec50;" />
+                            Glyph="&#xEC50;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.DevicesViewModel"
                     IsEnabled="False"
@@ -107,10 +106,9 @@
                         <!-- Icon: Devices -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe772;" />
+                            Glyph="&#xE772;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.ClipboardViewModel"
                     IsEnabled="False"
@@ -120,22 +118,15 @@
                         <!-- Icon: ClipboardList -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xf0e3;" />
+                            Glyph="&#xF0E3;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItemSeparator
                     x:Uid="Shell_ThisPC_Separator"
                     Visibility="Collapsed" />
-
-                <!-- #endregion -->
-
-                <!-- #region Network -->
-
                 <NavigationViewItemHeader
                     x:Uid="Shell_Network"
                     Visibility="Collapsed" />
-
                 <NavigationViewItem
                     x:Uid="Shell_NetworkDevices"
                     IsEnabled="False"
@@ -145,22 +136,15 @@
                         <!-- Icon: FileExplorer -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe968;" />
+                            Glyph="&#xE968;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItemSeparator
                     x:Uid="Shell_Network_Separator"
                     Visibility="Collapsed" />
-
-                <!-- #endregion -->
-
-                <!-- #region Web -->
-
                 <NavigationViewItemHeader>
                     <NavigationViewItemHeader.Content>World wide web</NavigationViewItemHeader.Content>
                 </NavigationViewItemHeader>
-
                 <NavigationViewItem
                     x:Uid="Shell_WebView"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebViewViewModel">
@@ -168,10 +152,9 @@
                     <NavigationViewItem.Icon>
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xf6fa;" />
+                            Glyph="&#xF6FA;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebFavoritesViewModel"
                     IsEnabled="False"
@@ -181,10 +164,9 @@
                     <NavigationViewItem.Icon>
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe728;" />
+                            Glyph="&#xE728;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebHostsViewModel"
                     IsEnabled="False"
@@ -194,18 +176,11 @@
                     <NavigationViewItem.Icon>
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xec27;" />
+                            Glyph="&#xEC27;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
-                <!-- #endregion -->
-
             </NavigationView.MenuItems>
-
-            <!--#region <NavigationView.FooterMenuItems> -->
-
             <NavigationView.FooterMenuItems>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WorkbenchViewModel"
                     SelectsOnInvoked="False"
@@ -214,10 +189,9 @@
                         <!-- Icon: Tablet -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe70a;" />
+                            Glyph="&#xE70A;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel"
                     SelectsOnInvoked="False"
@@ -226,10 +200,9 @@
                         <!-- Icon: Tablet -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xec50;" />
+                            Glyph="&#xEC50;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebViewViewModel"
                     SelectsOnInvoked="False"
@@ -238,15 +211,11 @@
                     <NavigationViewItem.Icon>
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xf6fa;" />
+                            Glyph="&#xF6FA;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItemSeparator />
-
             </NavigationView.FooterMenuItems>
-
-
             <NavigationView.HeaderTemplate>
                 <DataTemplate>
                     <Grid>
@@ -256,10 +225,9 @@
                     </Grid>
                 </DataTemplate>
             </NavigationView.HeaderTemplate>
-
             <i:Interaction.Behaviors>
-                <behaviors:NavigationViewHeaderBehavior
-                    DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
+                <behaviors:NavigationViewHeaderBehavior>
+                    <!-- DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}" -->
                     <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                         <DataTemplate>
                             <Grid>
@@ -271,14 +239,11 @@
                     </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                 </behaviors:NavigationViewHeaderBehavior>
             </i:Interaction.Behaviors>
-
             <Grid
                 Margin="{StaticResource NavigationViewPageContentMargin}">
-
                 <Frame
                     x:Name="NavigationFrame" />
             </Grid>
-
         </NavigationView>
     </Grid>
 </Page>

@@ -1,11 +1,16 @@
 ﻿using electrifier.ViewModels;
-
 using Microsoft.UI.Xaml.Controls;
 using Windows.System;
 
 namespace electrifier.Views;
-// To learn more about WebView2, see https://docs.microsoft.com/microsoft-edge/webview2/.
 
+/// <summary>
+/// A page that contains a <seealso cref="WebView2"/>.
+///
+/// <br/><seealso href="http://aka.ms/winui-project-info">To learn more about WinUI, the WinUI
+/// project structure, and more about our project templates</seealso>
+/// <br/><seealso href="https://docs.microsoft.com/microsoft-edge/webview2/">Learn more about WebView2.</seealso>
+/// </summary>
 public sealed partial class WebViewPage : Page
 {
     public WebViewViewModel ViewModel

@@ -264,4 +264,7 @@ You may obtain a copy of the License at</value>
   <data name="SettingsPage_PrivacyDescription.Text" xml:space="preserve">
     <value>All your base are belong to us!</value>
   </data>
+  <data name="Shell_Microsoft365.Content" xml:space="preserve">
+    <value>Microsoft 365</value>
+  </data>
 </root>

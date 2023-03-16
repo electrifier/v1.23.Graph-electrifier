@@ -32,6 +32,8 @@
 		<TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
 		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
 		<UseWinUI>true</UseWinUI>
+		<PackageCertificateThumbprint>3170448E3FAECFA06CC0023FCD76AA2F7B39322A</PackageCertificateThumbprint>
+		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -39,21 +41,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+		<PackageReference Include="Azure.Identity" Version="1.8.2" />
+		<PackageReference Include="CommunityToolkit.Authentication.Msal" Version="7.1.3" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0-preview1" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
-		<PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.1" />
-		<PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.1.23110.8" />
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.230202101-experimental1" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+		<PackageReference Include="Microsoft.Graph" Version="5.1.0" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.50.0" />
+		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="2.26.0" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1587.40">
+		  <Aliases>webview2</Aliases>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Web.WebView2.DevToolsProtocolExtension" Version="1.0.824" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.230217.4" />
 		<PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3-beta1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="WinUIEx" Version="2.1.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<Page Update="Views\Microsoft365Page.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</Page>
+		<Page Update="Microsoft365Page.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</Page>
 		<None Update="README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
@@ -113,5 +128,10 @@
 		<Folder Include="Assets\Views\Workbench\" />
 		<Folder Include="Assets\%28!%29 Stock Images %28!%29\" />
 		<None Include=".\*\.editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Microsoft365Page.xaml" />
+	  <None Remove="Views\Microsoft365Page.xaml" />
 	</ItemGroup>
 </Project>

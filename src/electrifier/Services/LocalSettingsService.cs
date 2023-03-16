@@ -1,6 +1,5 @@
 ﻿using electrifier.Contracts.Services;
 using electrifier.Helpers;
-using electrifier.Models;
 using Microsoft.Extensions.Options;
 using Windows.Storage;
 using electrifier.Models.Configuration.Global;
