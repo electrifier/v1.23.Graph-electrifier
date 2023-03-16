@@ -52,7 +52,6 @@
             Canvas.ZIndex="0"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             ExpandedModeThresholdWidth="800"
-            Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
             IsBackButtonVisible="Visible"
             IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
             IsPaneOpen="False"
@@ -60,6 +59,7 @@
             PaneTitle="{x:Bind ViewModel.NavigationService.PaneDisplayTitle, Mode=OneWay}"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
             x:Name="NavigationViewControl">
+            <!-- Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}" -->
             <NavigationView.MenuItems>
                 <NavigationViewItem
                     x:Uid="Shell_Workbench"
@@ -68,7 +68,7 @@
                         <!-- Icon: Tablet -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe70a;" />
+                            Glyph="&#xE70A;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator />
@@ -81,7 +81,7 @@
                         <!-- Icon:  -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xec50;" />
+                            Glyph="&#xEC25;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemHeader
@@ -94,7 +94,7 @@
                         <!-- Icon: FileExplorer -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xec50;" />
+                            Glyph="&#xEC50;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
@@ -106,7 +106,7 @@
                         <!-- Icon: Devices -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe772;" />
+                            Glyph="&#xE772;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
@@ -118,7 +118,7 @@
                         <!-- Icon: ClipboardList -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xf0e3;" />
+                            Glyph="&#xF0E3;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator
@@ -136,7 +136,7 @@
                         <!-- Icon: FileExplorer -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe968;" />
+                            Glyph="&#xE968;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator
@@ -152,7 +152,7 @@
                     <NavigationViewItem.Icon>
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xf6fa;" />
+                            Glyph="&#xF6FA;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
@@ -164,7 +164,7 @@
                     <NavigationViewItem.Icon>
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe728;" />
+                            Glyph="&#xE728;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
@@ -176,7 +176,7 @@
                     <NavigationViewItem.Icon>
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xec27;" />
+                            Glyph="&#xEC27;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
@@ -189,7 +189,7 @@
                         <!-- Icon: Tablet -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe70a;" />
+                            Glyph="&#xE70A;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
@@ -200,7 +200,7 @@
                         <!-- Icon: Tablet -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xec50;" />
+                            Glyph="&#xEC50;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
@@ -211,7 +211,7 @@
                     <NavigationViewItem.Icon>
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xf6fa;" />
+                            Glyph="&#xF6FA;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator />
@@ -226,8 +226,8 @@
                 </DataTemplate>
             </NavigationView.HeaderTemplate>
             <i:Interaction.Behaviors>
-                <behaviors:NavigationViewHeaderBehavior
-                    DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
+                <behaviors:NavigationViewHeaderBehavior>
+                    <!-- DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}" -->
                     <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                         <DataTemplate>
                             <Grid>
