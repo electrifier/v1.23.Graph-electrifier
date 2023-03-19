@@ -118,20 +118,37 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Models\MsGraph\" />
-		<Folder Include="ViewModels\MsGraph\" />
+		<Folder Include="ControlPages\" />
 		<Folder Include="Views\MsGraph\" />
 		<None Include="..\..\LICENSE">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
-		<Folder Include="Assets\Views\Workbench\" />
 		<Folder Include="Assets\%28!%29 Stock Images %28!%29\" />
 		<None Include=".\*\.editorconfig" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Models\MsGraph\**" />
+	  <Compile Remove="ViewModels\MsGraph\**" />
+	  <EmbeddedResource Remove="Models\MsGraph\**" />
+	  <EmbeddedResource Remove="ViewModels\MsGraph\**" />
+	  <None Remove="Models\MsGraph\**" />
+	  <None Remove="ViewModels\MsGraph\**" />
+	  <Page Remove="Models\MsGraph\**" />
+	  <Page Remove="ViewModels\MsGraph\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Microsoft365Page.xaml" />
 	  <None Remove="Views\Microsoft365Page.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PRIResource Remove="ViewModels\MsGraph\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PRIResource Remove="Models\MsGraph\**" />
 	</ItemGroup>
 </Project>

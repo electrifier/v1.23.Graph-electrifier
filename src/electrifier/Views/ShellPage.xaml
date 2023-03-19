@@ -50,16 +50,15 @@
         </Grid>
         <NavigationView
             Canvas.ZIndex="0"
+            CompactPaneLength="48"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             ExpandedModeThresholdWidth="800"
-            IsBackButtonVisible="Visible"
-            IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
+            IsBackButtonVisible="Collapsed"
             IsPaneOpen="False"
             IsSettingsVisible="True"
             PaneTitle="{x:Bind ViewModel.NavigationService.PaneDisplayTitle, Mode=OneWay}"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
             x:Name="NavigationViewControl">
-            <!-- Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}" -->
             <NavigationView.MenuItems>
                 <NavigationViewItem
                     x:Uid="Shell_Workbench"
@@ -78,10 +77,8 @@
                     x:Uid="Shell_Microsoft365"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.Microsoft365ViewModel">
                     <NavigationViewItem.Icon>
-                        <!-- Icon:  -->
-                        <FontIcon
-                            FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xEC25;" />
+                        <ImageIcon
+                            Source="\Assets\Views\Workbench\Icons\Microsoft 365.ico" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemHeader
@@ -91,10 +88,8 @@
                     x:Uid="Shell_FileManager"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel">
                     <NavigationViewItem.Icon>
-                        <!-- Icon: FileExplorer -->
-                        <FontIcon
-                            FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xEC50;" />
+                        <ImageIcon
+                            Source="\Assets\Views\Workbench\Icons\Shell32 Folder containing File.ico" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
@@ -122,7 +117,7 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator
-                    x:Uid="Shell_ThisPC_Separator"
+                    x:Uid="Shell_Network_Separator"
                     Visibility="Collapsed" />
                 <NavigationViewItemHeader
                     x:Uid="Shell_Network"
@@ -130,13 +125,10 @@
                 <NavigationViewItem
                     x:Uid="Shell_NetworkDevices"
                     IsEnabled="False"
-                    Visibility="Collapsed"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.NetworkDevicesViewModel">
                     <NavigationViewItem.Icon>
-                        <!-- Icon: FileExplorer -->
-                        <FontIcon
-                            FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xE968;" />
+                        <ImageIcon
+                            Source="\Assets\Views\Workbench\Icons\Shell32 Network.ico" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator

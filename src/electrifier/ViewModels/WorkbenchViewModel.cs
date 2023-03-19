@@ -4,10 +4,7 @@ namespace electrifier.ViewModels;
 
 public class WorkbenchViewModel : ObservableRecipient
 {
-    public bool IsBusy
-    {
-        get; set;
-    }
+
     public string Title
     {
         get; set;
@@ -15,7 +12,6 @@ public class WorkbenchViewModel : ObservableRecipient
 
     public WorkbenchViewModel()
     {
-        Title = string.Empty;
-
+        Title = "Workbench";
     }
 }
