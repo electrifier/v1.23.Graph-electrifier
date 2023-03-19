@@ -9,6 +9,11 @@ namespace electrifier.Views;
 
 public sealed partial class FileManagerPage : Page
 {
+    protected enum ShowImagePhaseDescriptor
+    {
+        None = 0,
+    }
+
     public FileManagerViewModel ViewModel
     {
         get;
@@ -53,11 +58,13 @@ public sealed partial class FileManagerPage : Page
         }
     }
 
+
+
     private async void ShowImage(
         ListViewBase sender,
         ContainerContentChangingEventArgs args)
     {
-        if (args.Phase == 1)
+        if (args.Phase == (int)ShowImagePhaseDescriptor.None)
         {
             // It's phase 1, so show this item's image.
             var templateRoot = args.ItemContainer.ContentTemplateRoot as Grid;
@@ -75,16 +82,17 @@ public sealed partial class FileManagerPage : Page
                         {
                             //imageElement.Source = new BitmapImage();
                             //                        bitmap.UriSource = new Uri("ms-appx:///Assets/Square44x44Logo.scale-200.png");
-                            UriSource = new Uri("ms-appx:///../Assets/Square44x44Logo.scale-200.png")
+                            //UriSource = new Uri("ms-appx:///../Assets/Square44x44Logo.scale-200.png")
                         };
 
 
-                        //new Uri(img.BaseUri, "Assets/StoreLogo.png");
-                        //img.Source = bitmapImage;
+
+    //new Uri(img.BaseUri, "Assets/StoreLogo.png");
+    //img.Source = bitmapImage;
 
 
-                        /*
-                         *     Image img = sender as Image; 
+    /*
+     *     Image img = sender as Image; 
 BitmapImage bitmapImage = new BitmapImage();
 img.Width = bitmapImage.DecodePixelWidth = 80; 
 // Natural px width of image source.
@@ -93,16 +101,16 @@ img.Width = bitmapImage.DecodePixelWidth = 80;
 bitmapImage.UriSource = new Uri(img.BaseUri,"Assets/StoreLogo.png");
 img.Source = bitmapImage;*/
 
-                        //imageElement.Source = new ImageSource(item.ShellIcon);
+    //imageElement.Source = new ImageSource(item.ShellIcon);
 
-                        //var task = item?.GetImageThumbnailAsync();
+    //var task = item?.GetImageThumbnailAsync();
 
-                        //if (task != null)
-                        //{
-                        //    imageElement.Source = await task;
-                        //}
+    //if (task != null)
+    //{
+    //    imageElement.Source = await task;
+    //}
 
-                    }
+}
                     else
                     {
                         throw new ArgumentNullException(nameof(args.Item));
@@ -113,105 +121,105 @@ img.Source = bitmapImage;*/
     }
 
     private async Task GetItemsAsync(KnownLibraryId storageLibrary)
-    {
-        var library = await StorageLibrary.GetLibraryAsync(storageLibrary);
-        StorageFolder storageFolder = library.SaveFolder;
+{
+    var library = await StorageLibrary.GetLibraryAsync(storageLibrary);
+    StorageFolder storageFolder = library.SaveFolder;
 
-        if (storageFolder != null)
-        {
-            _ = GetItemsAsync(storageFolder);
-        }
+    if (storageFolder != null)
+    {
+        _ = GetItemsAsync(storageFolder);
+    }
+}
+
+private async Task GetItemsAsync(StorageFolder storageFolder)
+{
+    var folderQuery = storageFolder.CreateItemQuery();
+
+    var items = await folderQuery.GetItemsAsync();
+
+    foreach (var storageFile in items)
+    {
+        ShellItems.Add(await LoadShellItemInfo(storageFile));
     }
 
-    private async Task GetItemsAsync(StorageFolder storageFolder)
-    {
-        var folderQuery = storageFolder.CreateItemQuery();
+    ImageGridView.ItemsSource = ShellItems;
 
-        var items = await folderQuery.GetItemsAsync();
-
-        foreach (var storageFile in items)
-        {
-            ShellItems.Add(await LoadShellItemInfo(storageFile));
-        }
-
-        ImageGridView.ItemsSource = ShellItems;
-
-        //        var fileQuery = storageFolder.CreateFileQueryWithOptions(new QueryOptions());
-        //        var storageFiles = await folderQuery.GetFilesAsync();
-        //        var storageFolders = await storageFolder.GetFoldersAsync();
+    //        var fileQuery = storageFolder.CreateFileQueryWithOptions(new QueryOptions());
+    //        var storageFiles = await folderQuery.GetFilesAsync();
+    //        var storageFolders = await storageFolder.GetFoldersAsync();
 
 
 
 
-        //        return storageFolder.CreateFileQueryWithOptions(new QueryOptions()).ToListAsync();
+    //        return storageFolder.CreateFileQueryWithOptions(new QueryOptions()).ToListAsync();
 
-        //        var result = picturesFolder.CreateFileQueryWithOptions(new QueryOptions());
-        //        _ = await result.GetFilesAsync();
+    //        var result = picturesFolder.CreateFileQueryWithOptions(new QueryOptions());
+    //        _ = await result.GetFilesAsync();
 
-        /*
-                StorageFolder picturesFolder;
+    /*
+            StorageFolder picturesFolder;
 
-                //picturesFolder = Package.Current.InstalledLocation;
-                //picturesFolder = KnownFolders.PicturesLibrary;
-                picturesFolder = KnownFolders.DocumentsLibrary;
-                //picturesFolder = KnownFolders.HomeGroup;
+            //picturesFolder = Package.Current.InstalledLocation;
+            //picturesFolder = KnownFolders.PicturesLibrary;
+            picturesFolder = KnownFolders.DocumentsLibrary;
+            //picturesFolder = KnownFolders.HomeGroup;
 
-                var result = picturesFolder.CreateFileQueryWithOptions(new QueryOptions());
+            var result = picturesFolder.CreateFileQueryWithOptions(new QueryOptions());
 
-                var storageFiles = await result.GetFilesAsync();
+            var storageFiles = await result.GetFilesAsync();
 
-                foreach (var storageFile in storageFiles)
-                {
-                    ShellItems.Add(await LoadShellItemInfo(storageFile));
-                }
-
-                ImageGridView.ItemsSource = ShellItems;
-        */
-    }
-
-    //public static async Task<DosShellItem> LoadShellItemInfo(StorageFile file)
-    //{
-    //    DosShellItem shellItem = new(file ?? throw new ArgumentNullException(nameof(file)));
-
-    //    try
-    //    {
-    //        var properties = await file.Properties.GetDocumentPropertiesAsync();
-
-    //        if (file.IsOfType(StorageItemTypes.Folder))
-    //        {
-    //            bool isFolder = true;
-
-    //        }
-
-    //        return shellItem;
-    //    }
-    //    catch
-    //    {
-    //        throw;
-    //    }
-    //}
-
-
-    public static async Task<DosShellItem> LoadShellItemInfo(IStorageItem item)
-    {
-        DosShellItem shellItem = new(item ?? throw new ArgumentNullException(nameof(item)));
-
-        try
-        {
-            var storageitem = item;
-
-            if (item.IsOfType(StorageItemTypes.Folder))
+            foreach (var storageFile in storageFiles)
             {
-                var isFolder = true;
-
+                ShellItems.Add(await LoadShellItemInfo(storageFile));
             }
-            await item.GetBasicPropertiesAsync();
 
-            return shellItem;
-        }
-        catch
+            ImageGridView.ItemsSource = ShellItems;
+    */
+}
+
+//public static async Task<DosShellItem> LoadShellItemInfo(StorageFile file)
+//{
+//    DosShellItem shellItem = new(file ?? throw new ArgumentNullException(nameof(file)));
+
+//    try
+//    {
+//        var properties = await file.Properties.GetDocumentPropertiesAsync();
+
+//        if (file.IsOfType(StorageItemTypes.Folder))
+//        {
+//            bool isFolder = true;
+
+//        }
+
+//        return shellItem;
+//    }
+//    catch
+//    {
+//        throw;
+//    }
+//}
+
+
+public static async Task<DosShellItem> LoadShellItemInfo(IStorageItem item)
+{
+    DosShellItem shellItem = new(item ?? throw new ArgumentNullException(nameof(item)));
+
+    try
+    {
+        var storageitem = item;
+
+        if (item.IsOfType(StorageItemTypes.Folder))
         {
-            throw;
+            var isFolder = true;
+
         }
+        await item.GetBasicPropertiesAsync();
+
+        return shellItem;
     }
+    catch
+    {
+        throw;
+    }
+}
 }

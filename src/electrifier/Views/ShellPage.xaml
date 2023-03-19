@@ -54,7 +54,7 @@
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             ExpandedModeThresholdWidth="800"
             IsBackButtonVisible="Collapsed"
-            IsPaneOpen="False"
+            IsPaneOpen="True"
             IsSettingsVisible="True"
             PaneTitle="{x:Bind ViewModel.NavigationService.PaneDisplayTitle, Mode=OneWay}"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
@@ -70,17 +70,6 @@
                             Glyph="&#xE70A;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItemSeparator />
-                <NavigationViewItemHeader
-                    Content="Microsoft 365" />
-                <NavigationViewItem
-                    x:Uid="Shell_Microsoft365"
-                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.Microsoft365ViewModel">
-                    <NavigationViewItem.Icon>
-                        <ImageIcon
-                            Source="\Assets\Views\Workbench\Icons\Microsoft 365.ico" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
                 <NavigationViewItemHeader
                     x:Uid="Shell_ComputerName"
                     Content="{x:Bind ThisComputerName}" />
@@ -94,8 +83,6 @@
                 </NavigationViewItem>
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.DevicesViewModel"
-                    IsEnabled="False"
-                    Visibility="Collapsed"
                     x:Uid="Shell_Devices">
                     <NavigationViewItem.Icon>
                         <!-- Icon: Devices -->
@@ -106,14 +93,23 @@
                 </NavigationViewItem>
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.ClipboardViewModel"
-                    IsEnabled="False"
-                    Visibility="Collapsed"
                     x:Uid="Shell_Clipboard">
                     <NavigationViewItem.Icon>
                         <!-- Icon: ClipboardList -->
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
                             Glyph="&#xF0E3;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItemSeparator />
+                <NavigationViewItemHeader
+                    Content="Microsoft 365" />
+                <NavigationViewItem
+                    x:Uid="Shell_Microsoft365"
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.Microsoft365ViewModel">
+                    <NavigationViewItem.Icon>
+                        <ImageIcon
+                            Source="\Assets\Views\Workbench\Icons\Microsoft 365.ico" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator
@@ -149,8 +145,6 @@
                 </NavigationViewItem>
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebFavoritesViewModel"
-                    IsEnabled="False"
-                    Visibility="Collapsed"
                     x:Uid="Shell_WebFavorites">
                     <!-- Icon: FavoriteList -->
                     <NavigationViewItem.Icon>
@@ -161,8 +155,6 @@
                 </NavigationViewItem>
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebHostsViewModel"
-                    IsEnabled="False"
-                    Visibility="Collapsed"
                     x:Uid="Shell_WebHosts">
                     <!-- Icon: MyNetwork -->
                     <NavigationViewItem.Icon>
