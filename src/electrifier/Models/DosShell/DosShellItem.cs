@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Windows.Storage;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI;
+using Microsoft.UI.Xaml;
 
 namespace electrifier.Services;
 
@@ -31,7 +32,7 @@ public class DosShellItem : INotifyPropertyChanged, IEquatable<DosShellItem?>
     }
     public ImageIcon ShellIcon
     {
-        get;
+        get; private set;
     }
 
     public IStorageItem StorageItem
@@ -42,27 +43,33 @@ public class DosShellItem : INotifyPropertyChanged, IEquatable<DosShellItem?>
     public DosShellItem(IStorageItem storageItem)
     {
         StorageItem = storageItem;
-
         isFolder = storageItem.IsOfType(StorageItemTypes.Folder);
 
-        if (this.IsFolder)
-        {
-            IconId iconId = new IconId(0x0);
-        }
-        else
-        {
-            IconId iconId = new IconId(0x1);
-        }
+        IconId = new IconId((ulong)(IsFolder ? 0x0 : 0x1));
+    }
+
+    private void Image_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+    {
+        // TODO: LogMessage
+
+        var image = new Image();
+        image.ImageFailed += Image_ImageFailed;
+
+        var imageIcon = new ImageIcon();
+        ShellIcon = imageIcon;
 
         OnPropertyChanged(nameof(IconId));
         OnPropertyChanged(nameof(ShellIcon));
     }
+
+    #region events
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
     protected void OnPropertyChanged([CallerMemberName] string? propertyName = null) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
+    #endregion events
 
     #region IEquatable<DosShellItem?>
 
@@ -75,5 +82,5 @@ public class DosShellItem : INotifyPropertyChanged, IEquatable<DosShellItem?>
 
     public static bool operator !=(DosShellItem? left, DosShellItem? right) => !(left == right);
 
-    #endregion
+    #endregion IEquatable<DosShellItem?>
 }
