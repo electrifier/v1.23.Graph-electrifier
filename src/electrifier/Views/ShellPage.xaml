@@ -83,18 +83,7 @@
                         Glyph="&#xF0E3;" />
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <NavigationViewItemSeparator />
-            <NavigationViewItemHeader
-                Content="Microsoft 365" />
-            <NavigationViewItem
-                x:Uid="Shell_Microsoft365"
-                helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.Microsoft365ViewModel">
-                <NavigationViewItem.Icon>
-                    <ImageIcon
-                        Source="\Assets\Views\Workbench\Icons\Microsoft 365.ico" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItemSeparator
+                <NavigationViewItemSeparator
                     x:Uid="Shell_Network_Separator"
                     Visibility="Collapsed" />
                 <NavigationViewItemHeader
@@ -109,6 +98,17 @@
                             Source="\Assets\Views\Workbench\Icons\Shell32 Network.ico" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItemSeparator />
+            <NavigationViewItemHeader
+                Content="Microsoft 365" />
+            <NavigationViewItem
+                x:Uid="Shell_Microsoft365"
+                helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.Microsoft365ViewModel">
+                <NavigationViewItem.Icon>
+                    <ImageIcon
+                        Source="\Assets\Views\Workbench\Icons\Microsoft 365.ico" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
                 <NavigationViewItemSeparator
                     x:Uid="Shell_Network_Separator"
                     Visibility="Collapsed" />

@@ -121,8 +121,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="ControlPages\" />
-		<Folder Include="Views\MsGraph\" />
 		<None Include="..\..\LICENSE">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
@@ -132,14 +130,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="ControlPages\**" />
 	  <Compile Remove="Models\MsGraph\**" />
 	  <Compile Remove="ViewModels\MsGraph\**" />
+	  <Compile Remove="Views\MsGraph\**" />
+	  <EmbeddedResource Remove="ControlPages\**" />
 	  <EmbeddedResource Remove="Models\MsGraph\**" />
 	  <EmbeddedResource Remove="ViewModels\MsGraph\**" />
+	  <EmbeddedResource Remove="Views\MsGraph\**" />
+	  <None Remove="ControlPages\**" />
 	  <None Remove="Models\MsGraph\**" />
 	  <None Remove="ViewModels\MsGraph\**" />
+	  <None Remove="Views\MsGraph\**" />
+	  <Page Remove="ControlPages\**" />
 	  <Page Remove="Models\MsGraph\**" />
 	  <Page Remove="ViewModels\MsGraph\**" />
+	  <Page Remove="Views\MsGraph\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -153,5 +159,13 @@
 
 	<ItemGroup>
 	  <PRIResource Remove="Models\MsGraph\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PRIResource Remove="Views\MsGraph\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PRIResource Remove="ControlPages\**" />
 	</ItemGroup>
 </Project>

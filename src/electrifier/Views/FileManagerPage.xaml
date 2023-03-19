@@ -15,11 +15,11 @@
             Orientation="Vertical">
             <MenuBar Name="MenuBar">
                 <MenuBarItem
-                    Title="MenuBarItemFile">
+                    Title="File">
+                    <MenuFlyoutItem
+                        Text="New Tab" />
                     <MenuFlyoutItem
                         Text="New" />
-                    <MenuFlyoutItem
-                        Text="New Window..." />
                     <MenuFlyoutItem
                         Text="Open" />
                 </MenuBarItem>
