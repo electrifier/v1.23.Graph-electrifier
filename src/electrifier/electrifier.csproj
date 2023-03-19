@@ -34,6 +34,9 @@
 		<UseWinUI>true</UseWinUI>
 		<PackageCertificateThumbprint>3170448E3FAECFA06CC0023FCD76AA2F7B39322A</PackageCertificateThumbprint>
 		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+		<Title>electrifier imtegrated desktop environment</Title>
+		<Authors>$(AssemblyName), Thorsten Jung</Authors>
+		<AssemblyVersion>1.23.3.19</AssemblyVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
