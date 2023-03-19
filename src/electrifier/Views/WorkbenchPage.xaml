@@ -107,7 +107,6 @@
                     Grid.RowSpan="2"
                     Orientation="Vertical">
                     <Button
-                        Click="ButtonTajbenderHotmail_OnClickAsync"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Stretch">
                         Login as tajbender@hotmail.de
