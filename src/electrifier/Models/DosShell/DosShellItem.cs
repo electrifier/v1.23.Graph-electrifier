@@ -11,18 +11,22 @@ namespace electrifier.Services;
 public class DosShellItem : INotifyPropertyChanged, IEquatable<DosShellItem?>
 {
 
-    public string FileName => StorageItem.Name;
+    public string FileName => (StorageItem != null ? StorageItem?.Name : "[Not Initialized]");
 
-    public string FileType => StorageItem.Name;
 
-    protected bool isFolder;
+
+    public string FileType => (StorageItem != null ? StorageItem?.Name : "[Not Initialized]");
+
 
     public override int GetHashCode()
     {
         return StorageItem.GetHashCode();
     }
 
-    public bool IsFolder => isFolder;
+    public bool IsFolder
+    {
+        get; private set;
+    }
 
     public bool IsFile => !IsFolder;
 
@@ -40,13 +44,19 @@ public class DosShellItem : INotifyPropertyChanged, IEquatable<DosShellItem?>
         get; private set;
     }
 
+    public DosShellItem()
+    {
+        IconId = IconId = new IconId((ulong)(IsFolder ? 0x0 : 0x1));
+    }
+
     public DosShellItem(IStorageItem storageItem)
     {
         StorageItem = storageItem;
-        isFolder = storageItem.IsOfType(StorageItemTypes.Folder);
-
+        IsFolder = storageItem.IsOfType(StorageItemTypes.Folder);
         IconId = new IconId((ulong)(IsFolder ? 0x0 : 0x1));
+        ShellIcon = new ImageIcon();
     }
+
 
     private void Image_ImageFailed(object sender, ExceptionRoutedEventArgs e)
     {

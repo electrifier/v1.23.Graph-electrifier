@@ -87,30 +87,30 @@ public sealed partial class FileManagerPage : Page
 
 
 
-    //new Uri(img.BaseUri, "Assets/StoreLogo.png");
-    //img.Source = bitmapImage;
+                        //new Uri(img.BaseUri, "Assets/StoreLogo.png");
+                        //img.Source = bitmapImage;
 
 
-    /*
-     *     Image img = sender as Image; 
-BitmapImage bitmapImage = new BitmapImage();
-img.Width = bitmapImage.DecodePixelWidth = 80; 
-// Natural px width of image source.
-// You don't need to set Height; the system maintains aspect ratio, and calculates the other
-// dimension, as long as one dimension measurement is provided.
-bitmapImage.UriSource = new Uri(img.BaseUri,"Assets/StoreLogo.png");
-img.Source = bitmapImage;*/
+                        /*
+                         *     Image img = sender as Image; 
+                    BitmapImage bitmapImage = new BitmapImage();
+                    img.Width = bitmapImage.DecodePixelWidth = 80; 
+                    // Natural px width of image source.
+                    // You don't need to set Height; the system maintains aspect ratio, and calculates the other
+                    // dimension, as long as one dimension measurement is provided.
+                    bitmapImage.UriSource = new Uri(img.BaseUri,"Assets/StoreLogo.png");
+                    img.Source = bitmapImage;*/
 
-    //imageElement.Source = new ImageSource(item.ShellIcon);
+                        //imageElement.Source = new ImageSource(item.ShellIcon);
 
-    //var task = item?.GetImageThumbnailAsync();
+                        //var task = item?.GetImageThumbnailAsync();
 
-    //if (task != null)
-    //{
-    //    imageElement.Source = await task;
-    //}
+                        //if (task != null)
+                        //{
+                        //    imageElement.Source = await task;
+                        //}
 
-}
+                    }
                     else
                     {
                         throw new ArgumentNullException(nameof(args.Item));
@@ -121,105 +121,47 @@ img.Source = bitmapImage;*/
     }
 
     private async Task GetItemsAsync(KnownLibraryId storageLibrary)
-{
-    var library = await StorageLibrary.GetLibraryAsync(storageLibrary);
-    StorageFolder storageFolder = library.SaveFolder;
-
-    if (storageFolder != null)
     {
-        _ = GetItemsAsync(storageFolder);
-    }
-}
+        var library = await StorageLibrary.GetLibraryAsync(storageLibrary);
+        var storageFolder = library.SaveFolder;
 
-private async Task GetItemsAsync(StorageFolder storageFolder)
-{
-    var folderQuery = storageFolder.CreateItemQuery();
-
-    var items = await folderQuery.GetItemsAsync();
-
-    foreach (var storageFile in items)
-    {
-        ShellItems.Add(await LoadShellItemInfo(storageFile));
-    }
-
-    ImageGridView.ItemsSource = ShellItems;
-
-    //        var fileQuery = storageFolder.CreateFileQueryWithOptions(new QueryOptions());
-    //        var storageFiles = await folderQuery.GetFilesAsync();
-    //        var storageFolders = await storageFolder.GetFoldersAsync();
-
-
-
-
-    //        return storageFolder.CreateFileQueryWithOptions(new QueryOptions()).ToListAsync();
-
-    //        var result = picturesFolder.CreateFileQueryWithOptions(new QueryOptions());
-    //        _ = await result.GetFilesAsync();
-
-    /*
-            StorageFolder picturesFolder;
-
-            //picturesFolder = Package.Current.InstalledLocation;
-            //picturesFolder = KnownFolders.PicturesLibrary;
-            picturesFolder = KnownFolders.DocumentsLibrary;
-            //picturesFolder = KnownFolders.HomeGroup;
-
-            var result = picturesFolder.CreateFileQueryWithOptions(new QueryOptions());
-
-            var storageFiles = await result.GetFilesAsync();
-
-            foreach (var storageFile in storageFiles)
-            {
-                ShellItems.Add(await LoadShellItemInfo(storageFile));
-            }
-
-            ImageGridView.ItemsSource = ShellItems;
-    */
-}
-
-//public static async Task<DosShellItem> LoadShellItemInfo(StorageFile file)
-//{
-//    DosShellItem shellItem = new(file ?? throw new ArgumentNullException(nameof(file)));
-
-//    try
-//    {
-//        var properties = await file.Properties.GetDocumentPropertiesAsync();
-
-//        if (file.IsOfType(StorageItemTypes.Folder))
-//        {
-//            bool isFolder = true;
-
-//        }
-
-//        return shellItem;
-//    }
-//    catch
-//    {
-//        throw;
-//    }
-//}
-
-
-public static async Task<DosShellItem> LoadShellItemInfo(IStorageItem item)
-{
-    DosShellItem shellItem = new(item ?? throw new ArgumentNullException(nameof(item)));
-
-    try
-    {
-        var storageitem = item;
-
-        if (item.IsOfType(StorageItemTypes.Folder))
+        if (storageFolder != null)
         {
-            var isFolder = true;
-
+            _ = GetItemsAsync(storageFolder);
         }
-        await item.GetBasicPropertiesAsync();
+    }
 
-        return shellItem;
-    }
-    catch
+    private async Task GetItemsAsync(StorageFolder storageFolder)
     {
-        throw;
+        var folderQuery = storageFolder.CreateItemQuery();
+        var items = await folderQuery.GetItemsAsync();
+
+        foreach (var storageFile in items)
+        {
+            ShellItems.Add(await LoadShellItemInfo(storageFile));
+        }
+
+        ImageGridView.ItemsSource = ShellItems;
     }
-}
+
+    public static async Task<DosShellItem> LoadShellItemInfo(IStorageItem item)
+    {
+        DosShellItem shellItem = new(item ?? throw new ArgumentNullException(nameof(item)));
+
+        try
+        {
+            var storageitem = item;
+
+            //if (item.IsOfType(StorageItemTypes.Folder))
+            //{
+            //}
+            await item.GetBasicPropertiesAsync();
+
+            return shellItem;
+        }
+        catch
+        {
+            throw;
+        }
+    }
 }

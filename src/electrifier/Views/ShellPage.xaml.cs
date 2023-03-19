@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Net;
 using electrifier.Contracts.Services;
 using electrifier.Helpers;
@@ -8,7 +9,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-
+using Microsoft.UI.Xaml.Media.Animation;
 using Windows.System;
 
 namespace electrifier.Views;
@@ -20,7 +21,25 @@ public sealed partial class ShellPage : Page
     {
         get;
     }
-    
+
+    public class Tab
+    {
+        public String Name
+        {
+            get; set;
+        }
+        public String Icon
+        {
+            get; set;
+        }
+        public ObservableCollection<Tab> Children
+        {
+            get; set;
+        }
+    }
+
+    public ObservableCollection<Tab> ChildTabs = new();
+
     public string ThisComputerName
     {
         get;
@@ -37,7 +56,7 @@ public sealed partial class ShellPage : Page
             return Environment.MachineName;
         }
     }
-    
+
     /// <summary>
     /// 
     /// </summary>
@@ -76,7 +95,7 @@ public sealed partial class ShellPage : Page
             ? "WindowCaptionForegroundDisabled"
             : "WindowCaptionForeground";
 
-        AppTitleBarText.Foreground = (SolidColorBrush)Application.Current.Resources[resource];
+        //AppTitleBarText.Foreground = (SolidColorBrush)Application.Current.Resources[resource];
     }
 
     private void NavigationViewControl_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
@@ -114,5 +133,73 @@ public sealed partial class ShellPage : Page
         var result = navigationService.GoBack();
 
         args.Handled = result;
+    }
+
+    private void OnItemInvoked(object sender, NavigationViewItemInvokedEventArgs e)
+    {
+        var clickedItem = e.InvokedItem;
+        var clickedItemContainer = e.InvokedItemContainer;
+    }
+
+    private void OnItemExpanding(object sender, NavigationViewItemExpandingEventArgs e)
+    {
+        //var nvib = e.ExpandingItemContainer;
+        //var name = "Last Expanding: " + nvib.Content.ToString();
+        //ExpandingItemLabel.Text = name;
+    }
+
+    private void OnItemCollapsed(object sender, NavigationViewItemCollapsedEventArgs e)
+    {
+        //var nvib = e.CollapsedItemContainer;
+        //var name = "Last Collapsed: " + nvib.Content;
+        //CollapsedItemLabel.Text = name;
+    }
+
+    public sealed class NavigationViewItemExpandingEventArgs
+    {
+        public NavigationViewItemExpandingEventArgs()
+        {
+        }
+
+        public object ExpandingItem
+        {
+            get;
+        }
+        public NavigationViewItemBase ExpandedItemContainer
+        {
+            get;
+        }
+        public bool IsSettingsInvoked
+        {
+            get;
+        }
+        public NavigationTransitionInfo RecommendedNavigationTransitionInfo
+        {
+            get;
+        }
+    }
+
+    public sealed class NavigationViewItemCollapsedEventArgs
+    {
+        public NavigationViewItemCollapsedEventArgs()
+        {
+        }
+
+        public object CollapsedItem
+        {
+            get;
+        }
+        public NavigationViewItemBase CollapsedItemContainer
+        {
+            get;
+        }
+        public bool IsSettingsInvoked
+        {
+            get;
+        }
+        public NavigationTransitionInfo RecommendedNavigationTransitionInfo
+        {
+            get;
+        }
     }
 }
