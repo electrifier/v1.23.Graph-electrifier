@@ -10,14 +10,6 @@
     xmlns:viewModels="using:electrifier.ViewModels">
     <Grid
         x:Name="ContentArea">
-        <Grid.Background>
-            <ImageBrush
-                AlignmentX="Center"
-                AlignmentY="Top"
-                ImageSource="..\Assets\(!) Stock Images (!)\lightning background.png"
-                Opacity="0.1"
-                Stretch="UniformToFill" />
-        </Grid.Background>
         <StackPanel
             Orientation="Vertical">
             <InfoBar
@@ -98,6 +90,7 @@
                     <RowDefinition
                         Height="Auto" />
                 </Grid.RowDefinitions>
+
                 <PersonPicture
                     x:Name="PersonPicture"
                     Grid.Column="0"
@@ -107,13 +100,13 @@
                     Grid.Row="1"
                     x:Name="PersonInfoTextBlock">
                 </TextBlock>
+                
                 <StackPanel
                     Grid.Column="1"
                     Grid.Row="0"
                     Grid.RowSpan="2"
                     Orientation="Vertical">
                     <Button
-                        Click="ButtonTajbenderHotmail_OnClickAsync"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Stretch">
                         Login as tajbender@hotmail.de
@@ -131,12 +124,12 @@
                         Login as MSFT Dummy
                     </Button>
                 </StackPanel>
+
                 <StackPanel
                     Grid.Column="2"
                     Grid.Row="0"
                     Grid.RowSpan="2"
                     Orientation="Vertical">
-
                 </StackPanel>
             </Grid>
         </StackPanel>

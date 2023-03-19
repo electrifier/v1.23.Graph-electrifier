@@ -2,182 +2,95 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.Storage;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI;
+using Microsoft.UI.Xaml;
 
 namespace electrifier.Services;
 
-public class DosShellItem : INotifyPropertyChanged
+public class DosShellItem : INotifyPropertyChanged, IEquatable<DosShellItem?>
 {
-    public IStorageItem StorageItem
+
+    public string FileName => (StorageItem != null ? StorageItem?.Name : "[Not Initialized]");
+
+
+
+    public string FileType => (StorageItem != null ? StorageItem?.Name : "[Not Initialized]");
+
+
+    public override int GetHashCode()
     {
-        get;
+        return StorageItem.GetHashCode();
     }
-
-    public string FileName => StorageItem.Name;
-
-    public string FileType => StorageItem.Path;
 
     public bool IsFolder
     {
-        get;
+        get; private set;
     }
 
     public bool IsFile => !IsFolder;
 
-    //public ImageIcon ShellIcon
-    //{
-    //    get;        // TODO: this is not initialized yet
-    //}
+    public IconId IconId
+    {
+        get; private set;
+    }
+    public ImageIcon ShellIcon
+    {
+        get; private set;
+    }
+
+    public IStorageItem StorageItem
+    {
+        get; private set;
+    }
+
+    public DosShellItem()
+    {
+        IconId = IconId = new IconId((ulong)(IsFolder ? 0x0 : 0x1));
+    }
 
     public DosShellItem(IStorageItem storageItem)
     {
         StorageItem = storageItem;
         IsFolder = storageItem.IsOfType(StorageItemTypes.Folder);
-
-        //_ = LoadDefaultImages();
-
-
-        /////////////////////////////////////////////////////////////
-        ///
-
-        /*
-        var uri = new System.Uri("ms-appx:///images/logo.png");
-        var file = Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(uri);
-         */
-
-
-        //        new ResourceManager().MainResourceMap.GetValue("Files/foo.png").ValueAsString
-
-
-
-
-
-        //////////////////////////////////////////////////
-        ///
-        //var bitmap = new BitmapImage();
-        ////await bitmapSource.SetSourceAsync(bitmapStream);
-        //ShellIcon = new ImageIcon
-        //{
-        //    Source = bitmap
-        //};
-        //ShellIcon.Source = "../Assets/Views/Workbench/Shell32 Default unknown File.ico";
-        /*
-         * 
-         * ..\Assets\Views\Workbench\Shell32 Default Folder.ico
-        var bitmapSource = new BitmapSource();
-        await bitmapSource.SetSourceAsync(bitmapStream);
-        var icon = new muxc.ImageIcon() { Source = bitmapSource };
-        */
-        //        ShellIcon.Source = new ImageSource()
-        //                 ShellIcon = new ImageIcon();
-        //                ShellIcon
-        // "..\Assets\Views\Workbench\Shell32 Default unknown File.ico"
-
+        IconId = new IconId((ulong)(IsFolder ? 0x0 : 0x1));
+        ShellIcon = new ImageIcon();
     }
 
-    //protected async Task LoadDefaultImages()
-    //{
 
-    //    // using muxc = Microsoft.UI.Xaml.Controls;
+    private void Image_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+    {
+        // TODO: LogMessage
 
-    //    //var bitmapSource = new BitmapSource();
-    //    //await bitmapSource.SetSourceAsync(bitmapStream);
+        var image = new Image();
+        image.ImageFailed += Image_ImageFailed;
 
-    //    try
-    //    {
-    //                var uri = new System.Uri("ms-appx://../Assets/Views/Workbench/Shell32 Default unknown File.ico");
-    //        //        var uri = new System.Uri("ms-appx://..\\Assets\\Views\\Workbench\\Shell32 Default Folder.ico");
+        var imageIcon = new ImageIcon();
+        ShellIcon = imageIcon;
 
-    //        // ..\Assets\Views\Workbench\Shell32 Default Folder.ico
-    //        //var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(uri);
+        OnPropertyChanged(nameof(IconId));
+        OnPropertyChanged(nameof(ShellIcon));
+    }
 
-
-
-    //        var bmpImage = new BitmapImage(uri);
-
-
-    //        var icon = new muxc.ImageIcon() { Source = bmpImage };
-
-    //        var icon2 = new muxc.ImageIcon();
-
-
-    //        /*
-    //                var uri = new System.Uri("ms-appx:///images/logo.png");
-    //                var file = Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(uri);
-
-    //        */
-
-    //    }
-    //    catch(System.Exception ex)
-    //    {
-    //        var text = ex.Message;
-    //    }
-    //}
-
-
-
-//    public async Task<BitmapImage> GetImageThumbnailAsync()
-//    {
-//        try
-//        {
-//            var bitmapImage = new BitmapImage();
-
-//            // TODO: Load folder image from resource
-//            if (IsFolder)
-//            {
-
-//                    // "..\Assets\Views\Workbench\Shell32 Default unknown File.ico"
-////                bitmapImage.SetSourceAsync(bitmapImage)
-//            }
-//            else
-//            {
-//                //using (var thumbnail = await StorageFile.GetThumbnailAsync(ThumbnailMode.SingleItem))
-//                //{
-//                //    bitmapImage.SetSource(thumbnail);
-//                //}
-//            }
-
-//            //using (var thumbnail = await StorageItem.GetThumbnailAsync(ThumbnailMode.SingleItem))
-//            //{
-//            //    // Create a bitmap to be the image source.
-//            //    if (thumbnail != null)
-//            //    {
-//            //        bitmapImage.SetSource(thumbnail);
-//            //        thumbnail.Dispose();
-//            //    }
-//            //}
-
-//            return bitmapImage;
-//        }
-//        catch (Exception)
-//        {
-//            throw;
-//        }
-//    }
+    #region events
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
     protected void OnPropertyChanged([CallerMemberName] string? propertyName = null) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+    #endregion events
+
+    #region IEquatable<DosShellItem?>
+
+    public override bool Equals(object? obj) => Equals(obj as DosShellItem);
+    public bool Equals(DosShellItem? other) => other is not null &&
+        EqualityComparer<IStorageItem>.Default.Equals(StorageItem, other.StorageItem) &&
+        EqualityComparer<IStorageItem>.Default.Equals(StorageItem, other.StorageItem);
+
+    public static bool operator ==(DosShellItem? left, DosShellItem? right) => EqualityComparer<DosShellItem>.Default.Equals(left, right);
+
+    public static bool operator !=(DosShellItem? left, DosShellItem? right) => !(left == right);
+
+    #endregion IEquatable<DosShellItem?>
 }
-
-
-/// <summary>
-/// -> <seealso cref="SoftwareBitmapSource"/>
-/// </summary>
-//public ImageIcon ShellIcon
-//{
-//    get => _shellIcon;
-//    private set
-//    {
-//    }
-//}
-//private readonly ImageIcon _shellIcon = new();
-
-
-
-
-//ShellIcon = new ImageIcon { Source = "Assets/Views/Workbench/Shell32 Default unknown File.ico" };
-// Source="ms-appx:///Assets/globe.png"
-//ShellIcon = new ImageIcon {
-//    Source = "ms-appx:///Assets /Views/Workbench/Shell32 Default unknown File.ico"
-//};

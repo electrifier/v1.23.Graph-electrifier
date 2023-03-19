@@ -34,6 +34,9 @@
 		<UseWinUI>true</UseWinUI>
 		<PackageCertificateThumbprint>3170448E3FAECFA06CC0023FCD76AA2F7B39322A</PackageCertificateThumbprint>
 		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+		<Title>electrifier imtegrated desktop environment</Title>
+		<Authors>$(AssemblyName), Thorsten Jung</Authors>
+		<AssemblyVersion>1.23.3.19</AssemblyVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -118,20 +121,51 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Models\MsGraph\" />
-		<Folder Include="ViewModels\MsGraph\" />
-		<Folder Include="Views\MsGraph\" />
 		<None Include="..\..\LICENSE">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
-		<Folder Include="Assets\Views\Workbench\" />
 		<Folder Include="Assets\%28!%29 Stock Images %28!%29\" />
 		<None Include=".\*\.editorconfig" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="ControlPages\**" />
+	  <Compile Remove="Models\MsGraph\**" />
+	  <Compile Remove="ViewModels\MsGraph\**" />
+	  <Compile Remove="Views\MsGraph\**" />
+	  <EmbeddedResource Remove="ControlPages\**" />
+	  <EmbeddedResource Remove="Models\MsGraph\**" />
+	  <EmbeddedResource Remove="ViewModels\MsGraph\**" />
+	  <EmbeddedResource Remove="Views\MsGraph\**" />
+	  <None Remove="ControlPages\**" />
+	  <None Remove="Models\MsGraph\**" />
+	  <None Remove="ViewModels\MsGraph\**" />
+	  <None Remove="Views\MsGraph\**" />
+	  <Page Remove="ControlPages\**" />
+	  <Page Remove="Models\MsGraph\**" />
+	  <Page Remove="ViewModels\MsGraph\**" />
+	  <Page Remove="Views\MsGraph\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Microsoft365Page.xaml" />
 	  <None Remove="Views\Microsoft365Page.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PRIResource Remove="ViewModels\MsGraph\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PRIResource Remove="Models\MsGraph\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PRIResource Remove="Views\MsGraph\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PRIResource Remove="ControlPages\**" />
 	</ItemGroup>
 </Project>

@@ -9,6 +9,11 @@ namespace electrifier.Views;
 
 public sealed partial class FileManagerPage : Page
 {
+    protected enum ShowImagePhaseDescriptor
+    {
+        None = 0,
+    }
+
     public FileManagerViewModel ViewModel
     {
         get;
@@ -53,11 +58,13 @@ public sealed partial class FileManagerPage : Page
         }
     }
 
+
+
     private async void ShowImage(
         ListViewBase sender,
         ContainerContentChangingEventArgs args)
     {
-        if (args.Phase == 1)
+        if (args.Phase == (int)ShowImagePhaseDescriptor.None)
         {
             // It's phase 1, so show this item's image.
             var templateRoot = args.ItemContainer.ContentTemplateRoot as Grid;
@@ -75,8 +82,9 @@ public sealed partial class FileManagerPage : Page
                         {
                             //imageElement.Source = new BitmapImage();
                             //                        bitmap.UriSource = new Uri("ms-appx:///Assets/Square44x44Logo.scale-200.png");
-                            UriSource = new Uri("ms-appx:///../Assets/Square44x44Logo.scale-200.png")
+                            //UriSource = new Uri("ms-appx:///../Assets/Square44x44Logo.scale-200.png")
                         };
+
 
 
                         //new Uri(img.BaseUri, "Assets/StoreLogo.png");
@@ -85,13 +93,13 @@ public sealed partial class FileManagerPage : Page
 
                         /*
                          *     Image img = sender as Image; 
-BitmapImage bitmapImage = new BitmapImage();
-img.Width = bitmapImage.DecodePixelWidth = 80; 
-// Natural px width of image source.
-// You don't need to set Height; the system maintains aspect ratio, and calculates the other
-// dimension, as long as one dimension measurement is provided.
-bitmapImage.UriSource = new Uri(img.BaseUri,"Assets/StoreLogo.png");
-img.Source = bitmapImage;*/
+                    BitmapImage bitmapImage = new BitmapImage();
+                    img.Width = bitmapImage.DecodePixelWidth = 80; 
+                    // Natural px width of image source.
+                    // You don't need to set Height; the system maintains aspect ratio, and calculates the other
+                    // dimension, as long as one dimension measurement is provided.
+                    bitmapImage.UriSource = new Uri(img.BaseUri,"Assets/StoreLogo.png");
+                    img.Source = bitmapImage;*/
 
                         //imageElement.Source = new ImageSource(item.ShellIcon);
 
@@ -115,7 +123,7 @@ img.Source = bitmapImage;*/
     private async Task GetItemsAsync(KnownLibraryId storageLibrary)
     {
         var library = await StorageLibrary.GetLibraryAsync(storageLibrary);
-        StorageFolder storageFolder = library.SaveFolder;
+        var storageFolder = library.SaveFolder;
 
         if (storageFolder != null)
         {
@@ -126,7 +134,6 @@ img.Source = bitmapImage;*/
     private async Task GetItemsAsync(StorageFolder storageFolder)
     {
         var folderQuery = storageFolder.CreateItemQuery();
-
         var items = await folderQuery.GetItemsAsync();
 
         foreach (var storageFile in items)
@@ -135,62 +142,7 @@ img.Source = bitmapImage;*/
         }
 
         ImageGridView.ItemsSource = ShellItems;
-
-        //        var fileQuery = storageFolder.CreateFileQueryWithOptions(new QueryOptions());
-        //        var storageFiles = await folderQuery.GetFilesAsync();
-        //        var storageFolders = await storageFolder.GetFoldersAsync();
-
-
-
-
-        //        return storageFolder.CreateFileQueryWithOptions(new QueryOptions()).ToListAsync();
-
-        //        var result = picturesFolder.CreateFileQueryWithOptions(new QueryOptions());
-        //        _ = await result.GetFilesAsync();
-
-        /*
-                StorageFolder picturesFolder;
-
-                //picturesFolder = Package.Current.InstalledLocation;
-                //picturesFolder = KnownFolders.PicturesLibrary;
-                picturesFolder = KnownFolders.DocumentsLibrary;
-                //picturesFolder = KnownFolders.HomeGroup;
-
-                var result = picturesFolder.CreateFileQueryWithOptions(new QueryOptions());
-
-                var storageFiles = await result.GetFilesAsync();
-
-                foreach (var storageFile in storageFiles)
-                {
-                    ShellItems.Add(await LoadShellItemInfo(storageFile));
-                }
-
-                ImageGridView.ItemsSource = ShellItems;
-        */
     }
-
-    //public static async Task<DosShellItem> LoadShellItemInfo(StorageFile file)
-    //{
-    //    DosShellItem shellItem = new(file ?? throw new ArgumentNullException(nameof(file)));
-
-    //    try
-    //    {
-    //        var properties = await file.Properties.GetDocumentPropertiesAsync();
-
-    //        if (file.IsOfType(StorageItemTypes.Folder))
-    //        {
-    //            bool isFolder = true;
-
-    //        }
-
-    //        return shellItem;
-    //    }
-    //    catch
-    //    {
-    //        throw;
-    //    }
-    //}
-
 
     public static async Task<DosShellItem> LoadShellItemInfo(IStorageItem item)
     {
@@ -200,11 +152,9 @@ img.Source = bitmapImage;*/
         {
             var storageitem = item;
 
-            if (item.IsOfType(StorageItemTypes.Folder))
-            {
-                var isFolder = true;
-
-            }
+            //if (item.IsOfType(StorageItemTypes.Folder))
+            //{
+            //}
             await item.GetBasicPropertiesAsync();
 
             return shellItem;
