@@ -49,46 +49,46 @@
                     x:Uid="Shell_Workbench"
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WorkbenchViewModel">
                     <NavigationViewItem.Icon>
-            <FontIcon
-                FontFamily="{StaticResource SymbolThemeFontFamily}"
-                Glyph="&#xE70A;" />
-            </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItemHeader
-                x:Uid="Shell_ComputerName"
-                Content="{x:Bind ThisComputerName}" />
-            <NavigationViewItem
-                x:Uid="Shell_FileManager"
-                helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel">
-                <NavigationViewItem.Icon>
-                    <ImageIcon
-                        Source="\Assets\Views\Workbench\Icons\Shell32 Folder containing File.ico" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem
-                helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.DevicesViewModel"
-                x:Uid="Shell_Devices">
-                <NavigationViewItem.Icon>
-                    <FontIcon
-                        FontFamily="{StaticResource SymbolThemeFontFamily}"
-                        Glyph="&#xE772;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem
-                helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.ClipboardViewModel"
-                x:Uid="Shell_Clipboard">
-                <NavigationViewItem.Icon>
-                    <FontIcon
-                        FontFamily="{StaticResource SymbolThemeFontFamily}"
-                        Glyph="&#xF0E3;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-                <NavigationViewItemSeparator
-                    x:Uid="Shell_Network_Separator"
-                    Visibility="Collapsed" />
+                        <FontIcon
+                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                            Glyph="&#xE70A;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
                 <NavigationViewItemHeader
-                    x:Uid="Shell_Network"
-                    Visibility="Collapsed" />
+                    x:Uid="Shell_ComputerName"
+                    Content="{x:Bind ThisComputerName}" />
+                <NavigationViewItem
+                    x:Uid="Shell_FileManager"
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.FileManagerViewModel">
+                    <NavigationViewItem.Icon>
+                        <ImageIcon
+                            Source="\Assets\Views\Workbench\Icons\Shell32 Folder containing File.ico" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.DevicesViewModel"
+                    x:Uid="Shell_Devices"
+                    IsEnabled="False">
+                    <NavigationViewItem.Icon>
+                        <FontIcon
+                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                            Glyph="&#xE772;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.ClipboardViewModel"
+                    x:Uid="Shell_Clipboard"
+                    IsEnabled="False">
+                    <NavigationViewItem.Icon>
+                        <FontIcon
+                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                            Glyph="&#xF0E3;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItemSeparator
+                    x:Uid="Shell_Network_Separator" />
+                <NavigationViewItemHeader
+                    x:Uid="Shell_Network" />
                 <NavigationViewItem
                     x:Uid="Shell_NetworkDevices"
                     IsEnabled="False"
@@ -99,49 +99,51 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator />
-            <NavigationViewItemHeader
-                Content="Microsoft 365" />
-            <NavigationViewItem
-                x:Uid="Shell_Microsoft365"
-                helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.Microsoft365ViewModel">
-                <NavigationViewItem.Icon>
-                    <ImageIcon
-                        Source="\Assets\Views\Workbench\Icons\Microsoft 365.ico" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
+                <NavigationViewItemHeader
+                    Content="Microsoft 365" />
+                <NavigationViewItem
+                    x:Uid="Shell_Microsoft365"
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.Microsoft365ViewModel">
+                    <NavigationViewItem.Icon>
+                        <ImageIcon
+                            Source="\Assets\Views\Workbench\Icons\Microsoft 365.ico" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
                 <NavigationViewItemSeparator
                     x:Uid="Shell_Network_Separator"
                     Visibility="Collapsed" />
-            <NavigationViewItemHeader>
-                <NavigationViewItemHeader.Content>World Wide Web</NavigationViewItemHeader.Content>
-            </NavigationViewItemHeader>
-            <NavigationViewItem
-                x:Uid="Shell_WebView"
-                helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebViewViewModel">
-                <NavigationViewItem.Icon>
-                    <FontIcon
-                        FontFamily="{StaticResource SymbolThemeFontFamily}"
-                        Glyph="&#xEA8A;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem
-                helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebFavoritesViewModel"
-                x:Uid="Shell_WebFavorites">
-                <NavigationViewItem.Icon>
-                    <FontIcon
-                        FontFamily="{StaticResource SymbolThemeFontFamily}"
-                        Glyph="&#xE728;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem
-                helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebHostsViewModel"
-                x:Uid="Shell_WebHosts">
-                <NavigationViewItem.Icon>
-                    <FontIcon
-                        FontFamily="{StaticResource SymbolThemeFontFamily}"
-                        Glyph="&#xEC27;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
+                <NavigationViewItemHeader>
+                    <NavigationViewItemHeader.Content>World Wide Web</NavigationViewItemHeader.Content>
+                </NavigationViewItemHeader>
+                <NavigationViewItem
+                    x:Uid="Shell_WebView"
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebViewViewModel">
+                    <NavigationViewItem.Icon>
+                        <FontIcon
+                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                            Glyph="&#xEA8A;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebFavoritesViewModel"
+                    x:Uid="Shell_WebFavorites"
+                    IsEnabled="False">
+                    <NavigationViewItem.Icon>
+                        <FontIcon
+                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                            Glyph="&#xE728;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebHostsViewModel"
+                    x:Uid="Shell_WebHosts"
+                    IsEnabled="False">
+                    <NavigationViewItem.Icon>
+                        <FontIcon
+                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                            Glyph="&#xEC27;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem

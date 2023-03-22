@@ -8,11 +8,17 @@ using Azure.Identity;
 
 namespace electrifier.Views;
 
+/// <summary>
+/// <see cref="WorkbenchPage"/> is the Home aka Start page.
+/// Users can select, create and manage their workbenches here.
+///         https://learn.microsoft.com/en-us/windows/apps/design/controls/command-bar
+/// </summary>
 public sealed partial class WorkbenchPage : Page
 {
-    public GraphServiceClient GraphServiceClient
+    public GraphServiceClient? GraphServiceClient
     {
         get;
+        private set;
     }
 
     public WorkbenchViewModel ViewModel

@@ -6,16 +6,16 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 
-namespace electrifier.Services;
+namespace electrifier.Models.DosShell;
 
 public class DosShellItem : INotifyPropertyChanged, IEquatable<DosShellItem?>
 {
 
-    public string FileName => (StorageItem != null ? StorageItem?.Name : "[Not Initialized]");
+    public string FileName => StorageItem != null ? StorageItem.Name : "[Not Initialized]";
 
 
 
-    public string FileType => (StorageItem != null ? StorageItem?.Name : "[Not Initialized]");
+    public string FileType => StorageItem != null ? StorageItem.Name : "[Not Initialized]";
 
 
     public override int GetHashCode()
@@ -23,18 +23,20 @@ public class DosShellItem : INotifyPropertyChanged, IEquatable<DosShellItem?>
         return StorageItem.GetHashCode();
     }
 
-    public bool IsFolder
+    public IconId IconId
     {
         get; private set;
     }
 
     public bool IsFile => !IsFolder;
 
-    public IconId IconId
+    public bool IsFolder
     {
         get; private set;
     }
-    public ImageIcon ShellIcon
+
+
+    public ImageIcon ShellImageIcon
     {
         get; private set;
     }
@@ -46,7 +48,7 @@ public class DosShellItem : INotifyPropertyChanged, IEquatable<DosShellItem?>
 
     public DosShellItem()
     {
-        IconId = IconId = new IconId((ulong)(IsFolder ? 0x0 : 0x1));
+        IconId = new IconId((ulong)(IsFolder ? 0x0 : 0x1));
     }
 
     public DosShellItem(IStorageItem storageItem)
@@ -54,7 +56,7 @@ public class DosShellItem : INotifyPropertyChanged, IEquatable<DosShellItem?>
         StorageItem = storageItem;
         IsFolder = storageItem.IsOfType(StorageItemTypes.Folder);
         IconId = new IconId((ulong)(IsFolder ? 0x0 : 0x1));
-        ShellIcon = new ImageIcon();
+        ShellImageIcon = new ImageIcon();
     }
 
 
@@ -66,10 +68,10 @@ public class DosShellItem : INotifyPropertyChanged, IEquatable<DosShellItem?>
         image.ImageFailed += Image_ImageFailed;
 
         var imageIcon = new ImageIcon();
-        ShellIcon = imageIcon;
+        ShellImageIcon = imageIcon;
 
         OnPropertyChanged(nameof(IconId));
-        OnPropertyChanged(nameof(ShellIcon));
+        OnPropertyChanged(nameof(ShellImageIcon));
     }
 
     #region events

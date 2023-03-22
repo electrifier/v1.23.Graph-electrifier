@@ -1,9 +1,9 @@
-﻿using electrifier.Services;
+﻿using electrifier.Models.DosShell;
 using electrifier.ViewModels;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Imaging;
 using System.Collections.ObjectModel;
 using Windows.Storage;
-using Microsoft.UI.Xaml.Media.Imaging;
 
 namespace electrifier.Views;
 
@@ -101,7 +101,7 @@ public sealed partial class FileManagerPage : Page
                     bitmapImage.UriSource = new Uri(img.BaseUri,"Assets/StoreLogo.png");
                     img.Source = bitmapImage;*/
 
-                        //imageElement.Source = new ImageSource(item.ShellIcon);
+                        //imageElement.Source = new ImageSource(item.ShellImageIcon);
 
                         //var task = item?.GetImageThumbnailAsync();
 
