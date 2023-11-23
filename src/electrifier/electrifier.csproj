@@ -50,7 +50,7 @@
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Graph" Version="5.35.0" />
+		<PackageReference Include="Microsoft.Graph" Version="5.36.0" />
 		<PackageReference Include="Microsoft.Identity.Client" Version="4.57.0" />
 		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="4.57.0" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2194-prerelease">
