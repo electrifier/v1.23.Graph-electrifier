@@ -166,6 +166,7 @@
                             Glyph="&#xEC50;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItemSeparator />
                 <NavigationViewItem
                     helpers:NavigationHelper.NavigateTo="electrifier.ViewModels.WebViewViewModel"
                     SelectsOnInvoked="False"
@@ -176,6 +177,8 @@
                             Glyph="&#xF6FA;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItemSeparator />
+                <NavigationViewItemSeparator />
                 <NavigationViewItemSeparator />
             </NavigationView.FooterMenuItems>
             <NavigationView.HeaderTemplate>
