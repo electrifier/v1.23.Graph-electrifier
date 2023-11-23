@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<ApplicationIcon>Assets/WindowIcon.ico</ApplicationIcon>
 		<AssemblyName>electrifier</AssemblyName>
 		<AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
 		<Copyright>https://scheunenproduktion.de</Copyright>
@@ -37,6 +36,7 @@
 		<Title>electrifier imtegrated desktop environment</Title>
 		<Authors>$(AssemblyName), Thorsten Jung</Authors>
 		<AssemblyVersion>1.23.3.19</AssemblyVersion>
+		<ApplicationIcon>Assets\WindowIcon.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
