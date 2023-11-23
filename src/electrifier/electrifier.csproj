@@ -16,7 +16,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageReleaseNotes>Imperial March</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<PackageTags>electrifier; electrifier.org; tajbender; scheunenprduktion.de; scheunenprduktion</PackageTags>
+		<PackageTags>electrifier; electrifier.org; scheunenprduktion; tajbender; scheunenprduktion.de;</PackageTags>
 		<Platforms>x86;x64;arm64</Platforms>
 		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
 		<PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
@@ -33,9 +33,9 @@
 		<UseWinUI>true</UseWinUI>
 		<PackageCertificateThumbprint>3170448E3FAECFA06CC0023FCD76AA2F7B39322A</PackageCertificateThumbprint>
 		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-		<Title>electrifier imtegrated desktop environment</Title>
+		<Title>electrifier imtegrated desktop environment - hackathon .net8</Title>
 		<Authors>$(AssemblyName), Thorsten Jung</Authors>
-		<AssemblyVersion>1.23.3.19</AssemblyVersion>
+		<AssemblyVersion>1.23.11.13</AssemblyVersion>
 		<ApplicationIcon>Assets\WindowIcon.ico</ApplicationIcon>
 	</PropertyGroup>
 
